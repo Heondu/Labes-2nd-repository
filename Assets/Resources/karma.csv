@@ -1,0 +1,16 @@
+﻿name,status,amount,prefab,consume,reqAwaken
+karma001,strength,10,,100,
+karma002,strength,11,,100,karma001
+karma003,strength,12,,100,karma002
+karma004,strength,13,,100,karma003
+karma005,strength,14,,100,karma004
+karma006,strength,15,,100,karma005
+karma007,strength,16,,100,karma006
+karma010,strength,17,,100,karma002
+karma011,strength,18,,100,karma010
+karma012,strength,19,,100,karma011
+karma013,strength,20,,100,karma012
+karma020,strength,21,,100,karma002
+karma021,strength,22,,100,karma020
+karma022,strength,23,,100,karma021
+karma023,strength,24,,100,karma022

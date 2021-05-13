@@ -1,0 +1,7 @@
+﻿name,type,amount,reward1,rarity1,amount1,reward2,rarity2,amount2,reward3,rarity3,amount3,npc,minlvl,maxlvl,chance
+quest001,mon001,100,weapon,Magic,1,exp,,10,,,,npc001,1,10,100
+quest002,ore,100,weapon,Magic,1,exp,,10,,,,npc001,1,10,100
+quest003,herb,100,armor,HiQuality,1,gold,,1000,,,,npc001,1,10,100
+tier2-------------,,,,,,,,,,,,,,,
+quest004,mon002,10000,weapon,Unique,1,exp,,100,,,,npc002,5,20,30
+quest005,ore,10000,armor,Unique,1,gold,,10000,,,,npc002,1,100,30

@@ -1,0 +1,555 @@
+﻿name,localization
+######,희귀도######
+Normal,일반
+HiQuality,고급
+Magic,마법
+Rare,희귀
+Unique,유일
+Legendary,전설
+,
+######,스텟######
+strength,힘
+agility,민첩
+intelligence,지능
+endurance,인내
+damage,공격력
+defence,방어력
+allResist,모든 저항
+fireResist,화속성 저항
+coldResist,수속성 저항
+darkResist,암속성 저항
+lightResist,명속성 저항
+fireDamage,화속성 강화
+coldDamage,수속성 강화
+darkDamage,암속성 강화
+lightDamage,명속성 강화
+fixDamage,고정데미지
+critChance,치명타율
+avoidance,회피
+accuracy,명중
+reduceMana,공력 소모 감소
+reduceCool,쿨타임 감소
+critResist,치명타 저항
+critDamage,치명타 배율
+experience,경험치 배율
+itemRange,획득 반경
+HP,체력
+mana,마나
+,
+,
+######,스킬######
+skill001,가이디드 애로우
+skill002,
+skill003,늪지대
+skill004,버프
+skill005,지능증가
+skill900,힐링포션
+,
+######,무기######
+,
+sword,도검
+axe,도끼
+gun,화기
+bow,활
+fan,섭선
+staff,지팡이
+,
+swd01,철검
+swd02,철도
+swd03,장검
+swd04,큰날검
+swd05,월도
+swd06,전쟁검
+swd07,굽이칼
+swd08,환검
+swd09,룬검
+swd10,외날검
+swd11,외날도
+swd12,역날검
+swd13,역날도
+swd14,제왕검
+swd15,제왕도
+swd16,패왕검
+swd17,패왕도
+swd18,절대검
+swd19,절대도
+swd20,군주도
+swd21,군주검
+swd22,신검
+,
+axe01,철도끼
+axe02,손도끼
+axe03,벌목 도끼
+axe04,벌채 도끼
+axe05,군용 도끼
+axe06,넓적 도끼
+axe07,맹공 도끼
+axe08,큰날 도끼
+axe09,야만 도끼
+axe10,거월부
+axe11,만월부
+axe12,청인부
+axe13,쌍월부
+axe14,태부
+axe15,제왕부
+axe16,비철부
+axe17,패왕부
+axe18,흑철부
+axe19,절대부
+axe20,군주부
+axe21,맹획부
+axe22,신수부
+,
+gun01,조총
+gun02,화승총
+gun03,장총
+gun04,쌍발조총
+gun05,쌍발화승총
+gun06,연발조총
+gun07,연발화승총
+gun08,연장총
+gun09,승자총포
+gun10,목가포
+gun11,삼안총
+gun12,일총통
+gun13,이총통
+gun14,진천총통
+gun15,지자총통
+gun16,현자총통
+gun17,자동소총
+gun18,비격총
+gun19,대장군포
+gun20,패왕포
+gun21,군주포
+gun22,천보총
+,
+bow01,단궁
+bow02,각궁
+bow03,석궁
+bow04,사냥용 활
+bow05,쇠뇌
+bow06,맥궁
+bow07,철궁
+bow08,장궁
+bow09,쌍인궁
+bow10,적궁
+bow11,대장궁
+bow12,군주궁
+bow13,강노
+bow14,연노
+bow15,합성궁
+bow16,경량궁
+bow17,흑철궁
+bow18,제왕궁
+bow19,비철궁
+bow20,패왕궁
+bow21,명궁
+bow22,신궁
+,
+fan01,우선
+fan02,섭선
+fan03,단선
+fan04,오우선
+fan05,치미선
+fan06,오엽선
+fan07,화문선
+fan08,백우선
+fan09,금골선
+fan10,엽선
+fan11,유리선
+fan12,비섭선
+fan13,안선
+fan14,공작선
+fan15,취선
+fan16,학우선
+fan17,흑단선
+fan18,화접선
+fan19,대원선
+fan20,미선
+fan21,연엽선
+fan22,태극선
+,
+stf01,단장
+stf02,죽장
+stf03,주목장
+stf04,흑단장
+stf05,뼈 지팡이
+stf06,전투 지팡이
+stf07,전쟁 지팡이
+stf08,악마 지팡이
+stf09,혼령 지팡이
+stf10,영혼 지팡이
+stf11,미륵 지팡이
+stf12,천사 지팡이
+stf13,절대 지팡이
+stf14,제사 지팡이
+stf15,주술 지팡이
+stf16,장로 지팡이
+stf17,군왕 지팡이
+stf18,패왕 지팡이
+stf19,여래장
+stf20,구원 지팡이
+stf21,신장
+stf22,천신장
+,
+######,방어구######
+,
+helm,투구
+top,갑옷
+gloves,장갑
+shoes,신발
+belt,혁대
+,
+hel01,삼베두건
+hel02,무명두건
+hel03,소가죽 모자
+hel04,목재투구
+hel05,판금투구
+hel06,호피투구
+hel07,등목투구
+hel08,병사모
+hel09,터번
+hel10,두정투구
+hel11,비철투구
+hel12,흑철투구
+hel13,악마 가면
+hel14,군주투구
+hel15,제왕투구
+hel16,천사투구
+hel17,미륵투구
+hel18,주술투구
+hel19,장로투구
+hel20,군왕투구
+hel21,패왕투구
+hel22,천신투구
+,
+top01,삼베옷
+top02,무명옷
+top03,소가죽 갑옷
+top04,목갑
+top05,판금갑
+top06,호피갑
+top07,등목갑
+top08,병사 갑옷
+top09,도티
+top10,두정갑
+top11,비철갑
+top12,흑철갑
+top13,악마 갑옷
+top14,군주갑
+top15,제왕갑
+top16,천사갑
+top17,미륵갑
+top18,주술갑
+top19,장로갑
+top20,군왕갑
+top21,패왕갑
+top22,천신갑
+,
+glv01,삼베 장갑
+glv02,무명 장갑
+glv03,소가죽 장갑
+glv04,목재 장갑
+glv05,판금수
+glv06,호피수
+glv07,등목수
+glv08,병사 장갑
+glv09,모직 장갑
+glv10,두정수
+glv11,비철수
+glv12,흑철수
+glv13,악마 장갑
+glv14,군주수
+glv15,제왕수
+glv16,천사수
+glv17,미륵수
+glv18,주술 장갑
+glv19,장로수
+glv20,군왕수
+glv21,패왕수
+glv22,천신수
+,
+bts01,삼베 신발
+bts02,무명 신발
+bts03,소가죽 신발
+bts04,목재 신발
+bts05,판금화
+bts06,호피화
+bts07,등목화
+bts08,병사 신발
+bts09,모직 신발
+bts10,두정화
+bts11,비철화
+bts12,흑철화
+bts13,악마 신발
+bts14,군주화
+bts15,제왕화
+bts16,천사화
+bts17,미륵화
+bts18,주술 신발
+bts19,장로화
+bts20,군왕화
+bts21,패왕화
+bts22,천신화
+,
+blt01,삼베 요대
+blt02,무명 요대
+blt03,소가죽 요대
+blt04,목재 요대
+blt05,판금대
+blt06,호피대
+blt07,등목대
+blt08,병사 요대
+blt09,모직 요대
+blt10,두정대
+blt11,비철대
+blt12,흑철대
+blt13,악마 요대
+blt14,군주대
+blt15,제왕대
+blt16,천사대
+blt17,미륵대
+blt18,주술 요대
+blt19,장로대
+blt20,군왕대
+blt21,패왕대
+blt22,천신대
+,
+######,장신구######
+,
+ring,반지
+necklace,목걸이
+bracelet,팔찌
+,
+rng01,종이반지
+rng02,나무반지
+rng03,철반지
+rng04,수정 반지
+rng05,악령 반지
+rng06,청동반지
+rng07,옥가락지
+rng08,은가락지
+rng09,금가락지
+rng10,제사용 반지
+rng11,보석 반지
+rng12,금강석 가락지
+rng13,악마의 반지
+rng14,군주의 반지
+rng15,제왕의 반지
+rng16,천사의 반지
+rng17,미륵의 반지
+rng18,주술 반지
+rng19,장로의 반지
+rng20,군왕의 반지
+rng21,패왕의 반지
+rng22,천신의 반지
+,
+nec01,종이목걸이
+nec02,나무목걸이
+nec03,철목걸이
+nec04,수정 목걸이
+nec05,악령 목걸이
+nec06,청동목걸이
+nec07,옥목걸이
+nec08,은목걸이
+nec09,금목걸이
+nec10,제사용 목걸이
+nec11,보석 목걸이
+nec12,금강석 목걸이
+nec13,악마의 목걸이
+nec14,군주의 목걸이
+nec15,제왕의 목걸이
+nec16,천사의 목걸이
+nec17,미륵의 목걸이
+nec18,주술 목걸이
+nec19,장로의 목걸이
+nec20,군왕의 목걸이
+nec21,패왕의 목걸이
+nec22,천신의 목걸이
+,
+brc01,종이팔찌
+brc02,나무팔찌
+brc03,철팔찌
+brc04,수정 팔찌
+brc05,악령 팔찌
+brc06,청동팔찌
+brc07,옥팔찌
+brc08,은팔찌
+brc09,금팔찌
+brc10,제사용 팔찌
+brc11,보석 팔찌
+brc12,금강석 팔찌
+brc13,악마의 팔찌
+brc14,군주의 팔찌
+brc15,제왕의 팔찌
+brc16,천사의 팔찌
+brc17,미륵의 팔찌
+brc18,주술 팔찌
+brc19,장로의 팔찌
+brc20,군왕의 팔찌
+brc21,패왕의 팔찌
+brc22,천신의 팔찌
+,
+######,추가 능력######
+,
+end01,딱딱한
+end02,탄력있는
+end03,강한
+end04,끈기의
+end05,강인한
+end06,견고한
+end07,튼튼한
+end08,건장한
+end09,건장한
+end10,거룩한
+end11,거룩한
+end12,축복받은
+end13,축복받은
+end14,성스러운
+end15,성스러운
+,
+agi01,깨끗한
+agi02,깔끔한
+agi03,좋은
+agi04,잘 만든
+agi05,교활한
+agi06,빠른
+agi07,교묘한
+agi08,흥미로운
+agi09,흥미로운
+agi10,매혹적인
+agi11,매혹적인
+agi12,대단한
+agi13,대단한
+agi14,눈부신
+agi15,눈부신
+,
+int01,기만하는
+int02,확고한
+int03,긴박한
+int04,유연한
+int05,훌륭한
+int06,슬기로운
+int07,희미한
+int08,빛나는
+int09,빛나는
+int10,사려 깊은
+int11,사려 깊은
+int12,현명한
+int13,현명한
+int14,전지전능한
+int15,전지전능한
+,
+str01,야만적인
+str02,잔인한
+str03,거대한
+str04,활력있는
+str05,강력한
+str06,막강한
+str07,광포한
+str08,치명적인
+str09,사나운
+str10,웅장한
+str11,웅장한
+str12,흉포한
+str13,흉포한
+str14,맹렬한
+str15,맹렬한
+,
+reg01,반짝이는
+reg02,반짝이는
+reg03,반짝이는
+reg04,반짝이는
+reg05,반짝이는
+reg06,반짝이는
+reg07,반짝이는
+reg08,반짝이는
+reg09,반짝이는
+reg10,반짝이는
+reg11,반짝이는
+reg12,반짝이는
+reg13,반짝이는
+reg14,반짝이는
+reg15,반짝이는
+,
+freg01,붉은빛
+freg02,붉은빛
+freg03,빨간색
+freg04,빨간색
+freg05,주홍색
+freg06,주홍색
+freg07,적색
+freg08,적색
+freg09,진홍색
+freg10,진홍색
+freg11,단련된
+freg12,단련된
+freg13,루비장식된
+freg14,루비장식된
+freg15,붉은 달빛
+,
+creg01,하늘빛
+creg02,군청색
+creg03,군청색
+creg04,암청색
+creg05,암청색
+creg06,남빛
+creg07,사파이어장식된
+creg08,짙은 청색
+,
+dreg01,녹색
+dreg02,비취색
+dreg03,비취색
+dreg04,청록색
+dreg05,사제의
+dreg06,활력이 넘치는
+dreg07,에메랄드장식된
+dreg08,인내의
+,
+lreg01,주황색
+lreg02,황토색
+lreg03,동색
+lreg04,동색
+lreg05,산호색
+lreg06,날카로운
+lreg07,황색
+lreg08,두 갈래의
+,
+fdam01,빨간색
+fdam02,진홍색
+fdam03,암적색
+fdam04,석류색
+fdam05,석류색
+fdam06,적갈색
+fdam07,루비장식된
+fdam08,주색의
+,
+cdam01,하늘빛
+cdam02,군청색
+cdam03,군청색
+cdam04,암청색
+cdam05,암청색
+cdam06,남빛
+cdam07,사파이어장식된
+cdam08,짙은 청색
+,
+ddam01,녹색
+ddam02,비취색
+ddam03,비취색
+ddam04,청록색
+ddam05,사제의
+ddam06,활력이 넘치는
+ddam07,에메랄드장식된
+ddam08,인내의
+,
+ldam01,주황색
+ldam02,황토색
+ldam03,동색
+ldam04,동색
+ldam05,산호색
+ldam06,날카로운
+ldam07,황색
+ldam08,두 갈래의
+,
+######,소모품######
+pot01,힐링 포션

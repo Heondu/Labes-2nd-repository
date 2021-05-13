@@ -1,0 +1,4 @@
+﻿class,minquantity,maxquantity,item1,prob1,item2,prob2,item3,prob3,item4,prob4,item5,prob5,item6,prob6
+pawn,0,2,equip,300,monster,50,gold,200,gold/2,300,gold/10,500,comsume,300
+elite,2,4,equip,10,monster,50,gold,50,gold/2,50,gold/10,50,comsume,20
+boss,5,8,equip,90,monster,30,gold,20,gold/2,10,,,comsume,20

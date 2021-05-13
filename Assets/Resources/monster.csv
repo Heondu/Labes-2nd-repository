@@ -1,0 +1,6 @@
+﻿name,monlvl,class,skill1,prob1,skill2,prob2,skill3,prob3,skill4,prob4,skill5,prob5,skill6,prob6,delay
+mon000_1,20,pawn,skill011,100,,,,,,,,,,,3
+mon000_2,2,pawn,skill011,100,,,,,,,,,,,3
+mon000_3,4,pawn,skill011,100,,,,,,,,,,,3
+mon000_4,8,pawn,skill011,100,,,,,,,,,,,3
+,,,,,,,,,,,,,,,1

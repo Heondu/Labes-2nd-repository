@@ -1,0 +1,7 @@
+﻿skill,name,rarity,exp,material,weaponClass,classBonus,bonusAmount%,position,element,cooltime,amount,perlvl,isPositive,repeat,speed,size,lifetime,guide,penetration,image
+Guided Arrow,skill001,1,1,ore,bow,,0,hero,light,0.5,0,0,0,1,10,1,10,0.3,5,icons/skill/skill001
+Guided Arrow Hit,skill002,1,1,ore,bow,range,10,this,light,0,300,15,0,3,3,1,0,0,0,
+Swamp,skill003,5,2,herb,staff,amount,20,pointer,dark,15,15,3,0,1,0,1,10,0,100,icons/skill/skill003
+DontDestroyBuff,skill004,15,5,herb,none,,0,hero,none,10,50,1,1,1,0,1,20,0,0,icons/skill/skill004
+,,,,,,,,,,,,,,,,,,,,
+HealingPotion1,skill900,1,1,none,none,,0,hero,none,30,300,0,1,1,0,0,0,0,0,

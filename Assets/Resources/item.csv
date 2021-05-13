@@ -1,0 +1,2 @@
+﻿name,spawnable,useType,type,status,rarity,statMin,statMax,cost,itemImage,inventoryImage
+pot01,1,consume,potion,,1,,,,Sprites/DropIcon/dropitem_2,icons/potion/potion020

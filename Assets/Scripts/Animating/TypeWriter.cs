@@ -4,23 +4,33 @@ using TMPro;
 
 public class TypeWriter : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI txt;
     private Coroutine coroutine;
+    private TextMeshProUGUI txt;
+    private string sss;
+    static TypeWriter _tw;
 
-    public static TypeWriter tw;
-
-    string sss;
-
-    private void Start()
+    public static TypeWriter tw
     {
-        tw = GetComponent<TypeWriter>();
+        get
+        {
+            if (!_tw) //호출됐는데 SE매니저가 없을 시 생성하는 과정
+            {
+                GameObject tw_Manager = new GameObject("TypeWrite_manager");
+                _tw = tw_Manager.AddComponent(typeof(TypeWriter)) as TypeWriter;
 
-        sss = "입력한다아아아아아\n123123123";
+                DontDestroyOnLoad(tw_Manager);
+            }
 
-        Write();
-    }
+            return _tw;
+        }
+    } //싱글톤 형식으로 항상유지
 
+    /// <summary>
+    /// 한글자씩 타이핑하는 애니메이션형식의 출력
+    /// </summary>
+    /// <param name="tmp">tmp</param>
+    /// <param name="s">text</param>
+    /// <param name="delay">delay</param>
     public static void Write(TextMeshProUGUI tmp, string s, float delay)
     {
         tw.txt = tmp;
@@ -40,13 +50,14 @@ public class TypeWriter : MonoBehaviour
             txt.text = s2;
             s2 += s[index];
 
+            SoundEffectManager.SoundEffect("TypeWriter"); //타이핑 치는 효과음
+
             yield return WaitForRealSeconds(delay);
         }
 
         txt.text = s;
 
-        yield return WaitForRealSeconds(1.5f);
-        txt.text = "";
+        //yield return WaitForRealSeconds(1.5f);
         FinishCoroutine();
     }
 

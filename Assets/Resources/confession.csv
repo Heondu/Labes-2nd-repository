@@ -1,0 +1,15 @@
+﻿name,status,amount,prefab,consume,reqAwaken
+confe001,coldResist,1,,98,
+confe002,coldResist,2,,97,confe001
+confe003,coldResist,3,,96,confe002
+confe004,coldResist,4,,95,confe003
+confe005,coldResist,5,,94,confe004
+confe006,coldResist,6,,93,confe005
+confe010,coldResist,7,,92,confe002
+confe011,darkDamage,8,,91,confe010
+confe012,darkDamage,9,,90,confe011
+confe013,darkDamage,10,,89,confe012
+confe020,darkDamage,11,,88,confe002
+confe021,darkDamage,12,,87,confe020
+confe022,darkDamage,13,,86,confe021
+confe023,darkDamage,14,,85,confe022

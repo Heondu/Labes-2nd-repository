@@ -1,0 +1,15 @@
+﻿name,status,amount,prefab,consume,reqAwaken
+trans001,agility,1,,99,
+trans002,agility,2,,99,trans001
+trans003,agility,3,,99,trans002
+trans004,agility,4,,99,trans003
+trans005,agility,5,,99,trans004
+trans006,agility,6,,99,trans005
+trans010,agility,7,,99,trans002
+trans011,defence,8,,99,trans010
+trans012,defence,9,,99,trans011
+trans013,defence,10,,99,trans011
+trans020,defence,11,,99,trans002
+trans021,defence,12,,99,trans020
+trans022,defence,13,,99,trans021
+trans023,defence,14,,99,trans021

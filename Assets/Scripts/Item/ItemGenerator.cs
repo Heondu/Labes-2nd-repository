@@ -6,10 +6,9 @@ public class ItemGenerator : MonoBehaviour
     public static ItemGenerator instance;
     [SerializeField]
     private Item item;
-    private Dictionary<string, object> rarity;
-    private Dictionary<string, object> rarityAdd;
+    private Dictionary<string, object> rarityDic;
+    private Dictionary<string, object> rarityAddDic;
     private List<Item> itemList = new List<Item>();
-    private List<string> additionalList = new List<string>();
     private string rarityType = "Normal";
     [SerializeField]
     private GameObject itemPrefab;
@@ -52,7 +51,6 @@ public class ItemGenerator : MonoBehaviour
                 if (rand < sum)
                 {
                     index = j + 1;
-                    probList[j] = 0;
                     break;
                 }
             }
@@ -135,8 +133,8 @@ public class ItemGenerator : MonoBehaviour
 
     private void RandomRarity(string classType)
     {
-        rarity = DataManager.rarity.FindDic("Function", classType);
-        int[] sort = { (int)rarity["Legendary"], (int)rarity["Unique"], (int)rarity["Rare"], (int)rarity["Magic"], (int)rarity["HiQuality"], (int)rarity["Normal"] };
+        rarityDic = DataManager.rarity.FindDic("Function", classType);
+        int[] sort = { (int)rarityDic["Legendary"], (int)rarityDic["Unique"], (int)rarityDic["Rare"], (int)rarityDic["Magic"], (int)rarityDic["HiQuality"], (int)rarityDic["Normal"] };
         string[] types = { "Legendary", "Unique", "Rare", "Magic", "HiQuality", "Normal" };
         for (int i = 0; i < sort.Length - 1; i++) {
             for (int j = i + 1; j < sort.Length; j++) {
@@ -168,24 +166,12 @@ public class ItemGenerator : MonoBehaviour
 
     private void Additional()
     {
-        additionalList.Clear();
-        rarityAdd = DataManager.rarity.FindDic("Function", "rarityAdd");
-        int rand = Random.Range(0, 100);
-        int rarityAll = item.rarity + (int)rarityAdd[rarityType];
-        if (rand > 25) Mathf.Max(1, rarityAll - 1);
-        for (int i = 0; i < DataManager.additional.Count; i++)
-        {
-            if (rarityAll == (int)DataManager.additional[i]["rarity"])
-                additionalList.Add(DataManager.additional[i]["code"].ToString());
-        }
+        rarityAddDic = DataManager.rarity.FindDic("Function", "rarityAdd");
+        int rarityAll = item.rarity + (int)rarityAddDic[rarityType];
+
         for (int i = 0; i < 3; i++)
         {
-            rand = Random.Range(0, additionalList.Count);
-            Dictionary<string, object> additional = DataManager.additional.FindDic("code", additionalList[rand]);
-            item.nameAdd[i] = additional["code"].ToString();
-            item.statusAdd[i] = additional["status"].ToString();
-            item.statAdd[i] = Random.Range((int)additional["statMin"], (int)additional["statMax"]);
-            item.cost += (int)additional["cost"];
+            ItemAdditional.Additional(item, rarityAll);
         }
     }
 }

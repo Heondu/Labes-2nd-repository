@@ -21,6 +21,15 @@ public class Flash : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        for (int i = 0; i < originMats.Length; i++)
+        {
+            if (renderers[i].gameObject.layer == LayerMask.NameToLayer("Minimap")) continue;
+            renderers[i].material = originMats[i];
+        }
+    }
+
     public IEnumerator Execute()
     {
         if (isFlash == false)

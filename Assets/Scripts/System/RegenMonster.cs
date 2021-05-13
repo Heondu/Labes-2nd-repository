@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class RegenMonster : MonoBehaviour
 {
-    public void SpawnMonster(RegenArea regenArea)
+    public void SpawnMonster(RegenArea regenArea, GameObject monsterHPBar, Transform  monsterHPCanvas, GameObject bossHPBar)
     {
         List<GameObject> enemys = new List<GameObject>();
 
@@ -27,10 +27,7 @@ public class RegenMonster : MonoBehaviour
                     break;
                 }
             }
-
-            GameObject clone = Instantiate(regenArea.monsters[index], transform);
-            clone.GetComponent<Enemy>().Init();
-            enemys.Add(clone);
+            enemys.Add(regenArea.monsters[index]);
         }
 
         int enemyColumn = (int)Mathf.Sqrt(regenArea.maxRegenNum);
@@ -42,9 +39,23 @@ public class RegenMonster : MonoBehaviour
                 int index = x * enemyColumn + y;
                 if (index >= regenArea.maxRegenNum) continue;
 
-                Bounds enemyBounds = enemys[index].GetComponent<CapsuleCollider2D>().bounds;
+                GameObject clone = ObjectPooler.instance.ObjectPool(regenArea.transform, enemys[index]);
+                Enemy enemy = clone.GetComponent<Enemy>();
+                enemy.Init();
+
+                Bounds enemyBounds = clone.GetComponent<CapsuleCollider2D>().bounds;
                 Vector3 newPos = regenArea.transform.position + new Vector3(enemyBounds.size.x * x, enemyBounds.size.y * y, 0);
-                enemys[index].GetComponent<EnemyController>().SetPos(newPos);
+                clone.GetComponent<EnemyController>().SetPos(newPos);
+
+                if (enemy.monster["class"].ToString() == "pawn")
+                {
+                    clone = ObjectPooler.instance.ObjectPool(monsterHPCanvas.transform, monsterHPBar);
+                    clone.GetComponent<UIMonsterHPViewer>().Init(enemy.transform, enemy.status);
+                }
+                else
+                {
+                    bossHPBar.GetComponent<UIBossHPViewer>().Init(enemy.transform, enemy.status, DataManager.Localization(enemy.GetID()));
+                }
             }
         }
         GetComponent<EnemySwarmController>().Init();

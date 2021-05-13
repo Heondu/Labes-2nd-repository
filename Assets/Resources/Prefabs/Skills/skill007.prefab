@@ -2934,8 +2934,9 @@ GameObject:
   - component: {fileID: 204931047246295779}
   - component: {fileID: -3845928394205857394}
   - component: {fileID: 5444890525997826670}
+  - component: {fileID: 7367119435331022517}
   m_Layer: 0
-  m_Name: Skill007
+  m_Name: skill007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3077,3 +3078,16 @@ MonoBehaviour:
   prefab: {fileID: 0}
   sound: {fileID: 8300000, guid: 159c5e813c4de0941a49a86521534298, type: 3}
   onlyMove: 0
+--- !u!114 &7367119435331022517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8792704387457295560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5444c803ab6a82c46b6295da3bc08209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingMethod: 2

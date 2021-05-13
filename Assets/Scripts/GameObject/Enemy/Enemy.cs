@@ -69,6 +69,7 @@ public class Enemy : MonoBehaviour, ILivingEntity
     {
         monster = DataManager.monster.FindDic("name", id);
         monlvl = DataManager.monlvl.FindDic("Level", monster["monlvl"]);
+        status.level = (int)monster["monlvl"];
         status.maxHP = 50;
         status.HP = status.maxHP;
         status.strength.BaseValue = (int)monlvl["strength"];
@@ -112,7 +113,8 @@ public class Enemy : MonoBehaviour, ILivingEntity
         {
             FindObjectOfType<Player>().status.exp += (int)monlvl["monexp"];
             ItemGenerator.instance.DropItem(monlvl, monster["class"].ToString(), transform.position);
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
@@ -124,5 +126,10 @@ public class Enemy : MonoBehaviour, ILivingEntity
     public Status GetStatus(string name)
     {
         return status.GetStatus(name);
+    }
+
+    public string GetID()
+    {
+        return id;
     }
 }

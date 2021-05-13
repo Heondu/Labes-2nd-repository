@@ -3,6 +3,7 @@
 [System.Serializable]
 public class EnemyStatus : IStatus
 {
+    public int level;
     public int HP;
     public int maxHP;
 
@@ -34,23 +35,33 @@ public class EnemyStatus : IStatus
 
     public void CalculateDerivedStatus()
     {
-        damage.AddModifier(new StatusModifier(strength.Value, StatusModType.Flat));
-        fixDamage.AddModifier(new StatusModifier(strength.Value, StatusModType.Flat));
-        critChance.AddModifier(new StatusModifier(agility.Value, StatusModType.Flat));
-        avoidance.AddModifier(new StatusModifier(agility.Value, StatusModType.Flat));
-        accuracy.AddModifier(new StatusModifier(agility.Value, StatusModType.Flat));
-        reduceMana.AddModifier(new StatusModifier(intelligence.Value, StatusModType.Flat));
-        reduceCool.AddModifier(new StatusModifier(intelligence.Value, StatusModType.Flat));
-        defence.AddModifier(new StatusModifier(endurance.Value, StatusModType.Flat));
-        allResist.AddModifier(new StatusModifier(endurance.Value, StatusModType.Flat));
+        damage.RemoveAllModifiersFromSource(strength);
+        fixDamage.RemoveAllModifiersFromSource(strength);
+        critChance.RemoveAllModifiersFromSource(agility);
+        avoidance.RemoveAllModifiersFromSource(agility);
+        accuracy.RemoveAllModifiersFromSource(agility);
+        reduceMana.RemoveAllModifiersFromSource(intelligence);
+        reduceCool.RemoveAllModifiersFromSource(intelligence);
+        defence.RemoveAllModifiersFromSource(endurance);
+        allResist.RemoveAllModifiersFromSource(endurance);
 
-        fixDamage.AddModifier(new StatusModifier(multValue, StatusModType.PercentAdd));
-        critChance.AddModifier(new StatusModifier(multValue, StatusModType.PercentAdd));
-        avoidance.AddModifier(new StatusModifier(multValue, StatusModType.PercentAdd));
-        accuracy.AddModifier(new StatusModifier(multValue, StatusModType.PercentAdd));
-        reduceMana.AddModifier(new StatusModifier(multValue, StatusModType.PercentAdd));
-        reduceCool.AddModifier(new StatusModifier(multValue, StatusModType.PercentAdd));
-        allResist.AddModifier(new StatusModifier(multValue, StatusModType.PercentAdd));
+        damage.AddModifier(new StatusModifier(strength.Value, StatusModType.Flat, strength));
+        fixDamage.AddModifier(new StatusModifier(strength.Value, StatusModType.Flat, strength));
+        critChance.AddModifier(new StatusModifier(agility.Value, StatusModType.Flat, agility));
+        avoidance.AddModifier(new StatusModifier(agility.Value, StatusModType.Flat, agility));
+        accuracy.AddModifier(new StatusModifier(agility.Value, StatusModType.Flat, agility));
+        reduceMana.AddModifier(new StatusModifier(intelligence.Value, StatusModType.Flat, intelligence));
+        reduceCool.AddModifier(new StatusModifier(intelligence.Value, StatusModType.Flat, intelligence));
+        defence.AddModifier(new StatusModifier(endurance.Value, StatusModType.Flat, endurance));
+        allResist.AddModifier(new StatusModifier(endurance.Value, StatusModType.Flat, endurance));
+
+        fixDamage.AddModifier(new StatusModifier(multValue, StatusModType.PercentAdd, strength));
+        critChance.AddModifier(new StatusModifier(multValue, StatusModType.PercentAdd, agility));
+        avoidance.AddModifier(new StatusModifier(multValue, StatusModType.PercentAdd, agility));
+        accuracy.AddModifier(new StatusModifier(multValue, StatusModType.PercentAdd, agility));
+        reduceMana.AddModifier(new StatusModifier(multValue, StatusModType.PercentAdd, intelligence));
+        reduceCool.AddModifier(new StatusModifier(multValue, StatusModType.PercentAdd, intelligence));
+        allResist.AddModifier(new StatusModifier(multValue, StatusModType.PercentAdd, endurance));
     }
 
     public Status GetStatus(StatusList name)

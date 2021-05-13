@@ -4,6 +4,13 @@ using UnityEngine;
 public class RegenManager : MonoBehaviour
 {
     [SerializeField]
+    private GameObject bossHPBar;
+    [SerializeField]
+    private GameObject monsterHPBar;
+    [SerializeField]
+    private Transform monsterHPCanvas;
+
+    [SerializeField]
     private float regenTime = 10;
 
     private RegenArea[] regens;
@@ -26,7 +33,7 @@ public class RegenManager : MonoBehaviour
 
     private void Spawn(RegenArea regenArea)
     {
-        regenArea.GetComponent<RegenMonster>().SpawnMonster(regenArea);
+        regenArea.GetComponent<RegenMonster>().SpawnMonster(regenArea, monsterHPBar, monsterHPCanvas, bossHPBar);
     }
 
     private IEnumerator Regen()
@@ -35,7 +42,7 @@ public class RegenManager : MonoBehaviour
         {
             foreach (RegenArea regen in regens)
             {
-                if (regen.transform.childCount == 0)
+                if (regen.GetComponentsInChildren<Enemy>(false).Length == 0)
                 {
                     yield return new WaitForSeconds(regenTime);
 

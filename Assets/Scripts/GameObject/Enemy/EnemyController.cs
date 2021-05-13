@@ -36,6 +36,13 @@ public class EnemyController : MonoBehaviour
         RandSort();
     }
 
+    private void OnEnable()
+    {
+        isSwarmAttack = false;
+        isStop = false;
+        canChange = true;
+    }
+
     public void Update()
     {
         FSM();
@@ -63,7 +70,6 @@ public class EnemyController : MonoBehaviour
         }
         if (state == EnemyState.STATE_COMEBACK)
         {
-            Debug.Log($"{Distance(originPos)}, {transform.position}, {originPos}");
             if (Distance(originPos) <= COMEBACK_DISTANCE) SetState(EnemyState.STATE_PATROL);
             if (Distance(target.transform.position) <= FIND_DISTANCE || isSwarmAttack == true) SetState(EnemyState.STATE_CHASE);
             if (Distance(target.transform.position) <= ATTACK_DISTANCE && pathFinder.IsEmpty(target) == true) SetState(EnemyState.STATE_ATTACK);

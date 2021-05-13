@@ -20,6 +20,13 @@ public class EnemyAttack : MonoBehaviour
         enemy = GetComponent<Enemy>();
     }
 
+    private void OnEnable()
+    {
+        isCool = false;
+        isSkillCool.Clear();
+        skillCool.Clear();
+    }
+
     private bool IsAttack(Skill skill)
     {
         if (isCool) return false;

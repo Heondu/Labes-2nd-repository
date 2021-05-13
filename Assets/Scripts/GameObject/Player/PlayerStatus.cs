@@ -38,7 +38,6 @@ public class PlayerStatus : IStatus
 
     private const float multValue = 0.05f;
 
-
     public void CalculateDerivedStatus()
     {
         damage.RemoveAllModifiersFromSource(strength);

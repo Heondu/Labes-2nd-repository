@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 3493389305950255852}
   - component: {fileID: 3493389305950255853}
   - component: {fileID: 3493389305950255855}
+  - component: {fileID: -4805179096829164040}
   m_Layer: 8
   m_Name: mon004
   m_TagString: Enemy
@@ -102,6 +103,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.7}
   m_Size: {x: 0.75, y: 2.2}
   m_Direction: 0
+--- !u!114 &-4805179096829164040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3493389305950255851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5444c803ab6a82c46b6295da3bc08209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingMethod: 2
 --- !u!1 &3493389306047392146
 GameObject:
   m_ObjectHideFlags: 0

@@ -880,6 +880,7 @@ GameObject:
   - component: {fileID: 142772044295378538}
   - component: {fileID: 142772044295378537}
   - component: {fileID: 6409607556626531813}
+  - component: {fileID: -5759303228530261387}
   m_Layer: 0
   m_Name: npc003
   m_TagString: Untagged
@@ -937,3 +938,16 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.6}
   m_Size: {x: 1, y: 1.5}
   m_Direction: 0
+--- !u!114 &-5759303228530261387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142772044295378519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5444c803ab6a82c46b6295da3bc08209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingMethod: 1

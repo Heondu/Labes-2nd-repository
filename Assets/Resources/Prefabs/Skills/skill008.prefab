@@ -991,6 +991,7 @@ GameObject:
   - component: {fileID: 3179679357996401661}
   - component: {fileID: 1931976719891800408}
   - component: {fileID: -9180532675854933457}
+  - component: {fileID: 4230826693213319456}
   m_Layer: 0
   m_Name: skill008
   m_TagString: Untagged
@@ -1134,6 +1135,19 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4230826693213319456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5982428376946813640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5444c803ab6a82c46b6295da3bc08209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingMethod: 2
 --- !u!1 &7809579069360370130
 GameObject:
   m_ObjectHideFlags: 0

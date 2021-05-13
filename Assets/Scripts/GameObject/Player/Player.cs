@@ -25,18 +25,11 @@ public class Player : MonoBehaviour, ILivingEntity
 
     private void Update()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
-
         animationController.Movement(playerInput.GetAxis());
-        if (!IsMove()) movement.Execute(playerInput.GetAxis(), moveSpeed);
+        movement.Execute(playerInput.GetAxis(), moveSpeed);
 
         status.CalculateDerivedStatus();
         LevelUp();
-    }
-
-    private bool IsMove()
-    {
-        return false;
     }
 
     private void LevelUp()

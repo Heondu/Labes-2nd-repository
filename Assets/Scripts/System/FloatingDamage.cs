@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class FloatingDamage : MonoBehaviour
 {
@@ -8,7 +8,7 @@ public class FloatingDamage : MonoBehaviour
     private float fadeOutTime = 1f;
     private float destroyTime = 2f;
     private float distance = 50f;
-    private Text text;
+    private TextMeshProUGUI damageText;
     private Color alpha = Color.white;
     private Vector3 originPos;
     private Vector3 offset = Vector3.up;
@@ -16,7 +16,7 @@ public class FloatingDamage : MonoBehaviour
 
     private void Awake()
     {
-        text = GetComponent<Text>();
+        damageText = GetComponent<TextMeshProUGUI>();
         Destroy(gameObject, destroyTime);
     }
 
@@ -24,7 +24,7 @@ public class FloatingDamage : MonoBehaviour
     {
         this.executor = executor;
         this.originPos = originPos;
-        text.text = damage;
+        damageText.text = damage;
         offset.x += Random.Range(-0.5f, 0.5f);
         StartCoroutine("FadeOut");
     }
@@ -45,7 +45,7 @@ public class FloatingDamage : MonoBehaviour
         while (percent < 1)
         {
             alpha.a = Mathf.Lerp(alpha.a, 0, percent);
-            text.color = alpha;
+            damageText.color = alpha;
 
             percent += Time.deltaTime / fadeOutTime;
             yield return null;

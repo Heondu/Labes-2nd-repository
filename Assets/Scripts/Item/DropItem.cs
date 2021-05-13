@@ -7,6 +7,8 @@ public class DropItem : MonoBehaviour
 
     private bool isMove = false;
 
+    private float acceleration = 30;
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -35,9 +37,12 @@ public class DropItem : MonoBehaviour
 
     private IEnumerator Move(Transform target)
     {
+        float speed = 0;
         while (true)
         {
-            transform.Translate((target.position - transform.position).normalized * 10 * Time.deltaTime);
+            speed += Time.deltaTime * acceleration;
+
+            transform.Translate((target.position - transform.position).normalized * speed * Time.deltaTime);
 
             yield return null;
         }

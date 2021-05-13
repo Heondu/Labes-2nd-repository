@@ -372,6 +372,7 @@ GameObject:
   - component: {fileID: 1657403985533445169}
   - component: {fileID: 1380630889694410158}
   - component: {fileID: -5660425762960219748}
+  - component: {fileID: -7394911851701797769}
   m_Layer: 0
   m_Name: skill005
   m_TagString: Untagged
@@ -446,6 +447,19 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-7394911851701797769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3383040192977082430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5444c803ab6a82c46b6295da3bc08209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingMethod: 2
 --- !u!1 &3383040193490260883
 GameObject:
   m_ObjectHideFlags: 0

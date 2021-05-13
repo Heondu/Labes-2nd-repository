@@ -30,8 +30,6 @@ public class Enemy : MonoBehaviour, ILivingEntity
 
     private void Update()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
-
         switch (enemyController.GetState())
         {
             case EnemyState.STATE_PATROL:

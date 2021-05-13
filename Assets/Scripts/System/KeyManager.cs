@@ -15,7 +15,7 @@ public class KeyManager : MonoBehaviour
     private void Awake()
     {
         KeysetDefault();
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     public void KeysetDefault()

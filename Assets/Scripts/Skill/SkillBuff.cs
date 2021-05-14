@@ -17,8 +17,15 @@ public class SkillBuff : MonoBehaviour
 
     protected virtual void Awake()
     {
-        buffHolder = GameObject.Find("BuffHolder").transform;
-        if (buffHolder == null) new GameObject("BuffHolder");
+        if (GameObject.Find("BuffHolder") == null)
+        {
+            buffHolder = new GameObject("BuffHolder").transform;
+        }
+        else
+        {
+            buffHolder = GameObject.Find("BuffHolder").transform;
+        }
+
         buffUIHolder = GameObject.Find("Buff").transform;
         skillData = GetComponent<SkillData>();
         skillLifetime = GetComponent<SkillLifetime>();

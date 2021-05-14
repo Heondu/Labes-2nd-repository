@@ -4,7 +4,6 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour, ILivingEntity
 {
     private Movement movement;
-    private PlayerInput playerInput;
     private AnimationController animationController;
     public PlayerStatus status;
     public UnityEvent onLevelUp = new UnityEvent();
@@ -14,7 +13,6 @@ public class Player : MonoBehaviour, ILivingEntity
     private void Awake()
     {
         movement = GetComponent<Movement>();
-        playerInput = GetComponent<PlayerInput>();
         animationController = GetComponent<AnimationController>();
         LoadStatus();
         status.HP = status.maxHP;
@@ -25,8 +23,8 @@ public class Player : MonoBehaviour, ILivingEntity
 
     private void Update()
     {
-        animationController.Movement(playerInput.GetAxis());
-        movement.Execute(playerInput.GetAxis(), moveSpeed);
+        animationController.Movement(PlayerInput.instance.GetAxis());
+        movement.Execute(PlayerInput.instance.GetAxis(), moveSpeed);
 
         status.CalculateDerivedStatus();
         LevelUp();

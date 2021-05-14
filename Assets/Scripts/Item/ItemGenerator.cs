@@ -14,11 +14,14 @@ public class ItemGenerator : MonoBehaviour
     private GameObject itemPrefab;
     [SerializeField]
     private GameObject goldPrefab;
+    private Transform itemHolder;
 
     private void Awake()
     {
         if (instance != null) Destroy(gameObject);
         else instance = this;
+
+        itemHolder = new GameObject("ItemHolder").transform;
     }
 
     public void DropItem(Dictionary<string, object> monlvl, string classType, Vector3 pos)
@@ -73,7 +76,7 @@ public class ItemGenerator : MonoBehaviour
         RandomRarity(classType);
         ItemInit();
         Additional();
-        GameObject clone = Instantiate(itemPrefab, pos, Quaternion.identity);
+        GameObject clone = ObjectPooler.instance.ObjectPool(itemHolder, itemPrefab, pos);//Instantiate(itemPrefab, pos, Quaternion.identity);
         clone.GetComponent<ItemScript>().Init(item);
     }
 
@@ -83,7 +86,7 @@ public class ItemGenerator : MonoBehaviour
         if (itemList.Count == 0) return;
         item = itemList[Random.Range(0, itemList.Count)];
         GameObject clone = Resources.Load<GameObject>("Prefabs/Items/" + item.name);
-        clone = Instantiate(clone, pos, Quaternion.identity);
+        clone = ObjectPooler.instance.ObjectPool(itemHolder, clone, pos);//Instantiate(clone, pos, Quaternion.identity);
         clone.GetComponent<ItemScript>().Init(item);
     }
 
@@ -99,19 +102,19 @@ public class ItemGenerator : MonoBehaviour
 
         if (gold1000 != 0)
         {
-            GameObject clone = Instantiate(goldPrefab, pos, Quaternion.identity);
+            GameObject clone = ObjectPooler.instance.ObjectPool(itemHolder, goldPrefab, pos);//Instantiate(goldPrefab, pos, Quaternion.identity);
             clone.GetComponent<Gold>().SetGold(gold1000);
             clone.GetComponent<Gold>().Diffusion(10);
         }
         if (gold100 != 0)
         {
-            GameObject clone = Instantiate(goldPrefab, pos, Quaternion.identity);
+            GameObject clone = ObjectPooler.instance.ObjectPool(itemHolder, goldPrefab, pos);
             clone.GetComponent<Gold>().SetGold(gold100);
             clone.GetComponent<Gold>().Diffusion(5);
         }
         if (gold10 != 0)
         {
-            GameObject clone = Instantiate(goldPrefab, pos, Quaternion.identity);
+            GameObject clone = ObjectPooler.instance.ObjectPool(itemHolder, goldPrefab, pos);
             clone.GetComponent<Gold>().SetGold(gold10);
             clone.GetComponent<Gold>().Diffusion(1);
         }

@@ -19,7 +19,8 @@ public class Gold : DropItem, IItem
         if(GoldSound)
             SoundEffectManager.SoundEffect(GoldSound);
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void SetGold(int value)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
@@ -9,11 +10,25 @@ public class UIKeyChanger : MonoBehaviour, IPointerClickHandler
     private TextMeshProUGUI keyCodeText;
     [SerializeField]
     private KeyAction keyAction;
+    [SerializeField]
+    private GameObject confirmUI;
+    private Button accept;
+    private Button cancel;
     private bool isEditMode = false;
+
+    private KeyCode keyCode;
+    private KeyAction alreadyKey;
 
     private void Awake()
     {
         keyCodeText = GetComponent<TextMeshProUGUI>();
+
+        Button[] buttons = confirmUI.GetComponentsInChildren<Button>(true);
+        accept = buttons[0];
+        cancel = buttons[1];
+
+        accept.onClick.AddListener(Accept);
+        cancel.onClick.AddListener(Cancel);
 
         LoadKeyPreset();
     }
@@ -30,11 +45,11 @@ public class UIKeyChanger : MonoBehaviour, IPointerClickHandler
 
     private void UpdateKey()
     {
-        keyCodeText.text = KeySetting.keys[keyAction].ToString();
+        //keyCodeText.text = KeySetting.keys[keyAction].ToString();
 
         isEditMode = false;
 
-        UIManager.IsStopKeyInput = false;
+        PlayerInput.instance.SetInputMode(InputMode.UI);
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -45,7 +60,7 @@ public class UIKeyChanger : MonoBehaviour, IPointerClickHandler
 
         isEditMode = true;
 
-        UIManager.IsStopKeyInput = true;
+        PlayerInput.instance.SetInputMode(InputMode.keySetting);
     }
 
     private void Update()
@@ -54,18 +69,26 @@ public class UIKeyChanger : MonoBehaviour, IPointerClickHandler
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                UpdateKey();
+                if (confirmUI.activeSelf == false)
+                    UpdateKey();
+                else
+                    Cancel();
             }
+        }
+        else
+        {
+            keyCodeText.text = KeySetting.keys[keyAction].ToString();
         }
     }
 
     private void OnGUI()
     {
-        if (isEditMode)
+        if (isEditMode && confirmUI.activeSelf == false)
         {
             Event e = Event.current;
 
-            KeyCode keyCode = KeyCode.None;
+            //KeyCode keyCode = KeyCode.None;
+            keyCode = KeyCode.None;
             if (e.isKey)
             {
                 keyCode = e.keyCode;
@@ -87,6 +110,7 @@ public class UIKeyChanger : MonoBehaviour, IPointerClickHandler
                     if (key != keyAction && KeySetting.keys[key] == keyCode)
                     {
                         flag = true;
+                        alreadyKey = key;
                     }
                 }
                 if (flag == false)
@@ -99,10 +123,32 @@ public class UIKeyChanger : MonoBehaviour, IPointerClickHandler
                 }
                 else
                 {
-                    StartCoroutine(DisplayMessage("사용 중인 키입니다.", 1f));
+                    confirmUI.SetActive(true);
+                    //StartCoroutine(DisplayMessage("사용 중인 키입니다.", 1f));
                 }
             }
         }
+    }
+
+    public void Accept()
+    {
+        if (isEditMode)
+        {
+            KeySetting.keys[keyAction] = keyCode;
+            KeySetting.keys[alreadyKey] = KeyCode.None;
+            confirmUI.SetActive(false);
+        }
+        SaveKeyPreset();
+        UpdateKey();
+    }
+
+    public void Cancel()
+    {
+        if (isEditMode)
+        {
+            confirmUI.SetActive(false);
+        }
+        UpdateKey();
     }
 
     private IEnumerator DisplayMessage(string msg, float duration)
@@ -135,6 +181,8 @@ public class UIKeyChanger : MonoBehaviour, IPointerClickHandler
     private void LoadKeyPreset()
     {
         KeyData keyData = JsonIO.LoadFromJson<KeyData>(SaveDataManager.saveFile[SaveFile.KeyPreset]);
+
+        if (keyData == null) return;
 
         for (int i = 0; i < keyData.keys.Count; i++)
         {

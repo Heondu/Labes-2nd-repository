@@ -39,7 +39,8 @@ public class ItemScript : DropItem, IItem
     public void Use()
     {
         InventoryManager.instance.AddItem(item);
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     private void SetOutlineColor()

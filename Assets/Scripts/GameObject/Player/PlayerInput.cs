@@ -1,22 +1,22 @@
 ﻿using UnityEngine;
 
+public enum InputMode { normal, UI, keySetting, interact, pause}
+
 public class PlayerInput : MonoBehaviour
 {
-    public bool isUIActive = false;
+    public static PlayerInput instance;
 
-    private void Start()
-    {
-        FindObjectOfType<UIManager>().onUIActive.AddListener(IsUIActive);
-    }
+    private InputMode inputMode = InputMode.normal;
 
-    private void IsUIActive(bool value)
+    private void Awake()
     {
-        isUIActive = value;
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
     }
 
     public int GetSkillIndex()
     {
-        if (isUIActive) return -1;
+        if (inputMode != InputMode.normal) return -1;
         if (Input.GetKey(KeySetting.keys[KeyAction.skill1])) return 0;
         if (Input.GetKey(KeySetting.keys[KeyAction.skill2])) return 1;
         if (Input.GetKey(KeySetting.keys[KeyAction.skill3])) return 2;
@@ -26,7 +26,7 @@ public class PlayerInput : MonoBehaviour
 
     public int GetItemIndex()
     {
-        if (isUIActive) return -1;
+        if (inputMode != InputMode.normal) return -1;
         if (Input.GetKey(KeySetting.keys[KeyAction.item1])) return 4;
         if (Input.GetKey(KeySetting.keys[KeyAction.item2])) return 5;
         if (Input.GetKey(KeySetting.keys[KeyAction.item3])) return 6;
@@ -36,6 +36,8 @@ public class PlayerInput : MonoBehaviour
 
     public Vector3 GetAxis()
     {
+        if (inputMode != InputMode.normal) return Vector3.zero;
+
         float horizontal = 0;
         float vertical = 0;
 
@@ -51,5 +53,15 @@ public class PlayerInput : MonoBehaviour
         }
 
         return new Vector3(horizontal, vertical, 0).normalized;
+    }
+
+    public void SetInputMode(InputMode mode)
+    {
+        inputMode = mode;
+    }
+
+    public InputMode GetInputMode()
+    {
+        return inputMode;
     }
 }

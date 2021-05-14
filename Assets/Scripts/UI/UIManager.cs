@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,9 +9,9 @@ public class UIManager : MonoBehaviour
     private GameObject[] inventorys;
     [SerializeField]
     private Toggle[] menuToggle;
-    public UnityEvent<bool> onUIActive = new UnityEvent<bool>();
+    [SerializeField]
+    private GameObject pause;
     private bool isUIActive = false;
-    public static bool IsStopKeyInput = false;
 
     private void Awake()
     {
@@ -34,24 +33,45 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (IsStopKeyInput) return;
-
-        if (Input.GetKeyDown(KeySetting.keys[KeyAction.status])) menuToggle[0].isOn = !menuToggle[0].isOn;
-        if (Input.GetKeyDown(KeySetting.keys[KeyAction.inventory])) menuToggle[1].isOn = !menuToggle[1].isOn;
-        if (Input.GetKeyDown(KeySetting.keys[KeyAction.awaken])) menuToggle[2].isOn = !menuToggle[2].isOn;
-        if (Input.GetKeyDown(KeySetting.keys[KeyAction.quest])) menuToggle[3].isOn = !menuToggle[3].isOn;
-        if (Input.GetKeyDown(KeySetting.keys[KeyAction.setting]))
+        if (PlayerInput.instance.GetInputMode() == InputMode.normal || PlayerInput.instance.GetInputMode() == InputMode.pause)
         {
-            int currentOnToggleIndex = -1;
-            for (int i = 0; i < menuToggle.Length; i++)
+            if (Input.GetKeyDown(KeySetting.keys[KeyAction.pause]))
             {
-                if (menuToggle[i].isOn) currentOnToggleIndex = i;
+                if (pause.activeSelf == false)
+                {
+                    PlayerInput.instance.SetInputMode(InputMode.pause);
+                    pause.SetActive(true);
+                    Time.timeScale = 0;
+                }
+                else
+                {
+                    PlayerInput.instance.SetInputMode(InputMode.normal);
+                    pause.SetActive(false);
+                    Time.timeScale = 1;
+                }
+                return;
             }
-            if (currentOnToggleIndex == -1) menuToggle[4].isOn = !menuToggle[4].isOn;
-            else menuToggle[currentOnToggleIndex].isOn = false;
         }
+        
+        if (PlayerInput.instance.GetInputMode() == InputMode.normal || PlayerInput.instance.GetInputMode() == InputMode.UI)
+        {
+            if (Input.GetKeyDown(KeySetting.keys[KeyAction.status])) menuToggle[0].isOn = !menuToggle[0].isOn;
+            if (Input.GetKeyDown(KeySetting.keys[KeyAction.inventory])) menuToggle[1].isOn = !menuToggle[1].isOn;
+            if (Input.GetKeyDown(KeySetting.keys[KeyAction.awaken])) menuToggle[2].isOn = !menuToggle[2].isOn;
+            if (Input.GetKeyDown(KeySetting.keys[KeyAction.quest])) menuToggle[3].isOn = !menuToggle[3].isOn;
+            if (Input.GetKeyDown(KeySetting.keys[KeyAction.setting]))
+            {
+                int currentOnToggleIndex = -1;
+                for (int i = 0; i < menuToggle.Length; i++)
+                {
+                    if (menuToggle[i].isOn) currentOnToggleIndex = i;
+                }
+                if (currentOnToggleIndex == -1) menuToggle[4].isOn = !menuToggle[4].isOn;
+                else menuToggle[currentOnToggleIndex].isOn = false;
+            }
 
-        IsUIOpen();
+            IsUIOpen();
+        }
     }
 
     private void IsUIOpen()
@@ -68,12 +88,12 @@ public class UIManager : MonoBehaviour
         if (isUIActive == false && flag == true)
         {
             isUIActive = true;
-            onUIActive.Invoke(true);
+            PlayerInput.instance.SetInputMode(InputMode.UI);
         }
         else if (isUIActive == true && flag == false)
         {
             isUIActive = false;
-            onUIActive.Invoke(false);
+            PlayerInput.instance.SetInputMode(InputMode.normal);
         }
     }
     
@@ -81,5 +101,12 @@ public class UIManager : MonoBehaviour
     {
         if (isPause) Time.timeScale = 0;
         else Time.timeScale = 1;
+    }
+
+    public void OpenSettingUI()
+    {
+        PlayerInput.instance.SetInputMode(InputMode.UI);
+        pause.SetActive(false);
+        menuToggle[4].isOn = true;
     }
 }

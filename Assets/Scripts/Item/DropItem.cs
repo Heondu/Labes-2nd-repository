@@ -20,6 +20,7 @@ public class DropItem : MonoBehaviour
 
         rigidbody.mass = weight;
 
+        rigidbody.velocity = Vector3.zero;
         rigidbody.AddForce(dir * 10, ForceMode2D.Impulse);
     }
 

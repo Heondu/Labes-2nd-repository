@@ -91,7 +91,7 @@ public class InventoryManager : MonoBehaviour
             equipSlotR.LoadInventory();
             consumeSlot.LoadInventory();
         }
-        if (skillSave)
+        if (skillLoad)
         {
             inventorySkill.LoadInventory();
             skillSlot.LoadInventory();

@@ -11,7 +11,6 @@ public class SkillProjectile : MonoBehaviour
     protected ProjectileMove projectileMove;
     protected SkillEffectTrigger skillEffectTrigger;
 
-
     protected virtual void Awake()
     {
         skillData = GetComponent<SkillData>();

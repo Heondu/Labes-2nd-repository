@@ -4,11 +4,14 @@ using UnityEngine;
 public class SkillLoader : MonoBehaviour
 {
     public static SkillLoader instance;
+    private Transform skillHolder;
 
     private void Awake()
     {
         if (instance != null) Destroy(gameObject);
         else instance = this;
+
+        skillHolder = new GameObject("SkillHolder").transform;
     }
 
     public void LoadSkill(GameObject executor, IStatus executorStatus, string targetTag, Skill skill, Vector3 pos, Vector3 dir)
@@ -37,6 +40,8 @@ public class SkillLoader : MonoBehaviour
         
         for (int i = 0; i < skill.repeat; i++)
         {
+            //GameObject clone = ObjectPooler.instance.ObjectPool(skillHolder, skillObjcet);
+            //clone.transform.SetPositionAndRotation(pos, Quaternion.AngleAxis(Rotation.GetAngle(dir), Vector3.forward));
             GameObject clone = Instantiate(skillObjcet, pos, Quaternion.AngleAxis(Rotation.GetAngle(dir), Vector3.forward));
             clone.GetComponent<SkillData>().InitChild(executor, executorStatus, targetTag, skill);
 

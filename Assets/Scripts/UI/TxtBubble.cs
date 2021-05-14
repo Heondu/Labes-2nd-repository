@@ -28,13 +28,32 @@ public class TxtBubble : MonoBehaviour
         PlaySoundEffect();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        if (Input.anyKey)
+        StartCoroutine("KeyInputCheck");
+    }
+
+    private IEnumerator KeyInputCheck()
+    {
+        yield return new WaitForSeconds(1f);
+
+        while (true)
         {
-            anim.SetTrigger("DieTrigger");
+            if (Input.anyKey)
+            {
+                anim.SetTrigger("DieTrigger");
+            }
+            yield return null;
         }
     }
+
+    //private void Update()
+    //{
+    //    if (Input.anyKey)
+    //    {
+    //        anim.SetTrigger("DieTrigger");
+    //    }
+    //}
 
     public void WriteText()
     {
@@ -52,7 +71,10 @@ public class TxtBubble : MonoBehaviour
     public void Die()
     {
         PlaySoundEffect();
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        StopCoroutine("KeyInputCheck");
+        PlayerInput.instance.SetInputMode(InputMode.normal);
+        gameObject.SetActive(false);
     }
 
     public void PlaySoundEffect()

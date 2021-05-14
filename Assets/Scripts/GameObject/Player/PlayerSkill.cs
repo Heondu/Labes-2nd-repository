@@ -7,7 +7,6 @@ public class PlayerSkill : MonoBehaviour
     [SerializeField]
     private Shortcut[] shortcuts;
     private Player player;
-    private PlayerInput playerInput;
     private AnimationController animationController;
     public Dictionary<Skill, bool> isSkillCool = new Dictionary<Skill, bool>();
     public Dictionary<Skill, Timer> skillCool = new Dictionary<Skill, Timer>();
@@ -16,7 +15,6 @@ public class PlayerSkill : MonoBehaviour
     private void Awake()
     {
         player = GetComponent<Player>();
-        playerInput = GetComponent<PlayerInput>();
         animationController = GetComponent<AnimationController>();
 
         for (int i = 0; i < skillNames.Length; i++)
@@ -27,8 +25,8 @@ public class PlayerSkill : MonoBehaviour
 
     private void Update()
     {
-        if (IsAttack(playerInput.GetSkillIndex())) Execute(shortcuts[playerInput.GetSkillIndex()].GetSkill());
-        if (hasItemSkill(playerInput.GetItemIndex())) Execute(shortcuts[playerInput.GetItemIndex()].GetSkill());
+        if (IsAttack(PlayerInput.instance.GetSkillIndex())) Execute(shortcuts[PlayerInput.instance.GetSkillIndex()].GetSkill());
+        if (hasItemSkill(PlayerInput.instance.GetItemIndex())) Execute(shortcuts[PlayerInput.instance.GetItemIndex()].GetSkill());
 
         UpdateShortcutSkills();
     }

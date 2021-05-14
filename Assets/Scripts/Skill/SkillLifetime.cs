@@ -9,6 +9,11 @@ public class SkillLifetime : MonoBehaviour
     public float GetLifetime => lifetime;
     public UnityEvent onDestroy = new UnityEvent();
 
+    private void OnEnable()
+    {
+        currentTime = 0;
+    }
+
     private void Start()
     {
         lifetime = GetComponent<SkillData>().lifetime;

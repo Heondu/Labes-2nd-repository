@@ -18,62 +18,62 @@
         },
         {
             "keyAction": 4,
-            "keyCode": 27
-        },
-        {
-            "keyAction": 5,
             "keyCode": 323
         },
         {
-            "keyAction": 6,
+            "keyAction": 5,
             "keyCode": 324
         },
         {
-            "keyAction": 7,
+            "keyAction": 6,
             "keyCode": 113
         },
         {
-            "keyAction": 8,
+            "keyAction": 7,
             "keyCode": 101
         },
         {
-            "keyAction": 9,
+            "keyAction": 8,
             "keyCode": 116
         },
         {
-            "keyAction": 10,
+            "keyAction": 9,
             "keyCode": 49
         },
         {
-            "keyAction": 11,
+            "keyAction": 10,
             "keyCode": 50
         },
         {
-            "keyAction": 12,
+            "keyAction": 11,
             "keyCode": 51
         },
         {
-            "keyAction": 13,
+            "keyAction": 12,
             "keyCode": 52
         },
         {
-            "keyAction": 18,
+            "keyAction": 15,
             "keyCode": 117
         },
         {
-            "keyAction": 19,
+            "keyAction": 16,
             "keyCode": 105
         },
         {
-            "keyAction": 20,
+            "keyAction": 17,
             "keyCode": 111
         },
         {
-            "keyAction": 21,
+            "keyAction": 18,
             "keyCode": 112
         },
         {
-            "keyAction": 22,
+            "keyAction": 19,
+            "keyCode": 27
+        },
+        {
+            "keyAction": 20,
             "keyCode": 27
         }
     ]

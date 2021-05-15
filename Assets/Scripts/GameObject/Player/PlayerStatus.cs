@@ -104,6 +104,10 @@ public class PlayerStatus : IStatus
 
     public Status GetStatus(string name)
     {
+        if (name.Contains("%"))
+        {
+            name = name.Substring(0, name.Length - 1);
+        }
         return GetStatus((StatusList)Enum.Parse(typeof(StatusList), name));
     }
 

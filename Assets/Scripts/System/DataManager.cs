@@ -18,6 +18,9 @@ public class DataManager : MonoBehaviour
     public static List<Dictionary<string, object>> skills = new List<Dictionary<string, object>>();
     public static List<Dictionary<string, object>> skillexp = new List<Dictionary<string, object>>();
     public static List<Dictionary<string, object>> item = new List<Dictionary<string, object>>();
+    public static List<Dictionary<string, object>> confession = new List<Dictionary<string, object>>();
+    public static List<Dictionary<string, object>> karma = new List<Dictionary<string, object>>();
+    public static List<Dictionary<string, object>> transcendence = new List<Dictionary<string, object>>();
 
     public static Dictionary<string, Item> itemEquipmentDB = new Dictionary<string, Item>();
     public static Dictionary<string, Item> itemConsumeDB = new Dictionary<string, Item>();
@@ -40,6 +43,9 @@ public class DataManager : MonoBehaviour
         skills = CSVReader.Read("skills");
         skillexp = CSVReader.Read("skillexp");
         item = CSVReader.Read("item");
+        confession = CSVReader.Read("confession");
+        karma = CSVReader.Read("karma");
+        transcendence = CSVReader.Read("transcendence");
 
         ListToDict(weapon);
         ListToDict(armor);

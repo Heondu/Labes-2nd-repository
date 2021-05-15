@@ -98,7 +98,7 @@ public class Status
 
                 if (i + 1 >= statusModifiers.Count || statusModifiers[i + 1].Type != StatusModType.PercentAdd)
                 {
-                    finalValue *= 1 + sumPercentAdd;
+                    finalValue *= 1 + sumPercentAdd / 100;
                     sumPercentAdd = 0;
                 }
             }

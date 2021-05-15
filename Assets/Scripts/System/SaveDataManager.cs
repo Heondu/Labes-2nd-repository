@@ -14,7 +14,8 @@ public enum SaveFile
     InventoryConsume,
     InventoryConsumeSlot,
     InventoryRune,
-    PlayerResources
+    PlayerResources,
+    AwakenData
 }
 
 public class SaveDataManager : MonoBehaviour
@@ -37,5 +38,6 @@ public class SaveDataManager : MonoBehaviour
         saveFile.Add(SaveFile.InventoryConsumeSlot, path + "Inventory ConsumeSlot");
         saveFile.Add(SaveFile.InventoryRune, path + "Inventory Rune");
         saveFile.Add(SaveFile.PlayerResources, path + "Player Resources");
+        saveFile.Add(SaveFile.AwakenData, path + "Awaken Data");
     }
 }

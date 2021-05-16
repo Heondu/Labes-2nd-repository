@@ -63,7 +63,7 @@ public class PlayerSkill : MonoBehaviour
     public void Execute(Skill skill)
     {
         Vector3 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        SkillLoader.instance.LoadSkill(gameObject, player.status, "Enemy", skill, transform.position, dir);
+        SkillLoader.instance.LoadSkill(gameObject, player.status, skill, transform.position, dir);
         isSkillCool[skill] = true;
         skillCool[skill] = new Timer();
         StartCoroutine("Cooltime", skill);

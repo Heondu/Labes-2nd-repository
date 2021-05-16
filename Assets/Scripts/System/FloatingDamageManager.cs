@@ -8,8 +8,6 @@ public class FloatingDamageManager : MonoBehaviour
     public static FloatingDamageManager instance;
     [SerializeField]
     private GameObject[] damagePrefab;
-    [SerializeField]
-    private Transform canvas;
     private Dictionary<GameObject, List<FloatingDamage>> damageList = new Dictionary<GameObject, List<FloatingDamage>>();
 
     private void Awake()
@@ -20,7 +18,7 @@ public class FloatingDamageManager : MonoBehaviour
 
     public void FloatingDamage(GameObject executor, string damage, Vector3 position, DamageType damageType)
     {
-        GameObject clone = Instantiate(damagePrefab[(int)damageType], position, Quaternion.identity, canvas);
+        GameObject clone = Instantiate(damagePrefab[(int)damageType], position, Quaternion.identity, transform);
         clone.GetComponent<FloatingDamage>().Init(executor, damage, position);
 
         if (damageList.ContainsKey(executor) == false)

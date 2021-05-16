@@ -45,18 +45,20 @@ public class SkillProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(skillData.targetTag))
+        ILivingEntity entity = collision.GetComponent<ILivingEntity>();
+
+        if (entity == null) return;
+        if (collision.gameObject.CompareTag(skillData.executor.tag) == true) return;
+
+        skillEffectTrigger.SetTarget(collision.transform);
+        skillEffectTrigger.onHit.Invoke();
+
+        Execute();
+
+        penetrationCount++;
+        if (penetrationCount >= skillData.penetration)
         {
-            skillEffectTrigger.SetTarget(collision.transform);
-            skillEffectTrigger.onHit.Invoke();
-
-            Execute();
-
-            penetrationCount++;
-            if (penetrationCount >= skillData.penetration)
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
     }
 }

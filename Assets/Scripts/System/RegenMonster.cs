@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class RegenMonster : MonoBehaviour
 {
-    public void SpawnMonster(RegenArea regenArea, GameObject monsterHPBar, Transform  monsterHPCanvas, GameObject bossHPBar)
+    public void SpawnMonster(RegenArea regenArea, Transform target, bool isSwarmAttack)
     {
         List<GameObject> enemys = new List<GameObject>();
 
@@ -49,15 +49,14 @@ public class RegenMonster : MonoBehaviour
 
                 if (enemy.monster["class"].ToString() == "pawn")
                 {
-                    clone = ObjectPooler.instance.ObjectPool(monsterHPCanvas.transform, monsterHPBar);
-                    clone.GetComponent<UIMonsterHPViewer>().Init(enemy.transform, enemy.status);
+                    UIMonsterHP.instance.InitMonsterHPBar(enemy);
                 }
                 else
                 {
-                    bossHPBar.GetComponent<UIBossHPViewer>().Init(enemy.transform, enemy.status, DataManager.Localization(enemy.GetID()));
+                    UIMonsterHP.instance.InitBossHPBar(enemy);
                 }
             }
         }
-        GetComponent<EnemySwarmController>().Init();
+        GetComponent<EnemySwarmController>().Init(target, isSwarmAttack);
     }
 }

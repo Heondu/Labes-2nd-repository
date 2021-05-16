@@ -1,45 +1,46 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemySwarmController : MonoBehaviour
 {
-    private EnemyController[] enemys;
-    private bool isSwarmAttack = false;
+    public UnityEvent onSwarmAttackActive = new UnityEvent();
+    public UnityEvent onSwarmAttackInactive = new UnityEvent();
 
-    public void Init()
+    private EnemyController[] enemys;
+    private bool isKeepSwarmAttack = false;
+
+    private void Awake()
     {
-        enemys = GetComponentsInChildren<EnemyController>();
+        onSwarmAttackActive.AddListener(OnSwarmAttack);
     }
 
-    private void Update()
+    public void Init(Transform target, bool isSwarmAttack)
     {
-        if (isSwarmAttack) return;
-        if (enemys == null) return;
+        enemys = GetComponentsInChildren<EnemyController>();
         for (int i = 0; i < enemys.Length; i++)
         {
-            if (enemys[i].isSwarmAttack)
-            {
-                isSwarmAttack = true;
-                StopCoroutine("SetSwarmAttack");
-                StartCoroutine("SetSwarmAttack");
-            }
+            enemys[i].SetTarget(target);
+        }
+
+        isKeepSwarmAttack = isSwarmAttack;
+        if (isSwarmAttack == true)
+            onSwarmAttackActive.Invoke();
+    }
+
+    private void OnSwarmAttack()
+    {
+        if (isKeepSwarmAttack == false)
+        {
+            StopCoroutine("SetSwarmAttack");
+            StartCoroutine("SetSwarmAttack");
         }
     }
 
     private IEnumerator SetSwarmAttack()
     {
-        for (int i = 0; i < enemys.Length; i++)
-        {
-            enemys[i].isSwarmAttack = true;
-        }
-
         yield return new WaitForSeconds(5f);
 
-        for (int i = 0; i < enemys.Length; i++)
-        {
-            enemys[i].isSwarmAttack = false;
-        }
-
-        isSwarmAttack = false;
+        onSwarmAttackInactive.Invoke();
     }
 }

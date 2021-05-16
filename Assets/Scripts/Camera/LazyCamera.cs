@@ -15,21 +15,30 @@ public class LazyCamera : MonoBehaviour
     [SerializeField]
     private float range = 4;
 
+    public Vector2 mapSize { private get; set; } = Vector2.zero;
+    private float height;
+    private float width;
+    [SerializeField]
+    private bool isScreenLock = true;
+
     private void Awake()
     {
         if (instance != null) Destroy(this);
         else instance = this;
 
-        if (!target)
-        {
-            target = GameObject.Find("Player").transform;
-        }
         cam = GetComponent<Camera>();
         originSize = Camera.main.orthographicSize;
+        height = 2 * originSize;
+        width = height * cam.aspect;
     }
 
     void Update()
     {
+        if (!target)
+        {
+            target = GameObject.Find("Player").transform;
+        }
+
         UpdateCamera();
     }
 
@@ -46,9 +55,26 @@ public class LazyCamera : MonoBehaviour
         }
     }
 
+    private Vector3 GetClampedSizeOnScreen()
+    {
+        Vector3 middlePos = MiddleOfMouseAndPlayer;
+
+        if (isScreenLock)
+        {
+            float limitX = (mapSize.x - width) / 2;
+            float limitY = (mapSize.y - height) / 2;
+
+            middlePos.x = Mathf.Clamp(middlePos.x, -limitX, limitX);
+            middlePos.y = Mathf.Clamp(middlePos.y, -limitY, limitY);
+        }
+
+        return middlePos;
+    }
+
     private void UpdateCamera()
     {
-        transform.position = Vector3.SmoothDamp(transform.position, MiddleOfMouseAndPlayer, ref velocity, smoothTime);
+        //transform.position = Vector3.SmoothDamp(transform.position, MiddleOfMouseAndPlayer, ref velocity, smoothTime);
+        transform.position = Vector3.SmoothDamp(transform.position, GetClampedSizeOnScreen(), ref velocity, smoothTime);
     }
 
     public IEnumerator Shake(float amount, float duration)

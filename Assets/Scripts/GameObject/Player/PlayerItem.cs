@@ -26,11 +26,6 @@ public class PlayerItem : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(transform.position, player.GetStatus("itemRange").Value);
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         IItem item = collision.GetComponent<IItem>();

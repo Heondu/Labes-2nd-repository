@@ -293,6 +293,13 @@ GameObject:
   - component: {fileID: 5740673403283795361}
   - component: {fileID: 2388476594540319011}
   - component: {fileID: 7236617595191523942}
+  - component: {fileID: 2325717083421305858}
+  - component: {fileID: -7597428353187928558}
+  - component: {fileID: -8522209433918405820}
+  - component: {fileID: 4701885879891956520}
+  - component: {fileID: 2903143634340405965}
+  - component: {fileID: 3360713878065385828}
+  - component: {fileID: 6581978592864869509}
   m_Layer: 8
   m_Name: mon023
   m_TagString: Enemy
@@ -364,6 +371,147 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortingMethod: 2
+  offset: 0
+--- !u!114 &2325717083421305858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3593294739165191195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81cac72a2aa7b8c43a4729f0246fb770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 
+  status:
+    level: 0
+    HP: 0
+    maxHP: 0
+    strength:
+      BaseValue: 0
+    agility:
+      BaseValue: 0
+    intelligence:
+      BaseValue: 0
+    endurance:
+      BaseValue: 0
+    damage:
+      BaseValue: 0
+    defence:
+      BaseValue: 0
+    allResist:
+      BaseValue: 0
+    fireResist:
+      BaseValue: 0
+    coldResist:
+      BaseValue: 0
+    darkResist:
+      BaseValue: 0
+    lightResist:
+      BaseValue: 0
+    fireDamage:
+      BaseValue: 0
+    coldDamage:
+      BaseValue: 0
+    darkDamage:
+      BaseValue: 0
+    lightDamage:
+      BaseValue: 0
+    fixDamage:
+      BaseValue: 0
+    critChance:
+      BaseValue: 0
+    critResist:
+      BaseValue: 0
+    critDamage:
+      BaseValue: 0
+    avoidance:
+      BaseValue: 0
+    accuracy:
+      BaseValue: 0
+    reduceMana:
+      BaseValue: 0
+    reduceCool:
+      BaseValue: 0
+  moveSpeed: 3
+--- !u!114 &-7597428353187928558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3593294739165191195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 418f8af70be4f5c4995b0267994e38a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSwarmAttack: 0
+--- !u!114 &-8522209433918405820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3593294739165191195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed7bd3b79082a34d8b80efcefdcd543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  probList: 
+--- !u!114 &4701885879891956520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3593294739165191195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8e602d3d4cd454ba1521b848519184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+--- !u!114 &2903143634340405965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3593294739165191195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6621525c9fc26b45a6b825278d58420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3360713878065385828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3593294739165191195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 036780ab6319f904389f5b73cd764a84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6581978592864869509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3593294739165191195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae76ae9cc425bb541a33e72a7ade31ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteMat: {fileID: 2100000, guid: 870e4222ddfe8f64fa4b25823d4219d7, type: 2}
 --- !u!1 &4116107632861145150
 GameObject:
   m_ObjectHideFlags: 0

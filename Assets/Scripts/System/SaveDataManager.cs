@@ -20,10 +20,19 @@ public enum SaveFile
 
 public class SaveDataManager : MonoBehaviour
 {
-    public static Dictionary<SaveFile, string> saveFile = new Dictionary<SaveFile, string>();
+    private static SaveDataManager instance;
 
-    public void Awake()
+    public static Dictionary<SaveFile, string> saveFile = new Dictionary<SaveFile, string>(); 
+
+    private void Awake()
     {
+        if (instance == null) instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         string path = "SaveData/";
 
         saveFile.Add(SaveFile.PlayerStatus, path + "Player Status");

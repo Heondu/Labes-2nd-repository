@@ -20,8 +20,12 @@ public class ItemGenerator : MonoBehaviour
     {
         if (instance != null) Destroy(gameObject);
         else instance = this;
+    }
 
-        itemHolder = new GameObject("ItemHolder").transform;
+    private void Update()
+    {
+        if (itemHolder == null)
+            itemHolder = new GameObject("ItemHolder").transform;
     }
 
     public void DropItem(Dictionary<string, object> monlvl, string classType, Vector3 pos)

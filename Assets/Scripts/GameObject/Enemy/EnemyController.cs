@@ -5,7 +5,7 @@ public enum EnemyState { STATE_NULL = 0, STATE_PATROL, STATE_CHASE, STATE_ATTACK
 
 public class EnemyController : MonoBehaviour
 {
-    private GameObject target;
+    private Transform target;
     private EnemyState state = EnemyState.STATE_PATROL;
     private const float FIND_DISTANCE = 8f;
     private const float CAHSE_DISTANCE = 13f;
@@ -16,7 +16,6 @@ public class EnemyController : MonoBehaviour
                                     Vector3.left, Vector3.zero, Vector3.up, Vector3.zero };
     private Timer timer = new Timer();
     private int currentDirNum = 0;
-    public bool isSwarmAttack = false;
     private bool isStop = false;
     private bool canChange = true;
     private float changeCool = 1f;
@@ -25,11 +24,15 @@ public class EnemyController : MonoBehaviour
     private Vector3 moveDir = Vector3.zero;
     private Vector3 originPos;
 
+    public EnemySwarmController enemySwarmController;
+    public bool isSwarmAttack = false;
+
     private void Awake()
     {
-        target = FindObjectOfType<Player>().gameObject;
-
         pathFinder = GetComponent<PathFinder>();
+        enemySwarmController = GetComponentInParent<EnemySwarmController>();
+        enemySwarmController.onSwarmAttackActive.AddListener(OnSwarmAttackActive);
+        enemySwarmController.onSwarmAttackInactive.AddListener(OnSwarmAttackInactive);
 
         originPos = transform.position;
 
@@ -38,6 +41,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnEnable()
     {
+        state = EnemyState.STATE_PATROL;
         isSwarmAttack = false;
         isStop = false;
         canChange = true;
@@ -51,28 +55,29 @@ public class EnemyController : MonoBehaviour
     private void FSM()
     {
         if (isStop) return;
+        if (target == null) return;
 
         if (state == EnemyState.STATE_PATROL)
         {
             if (Distance(originPos) > COMEBACK_DISTANCE) SetState(EnemyState.STATE_COMEBACK);
-            if (Distance(target.transform.position) <= FIND_DISTANCE || isSwarmAttack == true) SetState(EnemyState.STATE_CHASE);
-            if (Distance(target.transform.position) <= ATTACK_DISTANCE && pathFinder.IsEmpty(target) == true) SetState(EnemyState.STATE_ATTACK);
+            if (Distance(target.position) <= FIND_DISTANCE || isSwarmAttack == true) SetState(EnemyState.STATE_CHASE);
+            if (Distance(target.position) <= ATTACK_DISTANCE && pathFinder.IsEmpty(target) == true) SetState(EnemyState.STATE_ATTACK);
         }
         if (state == EnemyState.STATE_CHASE)
         {
-            if (Distance(target.transform.position) > CAHSE_DISTANCE && isSwarmAttack == false) SetState(EnemyState.STATE_PATROL);
-            if (Distance(target.transform.position) <= ATTACK_DISTANCE && pathFinder.IsEmpty(target) == true) SetState(EnemyState.STATE_ATTACK);
+            if (Distance(target.position) > CAHSE_DISTANCE && isSwarmAttack == false) SetState(EnemyState.STATE_PATROL);
+            if (Distance(target.position) <= ATTACK_DISTANCE && pathFinder.IsEmpty(target) == true) SetState(EnemyState.STATE_ATTACK);
         }
         if (state == EnemyState.STATE_ATTACK)
         {
-            if (Distance(target.transform.position) > CAHSE_DISTANCE && isSwarmAttack == false) SetState(EnemyState.STATE_PATROL);
-            if (Distance(target.transform.position) > ATTACK_DISTANCE || pathFinder.IsEmpty(target) == false) SetState(EnemyState.STATE_CHASE);
+            if (Distance(target.position) > CAHSE_DISTANCE && isSwarmAttack == false) SetState(EnemyState.STATE_PATROL);
+            if (Distance(target.position) > ATTACK_DISTANCE || pathFinder.IsEmpty(target) == false) SetState(EnemyState.STATE_CHASE);
         }
         if (state == EnemyState.STATE_COMEBACK)
         {
             if (Distance(originPos) <= COMEBACK_DISTANCE) SetState(EnemyState.STATE_PATROL);
-            if (Distance(target.transform.position) <= FIND_DISTANCE || isSwarmAttack == true) SetState(EnemyState.STATE_CHASE);
-            if (Distance(target.transform.position) <= ATTACK_DISTANCE && pathFinder.IsEmpty(target) == true) SetState(EnemyState.STATE_ATTACK);
+            if (Distance(target.position) <= FIND_DISTANCE || isSwarmAttack == true) SetState(EnemyState.STATE_CHASE);
+            if (Distance(target.position) <= ATTACK_DISTANCE && pathFinder.IsEmpty(target) == true) SetState(EnemyState.STATE_ATTACK);
         }
     }
 
@@ -147,7 +152,7 @@ public class EnemyController : MonoBehaviour
 
             if (state == EnemyState.STATE_CHASE)
             {
-                moveDir = (target.transform.position - transform.position).normalized;
+                moveDir = (target.position - transform.position).normalized;
             }
         }
     }
@@ -172,6 +177,27 @@ public class EnemyController : MonoBehaviour
 
     public Vector2 GetAttackDir()
     {
-        return (target.transform.position - transform.position).normalized;
+        return (target.position - transform.position).normalized;
+    }
+
+    public void SetTarget(Transform target)
+    {
+        this.target = target;
+        pathFinder.SetTarget(target);
+    }
+
+    public Transform GetTarget()
+    {
+        return target;
+    }
+
+    public void OnSwarmAttackActive()
+    {
+        isSwarmAttack = true;
+    }
+
+    public void OnSwarmAttackInactive()
+    {
+        isSwarmAttack = false;
     }
 }

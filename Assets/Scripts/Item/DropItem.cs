@@ -14,6 +14,11 @@ public class DropItem : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
     }
 
+    private void OnEnable()
+    {
+        isMove = false;
+    }
+
     public void Diffusion(int weight)
     {
         Vector2 dir = Random.insideUnitCircle;

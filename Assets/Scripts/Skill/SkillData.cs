@@ -12,7 +12,6 @@ public class SkillData : MonoBehaviour
     public Skill skill { get; private set; }
     public GameObject executor { get; private set; }
     public IStatus executorStatus { get; private set; }
-    public string targetTag { get; private set; }
     public float damage { get; private set; }
     public float size { get; private set; }
     [SerializeField]
@@ -24,12 +23,11 @@ public class SkillData : MonoBehaviour
 
     public GameObject[] nextSkills;
 
-    public void Init(GameObject executor, IStatus status, string targetTag, Skill skill, GameObject[] nextSkills)
+    public void Init(GameObject executor, IStatus status, Skill skill, GameObject[] nextSkills)
     {
         this.skill = skill;
         this.executor = executor;
         executorStatus = status;
-        this.targetTag = targetTag;
         damage = status.GetStatus(StatusList.damage).Value;
         size = skill.size;
         speed = skill.speed;
@@ -38,12 +36,12 @@ public class SkillData : MonoBehaviour
         this.nextSkills = nextSkills;
     }
 
-    public void InitChild(GameObject executor, IStatus status, string targetTag, Skill skill)
+    public void InitChild(GameObject executor, IStatus status, Skill skill)
     {
         SkillData[] skillDatas = GetComponentsInChildren<SkillData>();
         for (int i = 0; i < skillDatas.Length; i++)
         {
-            skillDatas[i].Init(executor, status, targetTag, skill, nextSkills);
+            skillDatas[i].Init(executor, status, skill, nextSkills);
         }
     }
 }

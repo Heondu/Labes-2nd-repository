@@ -15,9 +15,17 @@ public static class KeySetting { public static Dictionary<KeyAction, KeyCode> ke
 
 public class KeyManager : MonoBehaviour
 {
+    private static KeyManager instance;
 
     private void Awake()
     {
+        if (instance == null) instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         KeysetDefault();
         //DontDestroyOnLoad(gameObject);
     }

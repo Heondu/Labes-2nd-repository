@@ -11,11 +11,6 @@ public class PathFinder : MonoBehaviour
 
     private void Awake()
     {
-        if (target == null)
-        {
-            target = FindObjectOfType<Player>().transform;
-        }
-
         layerMask = 1 << LayerMask.NameToLayer("Object");
     }
 
@@ -96,15 +91,15 @@ public class PathFinder : MonoBehaviour
     /// </summary>
     /// <param name="target">타겟 오브젝트</param>
     /// <returns>다른 물체가 있을 시 false값 반환</returns>
-    public bool IsEmpty(GameObject target)
+    public bool IsEmpty(Transform target)
     {
-        Vector3 dir = (target.transform.position - transform.position).normalized;
-        float distance = Mathf.Abs(Vector3.Distance(target.transform.position, transform.position));
+        Vector3 dir = (target.position - transform.position).normalized;
+        float distance = Mathf.Abs(Vector3.Distance(target.position, transform.position));
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, dir, distance, layerMask);
 
         foreach (RaycastHit2D hit in hits)
         {
-            if (hit.collider.gameObject != target && hit.collider.CompareTag("Enemy") == false)
+            if (hit.collider.gameObject != target.gameObject && hit.collider.CompareTag("Enemy") == false)
             {
                 return false;
             }
@@ -131,5 +126,10 @@ public class PathFinder : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void SetTarget(Transform target)
+    {
+        this.target = target;
     }
 }

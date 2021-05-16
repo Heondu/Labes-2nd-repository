@@ -33,7 +33,10 @@ public class GuidedProjectile : MonoBehaviour
         float distance = Mathf.Infinity;
         foreach (Collider2D collider in colliders)
         {
-            if (collider.gameObject.CompareTag(skillData.targetTag) == false) continue;
+            ILivingEntity entity = collider.GetComponent<ILivingEntity>();
+
+            if (entity == null) continue;
+            if (collider.gameObject.CompareTag(skillData.executor.tag) == true) continue;
 
             float newDistance = Vector3.SqrMagnitude(collider.transform.position - transform.position);
             if (distance > newDistance)

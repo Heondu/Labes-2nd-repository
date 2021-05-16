@@ -87,7 +87,10 @@ public class SkillExplode : MonoBehaviour
         float distance = Mathf.Infinity;
         foreach (Collider2D collider in colliders)
         {
-            if (collider.gameObject.CompareTag(skillData.targetTag) == false) continue;
+            ILivingEntity entity = collider.GetComponent<ILivingEntity>();
+
+            if (entity == null) continue;
+            if (collider.gameObject.CompareTag(skillData.executor.tag) == true) continue;
 
             float newDistance = Vector3.SqrMagnitude(collider.transform.position - transform.position);
             if (distance > newDistance)
@@ -105,7 +108,12 @@ public class SkillExplode : MonoBehaviour
         List<GameObject> targetList = new List<GameObject>();
         foreach (Collider2D collider in colliders)
         {
-            if (collider.CompareTag(skillData.targetTag)) targetList.Add(collider.gameObject);
+            ILivingEntity entity = collider.GetComponent<ILivingEntity>();
+
+            if (entity == null) continue;
+            if (collider.gameObject.CompareTag(skillData.executor.tag) == true) continue;
+            
+            targetList.Add(collider.gameObject);
         }
         return targetList;
     }

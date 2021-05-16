@@ -83,7 +83,7 @@ public class Enemy : MonoBehaviour, ILivingEntity
 
     public void TakeDamage(float _value, DamageType damageType)
     {
-        enemyController.isSwarmAttack = true;
+        enemyController.enemySwarmController.onSwarmAttackActive.Invoke();
 
         int value = Mathf.RoundToInt(_value);
 
@@ -131,5 +131,10 @@ public class Enemy : MonoBehaviour, ILivingEntity
     public string GetID()
     {
         return id;
+    }
+
+    public Transform GetTarget()
+    {
+        return enemyController.GetTarget();
     }
 }

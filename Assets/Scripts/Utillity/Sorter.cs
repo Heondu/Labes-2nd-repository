@@ -6,6 +6,8 @@ public class Sorter : MonoBehaviour
 {
     [SerializeField]
     private SortingMethod sortingMethod = SortingMethod.Awake;
+    [SerializeField]
+    private float offset;
 
     private void Awake()
     {
@@ -25,7 +27,7 @@ public class Sorter : MonoBehaviour
 
     private void Sort()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y + offset);
     }
 
     //[SerializeField]

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour, ILivingEntity
 {
@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour, ILivingEntity
     [SerializeField]
     private float moveSpeed;
 
+    public UnityEvent onDeath = new UnityEvent();
+
     private void Awake()
     {
         movement = GetComponent<Movement>();
@@ -26,6 +28,11 @@ public class Enemy : MonoBehaviour, ILivingEntity
         enemyAttack = GetComponent<EnemyAttack>();
         animationController = GetComponent<AnimationController>();
         flash = GetComponent<Flash>();
+    }
+
+    private void OnEnable()
+    {
+        onDeath.RemoveAllListeners();
     }
 
     private void Update()
@@ -65,7 +72,7 @@ public class Enemy : MonoBehaviour, ILivingEntity
         }
     }
 
-    public void Init()
+    public void Init(UnityAction action)
     {
         monster = DataManager.monster.FindDic("name", id);
         monlvl = DataManager.monlvl.FindDic("Level", monster["monlvl"]);
@@ -79,6 +86,9 @@ public class Enemy : MonoBehaviour, ILivingEntity
         status.CalculateDerivedStatus();
         enemyAttack.SkillInit(monster);
         delay = float.Parse(monster["delay"].ToString());
+
+        if (action != null)
+            onDeath.AddListener(action);
     }
 
     public void TakeDamage(float _value, DamageType damageType)
@@ -114,6 +124,7 @@ public class Enemy : MonoBehaviour, ILivingEntity
             FindObjectOfType<Player>().status.exp += (int)monlvl["monexp"];
             ItemGenerator.instance.DropItem(monlvl, monster["class"].ToString(), transform.position);
             //Destroy(gameObject);
+            onDeath.Invoke();
             gameObject.SetActive(false);
         }
     }

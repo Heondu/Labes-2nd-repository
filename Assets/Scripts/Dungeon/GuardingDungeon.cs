@@ -26,9 +26,12 @@ public class GuardingDungeon : MonoBehaviour
     private void Awake()
     {
         regenManager = FindObjectOfType<RegenManager>();
-        tower = GetComponent<Tower>();
+        tower = FindObjectOfType<Tower>();
         player = FindObjectOfType<Player>();
+    }
 
+    private void Start()
+    {
         regenManager.onRegen.AddListener(IncreaseWave);
     }
 
@@ -50,6 +53,7 @@ public class GuardingDungeon : MonoBehaviour
         {
             if (loadSceneOnDeath == false) return;
 
+            player.transform.position = SceneData.instance.prevScenePos;
             SceneManager.LoadScene("MainScene");
         }
     }

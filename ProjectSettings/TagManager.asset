@@ -10,6 +10,7 @@ TagManager:
   - InventoryEquip
   - Shortcut
   - FloatingDamage
+  - PortalCollider
   layers:
   - Default
   - TransparentFX

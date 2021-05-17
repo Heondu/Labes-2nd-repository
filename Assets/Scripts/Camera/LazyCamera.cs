@@ -15,7 +15,7 @@ public class LazyCamera : MonoBehaviour
     [SerializeField]
     private float range = 4;
 
-    public Vector2 mapSize { private get; set; } = Vector2.zero;
+    private MapData mapData = null;
     private float height;
     private float width;
     [SerializeField]
@@ -55,17 +55,22 @@ public class LazyCamera : MonoBehaviour
         }
     }
 
+    public void SetupMapData(MapData mapData)
+    {
+        this.mapData = mapData;
+    }
+
     private Vector3 GetClampedSizeOnScreen()
     {
         Vector3 middlePos = MiddleOfMouseAndPlayer;
 
-        if (isScreenLock)
+        if (isScreenLock && mapData != null)
         {
-            float limitX = (mapSize.x - width) / 2;
-            float limitY = (mapSize.y - height) / 2;
+            float limitX = (mapData.Size.x - width) / 2;
+            float limitY = (mapData.Size.y - height) / 2;
 
-            middlePos.x = Mathf.Clamp(middlePos.x, -limitX, limitX);
-            middlePos.y = Mathf.Clamp(middlePos.y, -limitY, limitY);
+            middlePos.x = Mathf.Clamp(middlePos.x, -limitX + mapData.Position.x, limitX + mapData.Position.x);
+            middlePos.y = Mathf.Clamp(middlePos.y, -limitY + mapData.Position.y, limitY + mapData.Position.y);
         }
 
         return middlePos;

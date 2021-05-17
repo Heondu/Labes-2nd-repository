@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RegenMonster : MonoBehaviour
 {
-    public void SpawnMonster(RegenArea regenArea, Transform target, bool isSwarmAttack)
+    public void SpawnMonster(RegenArea regenArea, Transform target, bool isSwarmAttack, UnityAction actionOnDeath = null)
     {
         List<GameObject> enemys = new List<GameObject>();
 
@@ -32,6 +33,9 @@ public class RegenMonster : MonoBehaviour
 
         int enemyColumn = (int)Mathf.Sqrt(regenArea.maxRegenNum);
         int enemyRow = Mathf.CeilToInt(Mathf.Sqrt(regenArea.maxRegenNum));
+        float areaXDistance = regenArea.area.x / enemyRow;
+        float areaYDistance = regenArea.area.y / enemyColumn;
+
         for (int x = 0; x < enemyRow; x++)
         {
             for (int y = 0; y < enemyColumn; y++)
@@ -40,20 +44,35 @@ public class RegenMonster : MonoBehaviour
                 if (index >= regenArea.maxRegenNum) continue;
 
                 GameObject clone = ObjectPooler.instance.ObjectPool(regenArea.transform, enemys[index]);
-                Enemy enemy = clone.GetComponent<Enemy>();
-                enemy.Init();
 
-                Bounds enemyBounds = clone.GetComponent<CapsuleCollider2D>().bounds;
-                Vector3 newPos = regenArea.transform.position + new Vector3(enemyBounds.size.x * x, enemyBounds.size.y * y, 0);
-                clone.GetComponent<EnemyController>().SetPos(newPos);
-
-                if (enemy.monster["class"].ToString() == "pawn")
+                Vector3 newPos;
+                float offsetX;
+                float offsetY;
+                if (regenArea.autoArea == false)
                 {
-                    UIMonsterHP.instance.InitMonsterHPBar(enemy);
+                    offsetX = (-(float)enemyRow / 2 + 0.5f + x) * areaXDistance;
+                    offsetY = (-(float)enemyColumn / 2 + 0.5f + y) * areaYDistance;
+                    newPos = regenArea.transform.position + new Vector3(offsetX, offsetY, 0);
                 }
                 else
                 {
-                    UIMonsterHP.instance.InitBossHPBar(enemy);
+                    Bounds enemyBounds = clone.GetComponent<Collider2D>().bounds;
+                    offsetX = (-(float)enemyRow / 2 + 0.5f + x) * enemyBounds.size.x;
+                    offsetY = (-(float)enemyColumn / 2 + 0.5f + y) * enemyBounds.size.y;
+                    newPos = regenArea.transform.position + new Vector3(offsetX, offsetY, 0);
+                }
+                clone.transform.position = newPos;
+
+                Enemy enemy = clone.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.Init(actionOnDeath);
+                    clone.GetComponent<EnemyController>().SetPos();
+
+                    if (enemy.monster["class"].ToString() == "pawn")
+                        UIMonsterHP.instance.InitMonsterHPBar(enemy);
+                    else
+                        UIMonsterHP.instance.InitBossHPBar(enemy);
                 }
             }
         }

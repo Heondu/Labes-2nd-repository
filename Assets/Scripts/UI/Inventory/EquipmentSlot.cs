@@ -8,7 +8,7 @@ public class EquipmentSlot : MonoBehaviour, IBeginDragHandler
     [SerializeField]
     private GameObject icon;
 
-    private void Awake()
+    private void Start()
     {
         InventoryManager.instance.onSlotChangedCallback += EquipCheck;
         InventoryManager.instance.onSlotChangedCallback += DisableIconImage;
@@ -52,7 +52,10 @@ public class EquipmentSlot : MonoBehaviour, IBeginDragHandler
         {
             icon.SetActive(false);
         }
-        else icon.SetActive(true);
+        else
+        {
+            icon.SetActive(true);
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)

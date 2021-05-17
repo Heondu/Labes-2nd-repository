@@ -49,6 +49,9 @@ public class EnemyController : MonoBehaviour
 
     public void Update()
     {
+        if (target == null)
+            target = FindObjectOfType<RegenManager>().GetTarget();
+
         FSM();
     }
 
@@ -81,10 +84,9 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void SetPos(Vector3 pos)
+    public void SetPos()
     {
-        transform.position = pos;
-        originPos = pos;
+        originPos = transform.position;
     }
 
     public Vector3 GetAxis()

@@ -17,35 +17,43 @@ public class RegenManager : MonoBehaviour
     private bool checkAllRegenAreaWhenRegen = false;
 
     public UnityEvent onRegen = new UnityEvent();
-
-    private void Awake()
-    {
-        regens = FindObjectsOfType<RegenArea>();
-    }
+    public UnityEvent onEnemyDeath = new UnityEvent();
 
     private void Start()
     {
-        foreach (RegenArea regen in regens)
-        {
-            Spawn(regen);
-        }
+        regens = FindObjectsOfType<RegenArea>();
 
         StartCoroutine("Regen");
+    }
+
+    private void Update()
+    {
+        FindTarget();
+    }
+
+    private void FindTarget()
+    {
+        if (target == null)
+            target = FindObjectOfType<Player>().transform;
     }
 
     private void Spawn(RegenArea regenArea)
     {
         if (regenArea == null) return;
 
-        if (target == null)
-            target = FindObjectOfType<Player>().transform;
-
-        if (target != null)
-            regenArea.GetComponent<RegenMonster>().SpawnMonster(regenArea, target, swarmAttackAtStart);
+        FindTarget();
+        regenArea.GetComponent<RegenMonster>().SpawnMonster(regenArea, target, swarmAttackAtStart, OnEnemyDeath);
     }
 
     private IEnumerator Regen()
     {
+        yield return new WaitForSeconds(1f);
+
+        foreach (RegenArea regen in regens)
+        {
+            Spawn(regen);
+        }
+
         while (true)
         {
             if (checkAllRegenAreaWhenRegen == false)
@@ -88,5 +96,15 @@ public class RegenManager : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public void OnEnemyDeath()
+    {
+        onEnemyDeath.Invoke();
+    }
+
+    public Transform GetTarget()
+    {
+        return target;
     }
 }

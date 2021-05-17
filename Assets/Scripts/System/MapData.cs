@@ -5,15 +5,27 @@ using UnityEngine;
 public class MapData : MonoBehaviour
 {
     [SerializeField]
-    private Vector2 mapSize;
+    private Vector2 size = Vector2.zero;
+    public Vector2 Size => size;
     [SerializeField]
-    private bool autoSetMapSize = true;
+    private Vector2 position = Vector2.zero;
+    public Vector2 Position => position;
+    [SerializeField]
+    private bool autoSize = true;
+    [SerializeField]
+    private bool autoPosition = true;
+    [SerializeField]
+    private bool autoAssignMapData = true;
 
     private void Start()
     {
-        if (autoSetMapSize)
-            mapSize = transform.localScale;
+        if (autoSize)
+            size = transform.localScale;
 
-        LazyCamera.instance.mapSize = mapSize;
+        if (autoPosition)
+            position = transform.position;
+
+        if (autoAssignMapData)
+            LazyCamera.instance.SetupMapData(this);
     }
 }

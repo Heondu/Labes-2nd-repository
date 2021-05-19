@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public enum EnemyState { STATE_NULL = 0, STATE_PATROL, STATE_CHASE, STATE_ATTACK, STATE_COMEBACK }
+public enum EnemyState { STATE_NULL = 0, STATE_PATROL, STATE_CHASE, STATE_ATTACK, STATE_COMEBACK, STATE_DEATH }
 
 public class EnemyController : MonoBehaviour
 {
@@ -201,5 +201,11 @@ public class EnemyController : MonoBehaviour
     public void OnSwarmAttackInactive()
     {
         isSwarmAttack = false;
+    }
+
+    public void OnDeath()
+    {
+        state = EnemyState.STATE_DEATH;
+        isStop = true;
     }
 }

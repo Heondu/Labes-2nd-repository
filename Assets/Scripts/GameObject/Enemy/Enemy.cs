@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,7 @@ public class Enemy : MonoBehaviour, ILivingEntity
     private EnemyController enemyController;
     private EnemyAttack enemyAttack;
     private AnimationController animationController;
+    private new CapsuleCollider2D collider2D;
     public EnemyStatus status;
     public Dictionary<string, object> monster = new Dictionary<string, object>();
     public Dictionary<string, object> monlvl = new Dictionary<string, object>();
@@ -20,6 +22,8 @@ public class Enemy : MonoBehaviour, ILivingEntity
     private float moveSpeed;
 
     public UnityEvent onDeath = new UnityEvent();
+    private UnityAction killCount = null;
+    public Vector3 hitDir = Vector3.zero;
 
     private void Awake()
     {
@@ -27,12 +31,21 @@ public class Enemy : MonoBehaviour, ILivingEntity
         enemyController = GetComponent<EnemyController>();
         enemyAttack = GetComponent<EnemyAttack>();
         animationController = GetComponent<AnimationController>();
+        collider2D = GetComponent<CapsuleCollider2D>();
         flash = GetComponent<Flash>();
+    }
+
+    private void Start()
+    {
+        onDeath.AddListener(enemyController.OnDeath);
     }
 
     private void OnEnable()
     {
-        onDeath.RemoveAllListeners();
+        if (killCount != null)
+            onDeath.RemoveListener(killCount);
+        collider2D.enabled = true;
+        animationController.Enable(true);
     }
 
     private void Update()
@@ -88,10 +101,13 @@ public class Enemy : MonoBehaviour, ILivingEntity
         delay = float.Parse(monster["delay"].ToString());
 
         if (action != null)
+        {
             onDeath.AddListener(action);
+            killCount = action;
+        }
     }
 
-    public void TakeDamage(float _value, DamageType damageType)
+    public void TakeDamage(float _value, DamageType damageType, Vector3 hitDir)
     {
         enemyController.enemySwarmController.onSwarmAttackActive.Invoke();
 
@@ -123,9 +139,10 @@ public class Enemy : MonoBehaviour, ILivingEntity
         {
             FindObjectOfType<Player>().status.exp += (int)monlvl["monexp"];
             ItemGenerator.instance.DropItem(monlvl, monster["class"].ToString(), transform.position);
-            //Destroy(gameObject);
+            this.hitDir = hitDir;
+            collider2D.enabled = false;
+            animationController.Enable(false);
             onDeath.Invoke();
-            gameObject.SetActive(false);
         }
     }
 

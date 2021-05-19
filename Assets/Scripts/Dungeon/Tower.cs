@@ -15,7 +15,7 @@ public class Tower : MonoBehaviour, ILivingEntity
         hpBar.Init(transform, status, "Å¸¿ö");
     }
 
-    public void TakeDamage(float _value, DamageType damageType)
+    public void TakeDamage(float _value, DamageType damageType, Vector3 hitDir)
     {
         int value = Mathf.RoundToInt(_value);
 

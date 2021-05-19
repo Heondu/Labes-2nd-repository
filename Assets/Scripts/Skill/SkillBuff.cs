@@ -73,7 +73,7 @@ public class SkillBuff : MonoBehaviour
                 skillEffectTrigger.SetTarget(target.transform);
                 skillEffectTrigger.onHit.Invoke();
 
-                StatusCalculator.CalcSkillStatus(skillData.executorStatus, targetEntity, skill, skillData.GetStatus, skillData.GetRelatedStatus);
+                StatusCalculator.CalcSkillStatus(skillData.executorStatus, targetEntity, skill, skillData.GetStatus, skillData.GetRelatedStatus, Vector3.zero);
             }
         }
 

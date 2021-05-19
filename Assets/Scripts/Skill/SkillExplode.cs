@@ -62,7 +62,8 @@ public class SkillExplode : MonoBehaviour
                 skillEffectTrigger.SetTarget(target.transform);
                 skillEffectTrigger.onHit.Invoke();
 
-                StatusCalculator.CalcSkillStatus(skillData.executorStatus, targetEntity, skill, skillData.GetStatus, skillData.GetRelatedStatus);
+                Vector3 hitDir = new Vector3(target.transform.position.x - transform.position.x, target.transform.position.y - transform.position.y, 0).normalized;
+                StatusCalculator.CalcSkillStatus(skillData.executorStatus, targetEntity, skill, skillData.GetStatus, skillData.GetRelatedStatus, hitDir);
             }
             penetrationCount++;
             if (penetrationCount >= skillData.penetration)

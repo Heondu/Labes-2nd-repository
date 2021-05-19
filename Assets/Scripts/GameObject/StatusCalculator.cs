@@ -2,7 +2,7 @@
 
 public class StatusCalculator : MonoBehaviour
 {
-    public static void CalcSkillStatus(IStatus executor, ILivingEntity target, Skill skill, StatusList _status, StatusList _relatedStatus)
+    public static void CalcSkillStatus(IStatus executor, ILivingEntity target, Skill skill, StatusList _status, StatusList _relatedStatus, Vector3 skillDir)
     {
         float value;
         Status relatedStatus = executor.GetStatus(_relatedStatus);
@@ -12,7 +12,7 @@ public class StatusCalculator : MonoBehaviour
         
         if (skill.isPositive == 1)
         {
-            if (_status == StatusList.HP) target.TakeDamage(value, DamageType.heal);
+            if (_status == StatusList.HP) target.TakeDamage(value, DamageType.heal, skillDir);
             else status.AddModifier(new StatusModifier(value, StatusModType.Flat, skill));
         }
         else if (skill.isPositive == 0)
@@ -20,14 +20,14 @@ public class StatusCalculator : MonoBehaviour
             if (_status == StatusList.HP)
             {
                 bool isAvoid = IsAvoid(executor, target);
-                if (isAvoid) target.TakeDamage(value, DamageType.miss);
+                if (isAvoid) target.TakeDamage(value, DamageType.miss, skillDir);
                 else
                 {
                     value = relatedStatus.Value * skill.amount / (100 + target.GetStatus(StatusList.defence).Value);
                     value = Random.Range(value - (float)value % 2, value + (float)value % 2);
                     value = Mathf.Max(1, value);
-                    if (Random.Range(0, 100) < executor.GetStatus(StatusList.critChance).Value) target.TakeDamage(value * 2, DamageType.critical);
-                    else target.TakeDamage(value, DamageType.normal);
+                    if (Random.Range(0, 100) < executor.GetStatus(StatusList.critChance).Value) target.TakeDamage(value * 2, DamageType.critical, skillDir);
+                    else target.TakeDamage(value, DamageType.normal, skillDir);
                 }
             }
             else status.AddModifier(new StatusModifier(-value, StatusModType.Flat, skill));

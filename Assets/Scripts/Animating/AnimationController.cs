@@ -35,4 +35,10 @@ public class AnimationController : MonoBehaviour
         else if (dir.y < 0) animator.SetBool("Front", true);
         animator.SetTrigger("Attack");
     }
+
+    public void Enable(bool value)
+    {
+        if (animator != null)
+            animator.enabled = value;
+    }
 }

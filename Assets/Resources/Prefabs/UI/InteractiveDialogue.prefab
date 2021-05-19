@@ -223,10 +223,9 @@ GameObject:
   - component: {fileID: 4922408723839514181}
   - component: {fileID: 5706937943609675898}
   - component: {fileID: 8716883261402706413}
-  - component: {fileID: 6152149302439235862}
   m_Layer: 5
   m_Name: InteractiveDialogue
-  m_TagString: Untagged
+  m_TagString: Dialogue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -290,17 +289,3 @@ MonoBehaviour:
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6152149302439235862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8671676045885448809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74f99c0d64e834344b70246f00a55fb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueL: {fileID: 0}
-  dialogueR: {fileID: 0}

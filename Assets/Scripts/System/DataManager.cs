@@ -21,6 +21,7 @@ public class DataManager : MonoBehaviour
     public static List<Dictionary<string, object>> confession = new List<Dictionary<string, object>>();
     public static List<Dictionary<string, object>> karma = new List<Dictionary<string, object>>();
     public static List<Dictionary<string, object>> transcendence = new List<Dictionary<string, object>>();
+    public static List<Dictionary<string, object>> dialogue = new List<Dictionary<string, object>>();
 
     public static Dictionary<string, Item> itemEquipmentDB = new Dictionary<string, Item>();
     public static Dictionary<string, Item> itemConsumeDB = new Dictionary<string, Item>();
@@ -46,6 +47,7 @@ public class DataManager : MonoBehaviour
         confession = CSVReader.Read("confession");
         karma = CSVReader.Read("karma");
         transcendence = CSVReader.Read("transcendence");
+        dialogue = CSVReader.Read("dialogue");
 
         ListToDict(weapon);
         ListToDict(armor);
@@ -149,6 +151,46 @@ public class DataManager : MonoBehaviour
             return str;
         }
         return "";
+    }
+
+    public static List<Dialogue> FindDialogue(object code, object number, out int index)
+    {
+        index = (int)number;
+        List<Dialogue> dialogueList = new List<Dialogue>();
+
+        while (true)
+        {
+            for (int i = 0; i < dialogue.Count; i++)
+            {
+                if (dialogue[i]["code"].Equals(code) && dialogue[i]["number"].Equals(index))
+                {
+                    Dialogue dial = new Dialogue();
+
+                    string spritePath = dialogue[i]["image"].ToString();
+                    if (spritePath.Contains("_"))
+                    {
+                        string[] split = spritePath.Split('_');
+                        dial.face = Resources.LoadAll<Sprite>(split[0])[int.Parse(split[1])];
+                    }
+                    else dial.face = Resources.Load<Sprite>(spritePath);
+                    dial.content = dialogue[i]["content"].ToString();
+                    dial.interval = (float)dialogue[i]["interval"];
+
+                    dialogueList.Add(dial);
+                    index++;
+                }
+                else
+                {;
+                    if (index != (int)number)
+                    {
+                        index--;
+                        return dialogueList;
+                    }
+                }
+            }
+            index--;
+            return dialogueList;
+        }
     }
 }
 

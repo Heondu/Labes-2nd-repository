@@ -20,44 +20,58 @@ public class TxtBubble : MonoBehaviour
 
     private TextMeshProUGUI tmpro;
 
-    private void Start()
+    private void Awake()
     {
         tmpro = tmpGameObject.GetComponent<TextMeshProUGUI>();
-        ChangeValue(faceSprite, str, f);
+    }
+
+    private void Start()
+    {
         anim = GetComponent<Animator>();
         PlaySoundEffect();
     }
 
-    private void OnEnable()
+    public void Init(List<Dialogue> dialogues)
     {
-        StartCoroutine("KeyInputCheck");
+        gameObject.SetActive(true);
+        tmpro.text = "";
+        ChangeValue(dialogues[0].face, dialogues[0].content, dialogues[0].interval);
+        StartCoroutine("KeyInputCheck", dialogues);
     }
 
-    private IEnumerator KeyInputCheck()
+    private IEnumerator KeyInputCheck(List<Dialogue> dialogues)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
+        int index = 1; 
+        int keyCount = 0;
         while (true)
         {
-            if (Input.anyKey)
+            if (Input.anyKeyDown)
             {
-                anim.SetTrigger("DieTrigger");
+                keyCount++;
+                TypeWriter.FastWrite();
+                if (keyCount >= 2)
+                {
+                    if (index < dialogues.Count)
+                    {
+                        ChangeValue(dialogues[index].face, dialogues[index].content, dialogues[index].interval);
+                        index++;
+                        keyCount = 0;
+                        WriteText();
+                    }
+                    else
+                    {
+                        anim.SetTrigger("DieTrigger");
+                    }
+                }
             }
             yield return null;
         }
     }
 
-    //private void Update()
-    //{
-    //    if (Input.anyKey)
-    //    {
-    //        anim.SetTrigger("DieTrigger");
-    //    }
-    //}
-
     public void WriteText()
     {
-        img.sprite = faceSprite;
         TypeWriter.Write(tmpro, str, f);
     }
 
@@ -71,7 +85,6 @@ public class TxtBubble : MonoBehaviour
     public void Die()
     {
         PlaySoundEffect();
-        //Destroy(gameObject);
         StopCoroutine("KeyInputCheck");
         PlayerInput.instance.SetInputMode(InputMode.normal);
         gameObject.SetActive(false);

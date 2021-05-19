@@ -1,135 +1,60 @@
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 public class NPC : MonoBehaviour
 {
     [SerializeField]
-    private float waitTime = 2;
-    private float currentTime = 0;
-    [SerializeField]
-    private float range = 2;
-    [SerializeField]
-    private float iconRadius = 100;
-    [SerializeField]
-    private float yOffset = 1;
-
-    private LayerMask layerMask;
+    private string id;
 
     [SerializeField]
-    private GameObject speachBubble;
-    private Image speachBubbleImage;
-    [SerializeField] 
-    private GameObject interactiveHolder;
-    private GameObject[] interactives;
+    private int dialogueIndex = 0;
+
     [SerializeField]
-    private KeyCode[] keyCodes;
+    private GameObject dialogueL;
+    [SerializeField]
+    private GameObject dialogueR;
+    private TxtBubble bubbleL;
+    private TxtBubble bubbleR;
+    [SerializeField]
+    private float dialogueOffsetY = 2;
 
-    private bool isActiveInteractiveIcon = false;
-    private bool isKeyInput = false;
+    private bool isOnDialogue = false;
 
+    private Player player;
 
     private void Awake()
     {
-        layerMask = 1 << LayerMask.NameToLayer("Player");
-    }
-
-    private void Start()
-    {
-        speachBubbleImage = speachBubble.GetComponent<Image>();
-        SetInteractives();
+        bubbleL = dialogueL.GetComponent<TxtBubble>();
+        bubbleR = dialogueR.GetComponent<TxtBubble>();
+        player = FindObjectOfType<Player>();
     }
 
     private void Update()
     {
-        Collider2D collider = Physics2D.OverlapCircle(transform.position, range, layerMask);
-
-        if (collider != false)
-        {
-            if (isActiveInteractiveIcon == false && isKeyInput == false)
-            {
-                speachBubble.SetActive(true);
-                speachBubble.transform.position = new Vector3(transform.position.x, transform.position.y + yOffset * 2, 0);
-
-                speachBubbleImage.fillAmount = currentTime / waitTime;
-
-                currentTime += Time.deltaTime;
-            }
-            else if (isActiveInteractiveIcon == true && isKeyInput == false)
-            {
-                interactiveHolder.transform.position = new Vector3(transform.position.x, transform.position.y + yOffset, 0);
-                interactiveHolder.SetActive(true);
-                KeyInputCheck();
-            }
-        }
-        else
-        {
-            isKeyInput = false;
-            DisableInteractive();
-        }
-
-        if (currentTime >= waitTime)
-        {
-            speachBubble.SetActive(false);
-            isActiveInteractiveIcon = true;
-            PlayerInput.instance.SetInputMode(InputMode.interact);
-        }
+        if (isOnDialogue && dialogueL.activeSelf)
+            dialogueL.transform.position = new Vector3(transform.position.x, transform.position.y + dialogueOffsetY, 0);
+        if (isOnDialogue && dialogueR.activeSelf)
+            dialogueR.transform.position = new Vector3(transform.position.x, transform.position.y + dialogueOffsetY, 0);
     }
 
-    private void SetInteractives()
+    public void OnDialogue()
     {
-        int count = interactiveHolder.transform.childCount;
-
-        interactives = new GameObject[count];
-
-        float angle = (float)360 / count;
-        for (int i = 0; i < count; i++)
-        {
-            Vector3 newPos = new Vector3(Mathf.Cos((angle * i + 90) * Mathf.Deg2Rad), Mathf.Sin((angle * i + 90) * Mathf.Deg2Rad), 0) * iconRadius;
-            interactives[i] = interactiveHolder.transform.GetChild(i).gameObject;
-            interactives[i].transform.localPosition = newPos;
-            interactives[i].GetComponentInChildren<TextMeshProUGUI>().text = keyCodes[i].ToString();
-        }
+        bubbleL.Init(GetDialogue());
+        isOnDialogue = true;
     }
 
-    private void OnDrawGizmosSelected()
+    public List<Dialogue> GetDialogue()
     {
-        Gizmos.DrawWireSphere(transform.position, range);
+        return DataManager.FindDialogue(id, dialogueIndex, out dialogueIndex);
     }
 
-    private void KeyInputCheck()
+    public void AddDialogueIndex()
     {
-        for (int i = 0; i < keyCodes.Length; i++)
-        {
-            if (Input.GetKeyDown(keyCodes[i]))
-            {
-                IInteractive interactive = interactives[i].GetComponent<IInteractive>();
-                if (interactive != null)
-                {
-                    interactive.Execute();
-                }
-                else
-                {
-                    PlayerInput.instance.SetInputMode(InputMode.normal);
-                }
-                isKeyInput = true;
-                DisableInteractive();
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            isKeyInput = true;
-            PlayerInput.instance.SetInputMode(InputMode.normal);
-            DisableInteractive();
-        }
+        dialogueIndex++;
     }
 
-    private void DisableInteractive()
+    public void SetDialogueIndex(int value)
     {
-        currentTime = 0;
-        isActiveInteractiveIcon = false;
-        speachBubble.SetActive(false);
-        interactiveHolder.SetActive(false);
+        dialogueIndex = value;
     }
 }

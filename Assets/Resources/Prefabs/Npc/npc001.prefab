@@ -508,6 +508,8 @@ GameObject:
   - component: {fileID: 8087050790031960400}
   - component: {fileID: 8087050790031960407}
   - component: {fileID: 5295867129405193300}
+  - component: {fileID: 7442083562246646711}
+  - component: {fileID: 1792645804}
   m_Layer: 0
   m_Name: npc001
   m_TagString: Untagged
@@ -579,6 +581,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortingMethod: 1
+  offset: 0
+--- !u!114 &7442083562246646711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8087050790031960406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c5e5f64bf1a2e2489a62369f095593e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 
+  dialogueIndex: 0
+--- !u!114 &1792645804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8087050790031960406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2850cf3cb9740124e8e99ceeede98257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitTime: 2
+  range: 2
+  iconRadius: 100
+  yOffset: 1
+  speachBubble: {fileID: 0}
+  interactiveHolder: {fileID: 0}
+  keyCodes: 77000000640000007300000061000000
 --- !u!1 &8087050790046937280
 GameObject:
   m_ObjectHideFlags: 0

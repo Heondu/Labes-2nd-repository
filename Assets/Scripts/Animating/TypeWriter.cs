@@ -34,28 +34,35 @@ public class TypeWriter : MonoBehaviour
     public static void Write(TextMeshProUGUI tmp, string s, float delay)
     {
         tw.txt = tmp;
-        tw.coroutine = tw.StartCoroutine(tw.Typewriter(s, delay));
+        tw.sss = s;
+        tw.coroutine = tw.StartCoroutine(tw.Typewriter(delay));
     }
 
     public static void Write()
     {
-        tw.coroutine = tw.StartCoroutine(tw.Typewriter(tw.sss, 0.1f));
+        tw.coroutine = tw.StartCoroutine(tw.Typewriter(0.1f));
     }
 
-    private IEnumerator Typewriter(string s, float delay)
+    public static void FastWrite()
+    {
+        tw.FinishCoroutine();
+        tw.txt.text = tw.sss; 
+    }
+
+    private IEnumerator Typewriter(float delay)
     {
         string s2 = "";
-        for (int index = 0; index < s.Length; index++)
+        for (int index = 0; index < tw.sss.Length; index++)
         {
             txt.text = s2;
-            s2 += s[index];
+            s2 += tw.sss[index];
 
             SoundEffectManager.SoundEffect("TypeWriter"); //타이핑 치는 효과음
 
             yield return WaitForRealSeconds(delay);
         }
 
-        txt.text = s;
+        txt.text = tw.sss;
 
         //yield return WaitForRealSeconds(1.5f);
         FinishCoroutine();

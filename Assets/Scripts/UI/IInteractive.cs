@@ -1,4 +1,4 @@
 public interface IInteractive
 {
-    void Execute();
+    void Execute(NPC npc);
 }

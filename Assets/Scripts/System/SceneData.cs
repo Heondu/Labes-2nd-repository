@@ -6,6 +6,7 @@ public class SceneData : MonoBehaviour
 {
     public static SceneData instance;
 
+    public string prevScene;
     public Vector3 prevScenePos { get; set; } = Vector3.zero;
 
     private void Awake()

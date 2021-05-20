@@ -153,44 +153,83 @@ public class DataManager : MonoBehaviour
         return "";
     }
 
-    public static List<Dialogue> FindDialogue(object code, object number, out int index)
+    //public static List<Dialogue> FindDialogue(object code, object number, out int index)
+    //{
+    //    index = (int)number;
+    //    List<Dialogue> dialogueList = new List<Dialogue>();
+    //
+    //    while (true)
+    //    {
+    //        for (int i = 0; i < dialogue.Count; i++)
+    //        {
+    //            if (dialogue[i]["code"].Equals(code) && dialogue[i]["number"].Equals(index))
+    //            {
+    //                Dialogue dial = new Dialogue();
+    //
+    //                string spritePath = dialogue[i]["image"].ToString();
+    //                if (spritePath.Contains("_"))
+    //                {
+    //                    string[] split = spritePath.Split('_');
+    //                    dial.face = Resources.LoadAll<Sprite>(split[0])[int.Parse(split[1])];
+    //                }
+    //                else dial.face = Resources.Load<Sprite>(spritePath);
+    //                dial.content = dialogue[i]["content"].ToString();
+    //                dial.interval = (float)dialogue[i]["interval"];
+    //
+    //                dialogueList.Add(dial);
+    //                index++;
+    //            }
+    //            else
+    //            {;
+    //                if (index != (int)number)
+    //                {
+    //                    index--;
+    //                    return dialogueList;
+    //                }
+    //            }
+    //        }
+    //        index--;
+    //        return dialogueList;
+    //    }
+    //}
+
+    public static Dictionary<string, DialogueCollection> GetDialogueDB()
     {
-        index = (int)number;
-        List<Dialogue> dialogueList = new List<Dialogue>();
+        Dictionary<string, DialogueCollection> dialogueDB = new Dictionary<string, DialogueCollection>();
+        DialogueCollection dialogueCollection = new DialogueCollection();
 
-        while (true)
+        string code;
+        for (int i = 0; i < dialogue.Count; i++)
         {
-            for (int i = 0; i < dialogue.Count; i++)
+            code = dialogue[i]["code"].ToString();
+            if (!code.Equals(""))
             {
-                if (dialogue[i]["code"].Equals(code) && dialogue[i]["number"].Equals(index))
-                {
-                    Dialogue dial = new Dialogue();
+                Dialogue dial = new Dialogue();
 
-                    string spritePath = dialogue[i]["image"].ToString();
+                string spritePath = dialogue[i]["image"].ToString();
+                if (!spritePath.Equals(""))
+                {
                     if (spritePath.Contains("_"))
                     {
                         string[] split = spritePath.Split('_');
                         dial.face = Resources.LoadAll<Sprite>(split[0])[int.Parse(split[1])];
                     }
                     else dial.face = Resources.Load<Sprite>(spritePath);
-                    dial.content = dialogue[i]["content"].ToString();
-                    dial.interval = (float)dialogue[i]["interval"];
-
-                    dialogueList.Add(dial);
-                    index++;
                 }
-                else
-                {;
-                    if (index != (int)number)
-                    {
-                        index--;
-                        return dialogueList;
-                    }
+                dial.name = dialogue[i]["name"].ToString();
+                dial.content = dialogue[i]["content"].ToString();
+                dial.interval = (float)dialogue[i]["interval"];
+
+                dialogueCollection.dialogues.Add(dial);
+
+                if (i + 1 >= dialogue.Count || !dialogue[i + 1]["code"].ToString().Equals(code))
+                {
+                    dialogueDB.Add(code, dialogueCollection);
+                    dialogueCollection = new DialogueCollection();
                 }
             }
-            index--;
-            return dialogueList;
         }
+        return dialogueDB;
     }
 }
 

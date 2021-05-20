@@ -40,7 +40,7 @@ public class AttackingDungeon : MonoBehaviour
             if (loadSceneOnDeath == false) return;
 
             player.transform.position = SceneData.instance.prevScenePos;
-            SceneManager.LoadScene("MainScene");
+            SceneManager.LoadScene(SceneData.instance.prevScene);
         }
     }
 

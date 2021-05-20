@@ -1,9 +1,32 @@
 ﻿code,number,name,content,image,interval
-npc003,0,npc003,계절이 지나가는 하늘에는 가을로 가득 차 있습니다.,Faces/00NpcFace_3,0.2
-npc003,1,npc003,나는 아무 걱정도 없이 가을 속의 별들을 다 헬 듯합니다.,Faces/00NpcFace_3,0.2
-npc003,2,npc003,가슴 속에 하나 둘 새겨지는 별을 이제 다 못 헤는 것은,Faces/00NpcFace_3,0.2
-npc003,3,npc003,"쉬이 아침이 오는 까닭이요, 내일 밤이 남은 까닭이요,",Faces/00NpcFace_3,0.2
-npc003,4,npc003,아직 나의 청춘이 다하지 않은 까닭입니다.,Faces/00NpcFace_3,0.2
-npc003,5,player,…,,0.2
+npc003_ordinary,0,npc003,계절이 지나가는 하늘에는 가을로 가득 차 있습니다.,Faces/00NpcFace_3,0.2
+npc003_ordinary,1,npc003,나는 아무 걱정도 없이 가을 속의 별들을 다 헬 듯합니다.,Faces/00NpcFace_3,0.2
+npc003_ordinary,2,npc003,가슴 속에 하나 둘 새겨지는 별을 이제 다 못 헤는 것은,Faces/00NpcFace_3,0.2
+npc003_ordinary,3,npc003,"쉬이 아침이 오는 까닭이요, 내일 밤이 남은 까닭이요,",Faces/00NpcFace_3,0.2
+npc003_ordinary,4,npc003,아직 나의 청춘이 다하지 않은 까닭입니다.,Faces/00NpcFace_3,0.2
+npc003_ordinary,5,player,…,,0.2
 ,,,,,
-npc003,5,player,aaa,,0.2
+npc005_ordinary,0,npc005,박제가 되어버린 천재를 아시오?,Faces/00NpcFace_2,0.2
+npc005_ordinary,1,npc005,날개야 다시 돋아라.,Faces/00NpcFace_2,0.2
+npc005_ordinary,2,npc005,날자. 날자. 날자. 한번만 더 날자꾸나.,Faces/00NpcFace_2,0.2
+npc005_ordinary,3,npc005,한 번만 더 날아 보자꾸나.,Faces/00NpcFace_2,0.2
+,,,,,
+npc002_ordinary,0,npc002,까마득한 날에 하늘이 처음 열리고 어데 닭 우는 소리 들렸으랴.,Faces/00NpcFace_4,0.2
+npc002_ordinary,1,npc002,모든 산맥들이 바다를 연모해 휘달릴 때도 차마 이곳을 범하던 못하였으리라.,Faces/00NpcFace_4,0.2
+npc002_ordinary,2,npc002,끊임없는 광음을 부지런한 계절이 피어선 지고 큰 강물이 비로소 길을 열었다.,Faces/00NpcFace_4,0.2
+npc002_ordinary,3,npc002,지금 눈 내리고 매화 향기 홀로 아득하니 내 여기 가난한 노래의 씨를 뿌려라.,Faces/00NpcFace_4,0.2
+npc002_ordinary,4,npc002,다시 천고의 뒤에 백마타고 오는 초인이 있어 이 광야에서 목놓아 부르게 하리라.,Faces/00NpcFace_4,0.2
+,,,,,
+npc001_ordinary,0,npc001,죽는 날까지 하늘을 우러러 한 점 부끄럼이 없기를.,Faces/00NpcFace_0,0.2
+npc001_ordinary,1,npc001,잎새에 이는 바람에도 나는 괴로워했다.,Faces/00NpcFace_0,0.2
+npc001_ordinary,2,npc001,별을 노래하는 마음으로 모든 죽어 가는 것을 사랑해야지.,Faces/00NpcFace_0,0.2
+npc001_ordinary,3,npc001,그리고 나한테 주어진 길을 걸어가야겠다.,Faces/00NpcFace_0,0.2
+npc001_ordinary,4,npc001,오늘 밤에도 별이 바람에 스치운다.,Faces/00NpcFace_0,0.2
+,,,,,
+npc004_ordinary,0,npc004,산산이 부서진 이름이여!,Faces/00NpcFace_1,0.2
+npc004_ordinary,1,npc004,허공중에 헤어진 이름이여!,Faces/00NpcFace_1,0.2
+npc004_ordinary,2,npc004,불러도 주인 없는 이름이여!,Faces/00NpcFace_1,0.2
+npc004_ordinary,3,npc004,부르다가 내가 죽을 이름이여!,Faces/00NpcFace_1,0.2
+npc004_ordinary,4,player,심중에 남아 있는 말 한 마디는 끝끝내 마저 하지 못하였구나.,,0.2
+npc004_ordinary,5,player,사람하던 그 사람이여!,,0.2
+npc004_ordinary,6,player,사랑하던 그 사람이여!,,0.2

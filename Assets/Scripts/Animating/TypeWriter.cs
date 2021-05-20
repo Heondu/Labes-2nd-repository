@@ -9,6 +9,9 @@ public class TypeWriter : MonoBehaviour
     private string sss;
     static TypeWriter _tw;
 
+    public delegate void Callback();
+    private Callback callback = null;
+
     public static TypeWriter tw
     {
         get
@@ -46,7 +49,8 @@ public class TypeWriter : MonoBehaviour
     public static void FastWrite()
     {
         tw.FinishCoroutine();
-        tw.txt.text = tw.sss; 
+        tw.txt.text = tw.sss;
+        tw.callback();
     }
 
     private IEnumerator Typewriter(float delay)
@@ -63,6 +67,7 @@ public class TypeWriter : MonoBehaviour
         }
 
         txt.text = tw.sss;
+        tw.callback();
 
         //yield return WaitForRealSeconds(1.5f);
         FinishCoroutine();
@@ -88,5 +93,10 @@ public class TypeWriter : MonoBehaviour
             time -= Mathf.Clamp(Time.unscaledDeltaTime, 0, 0.2f);
             yield return null;
         }
+    }
+
+    public static void SetCallBack(Callback call)
+    {
+        tw.callback = call;
     }
 }

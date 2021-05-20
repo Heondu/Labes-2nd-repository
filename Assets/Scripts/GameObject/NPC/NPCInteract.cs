@@ -103,7 +103,7 @@ public class NPCInteract : MonoBehaviour
             {
                 if (interactives[i].CompareTag("Dialogue"))
                 {
-                    npc.OnDialogue();
+                    npc.ShowDialogue();
                 }
                 else
                 {

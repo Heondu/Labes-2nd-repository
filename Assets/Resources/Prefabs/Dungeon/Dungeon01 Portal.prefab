@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7602072760898417785}
   - component: {fileID: 2940002895850323424}
   - component: {fileID: 7602072760898417782}
+  - component: {fileID: 1170205505383927832}
   m_Layer: 0
   m_Name: Dungeon01 Portal
   m_TagString: Untagged
@@ -62,6 +63,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Dungeon01
+--- !u!114 &1170205505383927832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7602072760898417781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dfdd2703741207428db837594953889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimapIconPrefab: {fileID: 6179316766600379647, guid: c77319ea31af3db4baf57c92f883dd45,
+    type: 3}
+  size: {x: 0, y: 0}
+  autoSize: 0
+  usePrefabSize: 1
+  sortZ: 0
 --- !u!1001 &7148069716470338291
 PrefabInstance:
   m_ObjectHideFlags: 0

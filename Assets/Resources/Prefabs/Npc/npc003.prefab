@@ -883,6 +883,7 @@ GameObject:
   - component: {fileID: -5759303228530261387}
   - component: {fileID: -161083715125789437}
   - component: {fileID: 1118974924}
+  - component: {fileID: 4011670121056623065}
   m_Layer: 0
   m_Name: npc003
   m_TagString: Untagged
@@ -967,8 +968,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5e5f64bf1a2e2489a62369f095593e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
-  dialogueIndex: 0
+  nameID: 
+  code: 
 --- !u!114 &1118974924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -988,6 +989,24 @@ MonoBehaviour:
   speachBubble: {fileID: 0}
   interactiveHolder: {fileID: 0}
   keyCodes: 77000000640000007300000061000000
+--- !u!114 &4011670121056623065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142772044295378519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dfdd2703741207428db837594953889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimapIconPrefab: {fileID: 3829843029159423661, guid: 5a4d2d082cd133b4598f0c440149d3d2,
+    type: 3}
+  size: {x: 0, y: 0}
+  autoSize: 0
+  usePrefabSize: 1
+  sortZ: 0
 --- !u!1001 &1336901440070648292
 PrefabInstance:
   m_ObjectHideFlags: 0

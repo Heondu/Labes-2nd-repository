@@ -10,6 +10,8 @@ public class Player : MonoBehaviour, ILivingEntity
     [SerializeField]
     private float moveSpeed;
 
+    public UnityEvent<string> onKillMonster = new UnityEvent<string>();
+
     private void Awake()
     {
         movement = GetComponent<Movement>();

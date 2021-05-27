@@ -141,6 +141,10 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     public void OnEndDrag(PointerEventData eventData)
     {
         if (isLock) return;
+        if (eventData.pointerEnter != null)
+        {
+            if (eventData.pointerEnter.transform.parent.name == "Bin") InventoryManager.instance.RemoveItem(item, GetComponentInParent<InventoryItem>());
+        }
         Slot slot = eventData.pointerEnter.GetComponent<Slot>();
         if (slot == null) InventoryManager.instance.OnEndDrag(this, null);
         else if (slot != null)

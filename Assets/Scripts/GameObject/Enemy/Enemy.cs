@@ -25,6 +25,8 @@ public class Enemy : MonoBehaviour, ILivingEntity
     private UnityAction killCount = null;
     public Vector3 hitDir = Vector3.zero;
 
+    private Player player;
+
     private void Awake()
     {
         movement = GetComponent<Movement>();
@@ -33,6 +35,7 @@ public class Enemy : MonoBehaviour, ILivingEntity
         animationController = GetComponent<AnimationController>();
         collider2D = GetComponent<CapsuleCollider2D>();
         flash = GetComponent<Flash>();
+        player = FindObjectOfType<Player>();
     }
 
     private void Start()
@@ -142,6 +145,7 @@ public class Enemy : MonoBehaviour, ILivingEntity
             this.hitDir = hitDir;
             collider2D.enabled = false;
             animationController.Enable(false);
+            player.onKillMonster.Invoke(id);
             onDeath.Invoke();
         }
     }

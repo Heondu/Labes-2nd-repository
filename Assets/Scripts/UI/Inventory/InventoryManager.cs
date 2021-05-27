@@ -133,11 +133,13 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void RemoveItem(Item selectedItem)
+    public void RemoveItem(Item selectedItem, InventoryItem inventory)
     {
-        if (selectedItem.useType == "weapon") inventoryWeapon.RemoveItem(selectedItem);
-        else if (selectedItem.useType == "equipment") inventoryEquipment.RemoveItem(selectedItem);
-        else if (selectedItem.useType == "consume") inventoryConsume.RemoveItem(selectedItem);
+        if (inventory == null) return;
+        else inventory.RemoveItem(selectedItem);
+        //if (selectedItem.useType == "weapon") inventory.RemoveItem(selectedItem);
+        //else if (selectedItem.useType == "equipment") inventory.RemoveItem(selectedItem);
+        //else if (selectedItem.useType == "consume") inventory.RemoveItem(selectedItem);
     }
 
     private void UpdateInventory(Slot slot)

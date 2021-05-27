@@ -37,8 +37,6 @@ public class LimbSeparator : MonoBehaviour
 
     private IEnumerator OnDeathCo(Vector3 hitDir)
     {
-
-        minimapIcon.SetActive(false);
         Shadow.SetActive(false);
 
         Rigidbody2D[] rigidbody2Ds = GetComponentsInChildren<Rigidbody2D>();
@@ -64,7 +62,6 @@ public class LimbSeparator : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         gameObject.SetActive(false);
-        minimapIcon.SetActive(true);
         Shadow.SetActive(true);
 
         for (int i = 1; i < rigidbody2Ds.Length; i++)

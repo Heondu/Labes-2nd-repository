@@ -22,6 +22,7 @@ public class DataManager : MonoBehaviour
     public static List<Dictionary<string, object>> karma = new List<Dictionary<string, object>>();
     public static List<Dictionary<string, object>> transcendence = new List<Dictionary<string, object>>();
     public static List<Dictionary<string, object>> dialogue = new List<Dictionary<string, object>>();
+    public static List<Dictionary<string, object>> quest = new List<Dictionary<string, object>>();
 
     public static Dictionary<string, Item> itemEquipmentDB = new Dictionary<string, Item>();
     public static Dictionary<string, Item> itemConsumeDB = new Dictionary<string, Item>();
@@ -48,6 +49,7 @@ public class DataManager : MonoBehaviour
         karma = CSVReader.Read("karma");
         transcendence = CSVReader.Read("transcendence");
         dialogue = CSVReader.Read("dialogue");
+        quest = CSVReader.Read("quest");
 
         ListToDict(weapon);
         ListToDict(armor);
@@ -191,6 +193,46 @@ public class DataManager : MonoBehaviour
             }
         }
         return dialogueDB;
+    }
+
+    public static List<Quest> GetQuestDB()
+    {
+        List<Quest> questList = new List<Quest>();
+
+        for (int i = 0; i < quest.Count; i++)
+        {
+            if (quest[i]["name"].ToString().Contains("quest"))
+            {
+                Quest q = new Quest();
+
+                q.name = quest[i]["name"].ToString();
+                q.type = quest[i]["type"].ToString();
+                q.amount = (int)quest[i]["amount"];
+                for (int j = 0; j < 3; j++)
+                {
+                    QuestReward qr = new QuestReward();
+
+                    if (quest[i]["reward" + (j + 1)].ToString() == "") continue;
+                    
+                    qr.reward = quest[i]["reward" + (j + 1)].ToString();
+
+                    if (quest[i]["rarity" + (j + 1)].ToString() != "")
+                        qr.rarity = quest[i]["rarity" + (j + 1)].ToString();
+
+                    qr.amount = (int)quest[i]["amount" + (j + 1)];
+
+                    q.rewards.Add(qr);
+                }
+                q.npc = quest[i]["npc"].ToString();
+                q.minlvl = (int)quest[i]["minlvl"];
+                q.maxlvl = (int)quest[i]["maxlvl"];
+                q.chance = (int)quest[i]["chance"];
+
+                questList.Add(q);
+            }
+        }
+
+        return questList;
     }
 }
 

@@ -62,6 +62,9 @@ public class PlayerSkill : MonoBehaviour
 
     public void Execute(Skill skill)
     {
+        if (player.status.mana + skill.consume < 0) return;
+
+        player.status.mana = Mathf.Clamp(player.status.mana + skill.consume, 0, player.status.maxMana);
         Vector3 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         SkillLoader.instance.LoadSkill(gameObject, player.status, skill, transform.position, dir);
         isSkillCool[skill] = true;

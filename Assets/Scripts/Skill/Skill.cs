@@ -20,6 +20,7 @@
     public int lifetime;
     public float guide;
     public int penetration;
+    public int consume;
     public int quality = 0;
     public bool isNew = true;
 }
@@ -47,6 +48,7 @@ public class SkillSaveData
     public int lifetime;
     public float guide;
     public int penetration;
+    public int consume;
     public int quality = 0;
     public bool isNew = true;
 
@@ -73,7 +75,8 @@ public class SkillSaveData
         size = skill.size;
         lifetime = skill.lifetime;
         guide = skill.guide;
-        penetration = skill.perlvl;
+        penetration = skill.penetration;
+        consume = skill.consume;
         quality = skill.quality;
         isNew = skill.isNew;
     }
@@ -101,7 +104,8 @@ public class SkillSaveData
         skill.size = size;
         skill.lifetime = lifetime;
         skill.guide = guide;
-        skill.penetration = perlvl;
+        skill.penetration = penetration;
+        skill.consume = consume;
         skill.quality = quality;
         skill.isNew = isNew;
 

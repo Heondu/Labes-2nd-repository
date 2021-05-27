@@ -1,17 +1,17 @@
-﻿skill,name,rarity,exp,material,weaponClass,classBonus,bonusAmount%,position,element,cooltime,amount,perlvl,isPositive,repeat,speed,size,lifetime,guide,penetration
-Guided Arrow,skill001,1,1,ore,staff,,0,hero,light,0.5,0,0,0,1,6,1,3,0.3,5
-Guided Arrow Hit,skill002,1,1,ore,bow,range,10,this,light,0,30,15,0,3,3,1,0,0,0
-Swamp,skill003,5,2,herb,staff,amount,20,pointer,dark,15,15,3,0,1,0,1,10,0,100
-DontDestroyBuff,skill004,15,5,herb,none,,0,hero,none,10,50,1,1,1,0,1,20,0,0
-Triple Arrow,skill005,1,1,ore,bow,,0,hero,light,0.5,0,0,0,1,10,1,10,0.3,3
-Triple Arrow Hit,skill006,1,1,ore,bow,range,10,this,light,0,100,15,0,1,3,1,0,0,0
-LightningStrike,skill007,1,1,ore,bow,,0,hero,light,5,0,0,0,1,10,1,2,0,10
-Wheel Sphere,skill008,1,1,ore,bow,,0,hero,light,0.5,0,0,0,1,10,1,10,0.3,5
-,skill009,,,,,,,,,,,,,,,,,,
-,skill010,,,,,,,,,,,,,,,,,,
-MonBullet,skill011,1,1,ore,bow,,0,hero,light,0.5,0,0,0,1,3,1,10,0.3,5
-MonOval,skill012,1,1,ore,bow,,0,hero,light,5,0,0,0,1,10,1,2,0,10
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-HealingPotion1,skill900,1,1,none,none,,0,hero,none,30,300,0,1,1,0,0,0,0,0
+﻿skill,name,rarity,exp,material,weaponClass,classBonus,bonusAmount%,position,element,cooltime,amount,perlvl,isPositive,repeat,speed,size,lifetime,guide,penetration,consume
+Guided Arrow,skill001,1,1,ore,staff,,0,hero,light,0.5,0,0,0,1,6,1,3,0.3,5,10
+Guided Arrow Hit,skill002,1,1,ore,bow,range,10,this,light,0,30,15,0,3,3,1,0,0,0,0
+Swamp,skill003,5,2,herb,staff,amount,20,pointer,dark,15,15,3,0,1,0,1,10,0,100,-100
+DontDestroyBuff,skill004,15,5,herb,none,,0,hero,none,10,50,1,1,1,0,1,20,0,0,10
+Triple Arrow,skill005,1,1,ore,bow,,0,hero,light,0.5,0,0,0,1,10,1,10,0.3,3,10
+Triple Arrow Hit,skill006,1,1,ore,bow,range,10,this,light,0,100,15,0,1,3,1,0,0,0,0
+LightningStrike,skill007,1,1,ore,bow,,0,hero,light,5,0,0,0,1,10,1,2,0,10,10
+Wheel Sphere,skill008,1,1,ore,bow,,0,hero,light,0.5,0,0,0,1,10,1,10,0.3,5,10
+,skill009,,,,,,,,,,,,,,,,,,,
+,skill010,,,,,,,,,,,,,,,,,,,
+MonBullet,skill011,1,1,ore,bow,,0,hero,light,0.5,0,0,0,1,3,1,10,0.3,5,10
+MonOval,skill012,1,1,ore,bow,,0,hero,light,5,0,0,0,1,10,1,2,0,10,10
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+HealingPotion1,skill900,1,1,none,none,,0,hero,none,30,300,0,1,1,0,0,0,0,0,0

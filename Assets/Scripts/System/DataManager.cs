@@ -116,6 +116,7 @@ public class DataManager : MonoBehaviour
                 skillDB[name].lifetime = (int)list[i]["lifetime"];
                 skillDB[name].guide = float.Parse(list[i]["guide"].ToString());
                 skillDB[name].penetration = (int)list[i]["penetration"];
+                skillDB[name].consume = (int)list[i]["consume"];
             }
         }
     }
@@ -152,46 +153,6 @@ public class DataManager : MonoBehaviour
         }
         return "";
     }
-
-    //public static List<Dialogue> FindDialogue(object code, object number, out int index)
-    //{
-    //    index = (int)number;
-    //    List<Dialogue> dialogueList = new List<Dialogue>();
-    //
-    //    while (true)
-    //    {
-    //        for (int i = 0; i < dialogue.Count; i++)
-    //        {
-    //            if (dialogue[i]["code"].Equals(code) && dialogue[i]["number"].Equals(index))
-    //            {
-    //                Dialogue dial = new Dialogue();
-    //
-    //                string spritePath = dialogue[i]["image"].ToString();
-    //                if (spritePath.Contains("_"))
-    //                {
-    //                    string[] split = spritePath.Split('_');
-    //                    dial.face = Resources.LoadAll<Sprite>(split[0])[int.Parse(split[1])];
-    //                }
-    //                else dial.face = Resources.Load<Sprite>(spritePath);
-    //                dial.content = dialogue[i]["content"].ToString();
-    //                dial.interval = (float)dialogue[i]["interval"];
-    //
-    //                dialogueList.Add(dial);
-    //                index++;
-    //            }
-    //            else
-    //            {;
-    //                if (index != (int)number)
-    //                {
-    //                    index--;
-    //                    return dialogueList;
-    //                }
-    //            }
-    //        }
-    //        index--;
-    //        return dialogueList;
-    //    }
-    //}
 
     public static Dictionary<string, DialogueCollection> GetDialogueDB()
     {

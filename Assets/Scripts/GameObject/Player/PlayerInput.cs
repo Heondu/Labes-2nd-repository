@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour
     public static PlayerInput instance;
 
     private InputMode inputMode = InputMode.normal;
+    private bool attackFlag = true;
 
     private void Awake()
     {
@@ -16,7 +17,10 @@ public class PlayerInput : MonoBehaviour
 
     public int GetSkillIndex()
     {
-        if (inputMode != InputMode.normal) return -1;
+        if (inputMode != InputMode.normal) attackFlag = false;
+        if (Input.anyKeyDown && inputMode == InputMode.normal) attackFlag = true;
+        if (attackFlag == false) return - 1;
+
         if (Input.GetKey(KeySetting.keys[KeyAction.skill1])) return 0;
         if (Input.GetKey(KeySetting.keys[KeyAction.skill2])) return 1;
         if (Input.GetKey(KeySetting.keys[KeyAction.skill3])) return 2;

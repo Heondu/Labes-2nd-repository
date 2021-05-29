@@ -1,0 +1,90 @@
+
+standing_main.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 2, 553
+  size: 853, 1407
+  orig: 853, 1407
+  offset: 0, 0
+  index: -1
+eye
+  rotate: true
+  xy: 1713, 1404
+  size: 21, 18
+  orig: 21, 18
+  offset: 0, 0
+  index: -1
+eyelash
+  rotate: true
+  xy: 1713, 1427
+  size: 57, 20
+  orig: 57, 20
+  offset: 0, 0
+  index: -1
+eyeskin
+  rotate: true
+  xy: 1713, 1541
+  size: 48, 23
+  orig: 48, 23
+  offset: 0, 0
+  index: -1
+fronthair
+  rotate: true
+  xy: 1538, 622
+  size: 292, 282
+  orig: 292, 282
+  offset: 0, 0
+  index: -1
+mouth
+  rotate: true
+  xy: 1713, 1486
+  size: 53, 21
+  orig: 53, 21
+  offset: 0, 0
+  index: -1
+sidehairL
+  rotate: false
+  xy: 1713, 1591
+  size: 28, 138
+  orig: 28, 138
+  offset: 0, 0
+  index: -1
+sidehairR
+  rotate: false
+  xy: 1713, 1731
+  size: 31, 133
+  orig: 31, 133
+  offset: 0, 0
+  index: -1
+teeth
+  rotate: true
+  xy: 1713, 1866
+  size: 94, 48
+  orig: 94, 48
+  offset: 0, 0
+  index: -1
+레이어 67
+  rotate: true
+  xy: 857, 622
+  size: 292, 679
+  orig: 292, 679
+  offset: 0, 0
+  index: -1
+레이어 68
+  rotate: false
+  xy: 857, 916
+  size: 854, 1044
+  orig: 854, 1044
+  offset: 0, 0
+  index: -1
+레이어 69
+  rotate: true
+  xy: 2, 2
+  size: 549, 992
+  orig: 549, 992
+  offset: 0, 0
+  index: -1

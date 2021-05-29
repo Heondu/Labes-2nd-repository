@@ -77,7 +77,8 @@ public class TxtBubble : MonoBehaviour
 
     public void ChangeValue(Sprite face, string changeStr, float interval)
     {
-        img.sprite = face;
+        if (img != null)
+            img.sprite = face;
         str = changeStr;
         _interval = interval;
     }

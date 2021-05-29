@@ -14,7 +14,7 @@ public class DungeonLoader : MonoBehaviour
             SceneData.instance.prevScenePos = newPos;
             SceneData.instance.prevScene = SceneManager.GetActiveScene().name;
 
-            SceneManager.LoadScene(sceneName);
+            LoadingSceneManager.LoadScene(sceneName);
         }
     }
 }

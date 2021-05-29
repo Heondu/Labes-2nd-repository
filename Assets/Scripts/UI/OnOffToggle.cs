@@ -8,7 +8,7 @@ public class OnOffToggle : MonoBehaviour, IPointerClickHandler
     private GameObject onObject;
     [SerializeField]
     private GameObject offObject;
-    private bool isOn;
+    private bool isOn = true;
     public bool IsOn
     {
         get

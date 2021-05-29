@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class AttackingDungeon : MonoBehaviour
 {
@@ -40,7 +39,7 @@ public class AttackingDungeon : MonoBehaviour
             if (loadSceneOnDeath == false) return;
 
             player.transform.position = SceneData.instance.prevScenePos;
-            SceneManager.LoadScene(SceneData.instance.prevScene);
+            LoadingSceneManager.LoadScene(SceneData.instance.prevScene);
         }
     }
 

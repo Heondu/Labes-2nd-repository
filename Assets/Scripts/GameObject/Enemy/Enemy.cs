@@ -151,7 +151,7 @@ public class Enemy : MonoBehaviour, ILivingEntity
             StartCoroutine(enemyController.Stop(hitTime));
             if (damageType == DamageType.critical)
             {
-                StartCoroutine(LazyCamera.instance.Shake(0.05f, 0.3f));
+                StartCoroutine(ShakeCamera.instance.Shake(0.05f, 0.3f));
             }
         }
         else if (damageType == DamageType.heal) status.HP = Mathf.Min(status.HP + value, status.maxHP);

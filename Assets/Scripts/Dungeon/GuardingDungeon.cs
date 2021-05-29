@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class GuardingDungeon : MonoBehaviour
 {
@@ -54,7 +53,7 @@ public class GuardingDungeon : MonoBehaviour
             if (loadSceneOnDeath == false) return;
 
             player.transform.position = SceneData.instance.prevScenePos;
-            SceneManager.LoadScene(SceneData.instance.prevScene);
+            LoadingSceneManager.LoadScene(SceneData.instance.prevScene);
         }
     }
 

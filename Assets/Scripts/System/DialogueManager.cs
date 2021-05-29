@@ -16,6 +16,10 @@ public class DialogueManager : MonoBehaviour
     private TxtBubble bubbleR;
     [SerializeField]
     private float dialogueOffsetY = 2;
+    [SerializeField]
+    private GameObject playerDialogueUI;
+    [SerializeField]
+    private TxtBubble playerDialogue;
 
     private Transform player;
     private Transform npc;
@@ -37,34 +41,44 @@ public class DialogueManager : MonoBehaviour
         dialogueDB = DataManager.GetDialogueDB();
         bubbleL.SetCallback(PrintDialogueCallBack);
         bubbleR.SetCallback(PrintDialogueCallBack);
+        playerDialogue.SetCallback(PrintDialogueCallBack);
     }
 
     private TxtBubble SetDialogue()
     {
-        Transform target;
-
-        if (dialogueDB[code].dialogues[line].name != "player") target = npc;
-        else target = player;
-
-        if (target.position.x > Camera.main.transform.position.x)
+        if (dialogueDB[code].dialogues[line].name != "player")
         {
-            if (dialogueL.activeSelf == false)
+            playerDialogueUI.SetActive(false);
+
+            if (npc.position.x > Camera.main.transform.position.x)
             {
-                if (dialogueR.activeSelf) bubbleR.SetDieTrigger();
-                bubbleL.Init();
-                return bubbleL;
+                if (dialogueL.activeSelf == false)
+                {
+                    if (dialogueR.activeSelf) bubbleR.SetDieTrigger();
+                    bubbleL.Init();
+                    return bubbleL;
+                }
+                else return bubbleL;
             }
-            else return bubbleL;
+            else
+            {
+                if (dialogueR.activeSelf == false)
+                {
+                    if (dialogueL.activeSelf) bubbleL.SetDieTrigger();
+                    bubbleR.Init();
+                    return bubbleR;
+                }
+                else return bubbleR;
+            }
         }
         else
         {
-            if (dialogueR.activeSelf == false)
-            {
-                if (dialogueL.activeSelf) bubbleL.SetDieTrigger();
-                bubbleR.Init();
-                return bubbleR;
-            }
-            else return bubbleR;
+            if (dialogueL.activeSelf) bubbleL.SetDieTrigger();
+            else if (dialogueR.activeSelf) bubbleR.SetDieTrigger();
+            playerDialogueUI.SetActive(true);
+            playerDialogue.Init();
+
+            return playerDialogue;
         }
     }
 
@@ -110,9 +124,13 @@ public class DialogueManager : MonoBehaviour
             {
                 bubbleL.SetDieTrigger();
             }
-            else if (dialogueR.activeSelf)
+            if (dialogueR.activeSelf)
             {
                 bubbleR.SetDieTrigger();
+            }
+            if (playerDialogueUI.activeSelf)
+            {
+                playerDialogue.Die();
             }
             PlayerInput.instance.SetInputMode(InputMode.normal);
             return;
@@ -135,4 +153,18 @@ public class DialogueManager : MonoBehaviour
 
         PrintDialogue();
     }
+}
+
+public class Dialogue
+{
+    public Sprite face;
+    public string name;
+    public string content;
+    public float interval;
+}
+
+public class DialogueCollection
+{
+    public List<Dialogue> dialogues = new List<Dialogue>();
+    public bool isRead = false;
 }

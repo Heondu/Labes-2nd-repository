@@ -3,12 +3,18 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour
 {
     private Animator animator;
-    private Vector3 flipRight = new Vector3(-1, 1, 1);
-    private Vector3 flipLeft = new Vector3(1, 1, 1);
+    private Vector3 flipRight;
+    private Vector3 flipLeft;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        flipRight = new Vector3(-Mathf.Abs(transform.localScale.x), Mathf.Abs(transform.localScale.y), Mathf.Abs(transform.localScale.z));
+        flipLeft = new Vector3(Mathf.Abs(transform.localScale.x), Mathf.Abs(transform.localScale.y), Mathf.Abs(transform.localScale.z));
     }
 
     public void Movement(Vector3 axis)

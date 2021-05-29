@@ -66,10 +66,14 @@ public class RegenMonster : MonoBehaviour
                 Enemy enemy = clone.GetComponent<Enemy>();
                 if (enemy != null)
                 {
-                    enemy.Init(actionOnDeath);
+                    int eliteRand = Random.Range(0, 100);
+                    if (eliteRand < regenArea.eliteProb)
+                        enemy.Init(actionOnDeath, true);
+                    else
+                        enemy.Init(actionOnDeath, false);
                     clone.GetComponent<EnemyController>().SetPos();
 
-                    if (enemy.monster["class"].ToString() == "pawn")
+                    if (enemy.monster["class"].ToString() == "pawn" && eliteRand >= regenArea.eliteProb)
                         UIMonsterHP.instance.InitMonsterHPBar(enemy);
                     else
                         UIMonsterHP.instance.InitBossHPBar(enemy);

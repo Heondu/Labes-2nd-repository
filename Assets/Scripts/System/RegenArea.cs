@@ -10,6 +10,8 @@ public class RegenArea : MonoBehaviour
 
     public GameObject[] monsters;
     public int[] prob;
+    [Range(0, 100)]
+    public int eliteProb;
 
     private void OnDrawGizmosSelected()
     {

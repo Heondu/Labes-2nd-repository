@@ -27,6 +27,8 @@ public class Enemy : MonoBehaviour, ILivingEntity
 
     private Player player;
 
+    private string classType;
+
     private void Awake()
     {
         movement = GetComponent<Movement>();
@@ -88,10 +90,11 @@ public class Enemy : MonoBehaviour, ILivingEntity
         }
     }
 
-    public void Init(UnityAction action)
+    public void Init(UnityAction action, bool isElite)
     {
         monster = DataManager.monster.FindDic("name", id);
         monlvl = DataManager.monlvl.FindDic("Level", monster["monlvl"]);
+        classType = monster["class"].ToString();
         status.level = (int)monster["monlvl"];
         status.maxHP = 50;
         status.HP = status.maxHP;
@@ -103,11 +106,26 @@ public class Enemy : MonoBehaviour, ILivingEntity
         enemyAttack.SkillInit(monster);
         delay = float.Parse(monster["delay"].ToString());
 
+        if (isElite) EliteMode();
+
         if (action != null)
         {
             onDeath.AddListener(action);
             killCount = action;
         }
+    }
+
+    private void EliteMode()
+    {
+        classType = "elite";
+        status.maxHP *= 2;
+        status.HP = status.maxHP;
+        status.strength.AddModifier(new StatusModifier(2, StatusModType.PercentMult));
+        status.agility.AddModifier(new StatusModifier(2, StatusModType.PercentMult));
+        status.intelligence.AddModifier(new StatusModifier(2, StatusModType.PercentMult));
+        status.endurance.AddModifier(new StatusModifier(2, StatusModType.PercentMult));
+        status.CalculateDerivedStatus();
+        transform.localScale *= 1.5f;
     }
 
     public void TakeDamage(float _value, DamageType damageType, Vector3 hitDir)
@@ -141,7 +159,7 @@ public class Enemy : MonoBehaviour, ILivingEntity
         if (status.HP == 0)
         {
             FindObjectOfType<Player>().status.exp += (int)monlvl["monexp"];
-            ItemGenerator.instance.DropItem(monlvl, monster["class"].ToString(), transform.position);
+            ItemGenerator.instance.DropItem(monlvl, classType, transform.position);
             this.hitDir = hitDir;
             collider2D.enabled = false;
             animationController.Enable(false);

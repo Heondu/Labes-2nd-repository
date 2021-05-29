@@ -53,7 +53,14 @@ public class Minimap : MonoBehaviour
 
         if (autoSize)
         {
-            size = transform.localScale;
+            if (transform.parent != null)
+            {
+                size = new Vector3(transform.localScale.x * transform.root.localScale.x, transform.localScale.y * transform.root.localScale.y);
+            }
+            else
+            {
+                size = transform.localScale;
+            }
         }
         else if (usePrefabSize)
         {

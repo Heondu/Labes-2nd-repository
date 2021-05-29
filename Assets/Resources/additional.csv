@@ -47,9 +47,9 @@ str09,Mighty,1,all,,strength%,19,8,12,42000
 str10,Savage,1,all,,strength%,21,12,17,67000
 str11,Merciless,1,all,,strength%,25,17,24,100000
 ,,,,,,,,,
-reg01,Crystal,1,acc,,allResist,10,5,10,
-reg02,Crystal,1,acc,,allResist,17,10,15,
-reg03,Crystal,1,acc,,allResist,23,15,20,
+reg01,Crystal,1,acc,,allResist,10,5,10,100
+reg02,Crystal,1,acc,,allResist,17,10,15,500
+reg03,Crystal,1,acc,,allResist,23,15,20,1500
 ,,,,,,,,,
 freg01,Red,1,armor,acc,fireResist,2,5,8,100
 freg02,Crimson,1,armor,acc,fireResist,4,8,13,500

@@ -40,4 +40,9 @@ public class Sorter : MonoBehaviour
     //    Camera.main.transparencySortMode = transparencySortMode;
     //    Camera.main.transparencySortAxis = sort;
     //}
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y + offset, 0), 0.1f);
+    }
 }

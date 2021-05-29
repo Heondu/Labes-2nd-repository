@@ -12,17 +12,13 @@ public class NPC : MonoBehaviour
     private List<Quest> questList = new List<Quest>();
     [SerializeField]
     private List<Quest> newQuests = new List<Quest>();
-    [SerializeField]
-    private List<Quest> currentQuests = new List<Quest>();
 
     private Player player;
-    private PlayerQuest playerQuest;
     private PlayerItem playerItem;
 
     private void Start()
     {
         player = FindObjectOfType<Player>();
-        playerQuest = player.GetComponent<PlayerQuest>();
         playerItem = player.GetComponent<PlayerItem>();
         player.onLevelUp.AddListener(QuestEventActive);
 
@@ -33,26 +29,22 @@ public class NPC : MonoBehaviour
 
     public void ShowDialogue()
     {
-        if (currentQuests.Count > 0)
-        {
-            for (int i = 0; i < currentQuests.Count; i++)
-            {
-                if (currentQuests[i].state == QuestState.Complete)
-                {
-                    Debug.Log($"{currentQuests[i].name}");
-                    currentQuests.RemoveAt(i);
-                    PlayerInput.instance.SetInputMode(InputMode.normal);
-                    return;
-                }
-            }
+        //for (int i = 0; i < QuestManager.instance.playerQuestList.Count; i++)
+        //{
+        //    if (QuestManager.instance.playerQuestList[i].quest.state == QuestState.Complete)
+        //    {
+        //        Debug.Log($"{QuestManager.instance.playerQuestList[i].quest.name} CPMPLETE!!");
+        //        QuestManager.instance.playerQuestList.RemoveAt(i);
+        //        PlayerInput.instance.SetInputMode(InputMode.normal);
+        //        return;
+        //    }
+        //}
 
-        }
         if (newQuests.Count > 0)
         {
-            Debug.Log($"{newQuests[0].name} COMPLETE!!");
+            Debug.Log($"{newQuests[0].name}");
             newQuests[0].state = QuestState.Progress;
-            currentQuests.Add(newQuests[0]);
-            playerQuest.AddQuest(newQuests[0]);
+            QuestManager.instance.AddPlayerQuest(newQuests[0]);
             newQuests.RemoveAt(0);
 
             PlayerInput.instance.SetInputMode(InputMode.normal);
@@ -65,9 +57,11 @@ public class NPC : MonoBehaviour
 
     private void QuestEventActive()
     {
+        newQuests.Clear();
+
         for (int i = 0; i < questList.Count; i++)
         {
-            if (questList[i].minlvl <= player.status.level)
+            if (questList[i].minlvl <= player.status.level && questList[i].maxlvl >= player.status.level)
             {
                 if (QuestManager.instance.GetQuestState(questList[i].name) == QuestState.NotProgress)
                 {
@@ -80,5 +74,21 @@ public class NPC : MonoBehaviour
                 }
             }
         }
+
+        newQuests.Sort(delegate (Quest a, Quest b)
+        {
+            if (a.minlvl < b.minlvl)
+            {
+                return -1;
+            }
+            else if (a.minlvl > b.minlvl)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        });
     }
 }

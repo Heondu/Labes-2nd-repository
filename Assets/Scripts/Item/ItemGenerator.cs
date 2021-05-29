@@ -14,6 +14,10 @@ public class ItemGenerator : MonoBehaviour
     private GameObject itemPrefab;
     [SerializeField]
     private GameObject goldPrefab;
+    [SerializeField]
+    private GameObject orePrefab;
+    [SerializeField]
+    private GameObject leafPrefab;
     private Transform itemHolder;
 
     private void Awake()
@@ -76,21 +80,21 @@ public class ItemGenerator : MonoBehaviour
 
     private void DropEquipItem(int rarityMin, int rarityMax, string classType, Vector3 pos)
     {
-        Filtering(rarityMin, rarityMax, DataManager.itemEquipmentDB);
+        Filtering(rarityMin, rarityMax, "allEquipment");
         RandomRarity(classType);
         ItemInit();
         Additional();
-        GameObject clone = ObjectPooler.instance.ObjectPool(itemHolder, itemPrefab, pos);//Instantiate(itemPrefab, pos, Quaternion.identity);
+        GameObject clone = ObjectPooler.instance.ObjectPool(itemHolder, itemPrefab, pos);
         clone.GetComponent<ItemScript>().Init(item);
     }
 
     private void DropConsumeItem(int rarityMin, int rarityMax, Vector3 pos)
     {
-        Filtering(rarityMin, rarityMax, DataManager.itemConsumeDB);
+        Filtering(rarityMin, rarityMax, "consume");
         if (itemList.Count == 0) return;
         item = itemList[Random.Range(0, itemList.Count)];
         GameObject clone = Resources.Load<GameObject>("Prefabs/Items/" + item.name);
-        clone = ObjectPooler.instance.ObjectPool(itemHolder, clone, pos);//Instantiate(clone, pos, Quaternion.identity);
+        clone = ObjectPooler.instance.ObjectPool(itemHolder, clone, pos);
         clone.GetComponent<ItemScript>().Init(item);
     }
 
@@ -106,36 +110,111 @@ public class ItemGenerator : MonoBehaviour
 
         if (gold1000 != 0)
         {
-            GameObject clone = ObjectPooler.instance.ObjectPool(itemHolder, goldPrefab, pos);//Instantiate(goldPrefab, pos, Quaternion.identity);
-            clone.GetComponent<Gold>().SetGold(gold1000);
-            clone.GetComponent<Gold>().Diffusion(10);
+            GameObject clone = ObjectPooler.instance.ObjectPool(itemHolder, goldPrefab, pos);
+            Gold g = clone.GetComponent<Gold>();
+            g.SetGold(gold1000);
+            g.Diffusion(10);
         }
         if (gold100 != 0)
         {
             GameObject clone = ObjectPooler.instance.ObjectPool(itemHolder, goldPrefab, pos);
-            clone.GetComponent<Gold>().SetGold(gold100);
-            clone.GetComponent<Gold>().Diffusion(5);
+            Gold g = clone.GetComponent<Gold>();
+            g.SetGold(gold100);
+            g.Diffusion(5);
         }
         if (gold10 != 0)
         {
             GameObject clone = ObjectPooler.instance.ObjectPool(itemHolder, goldPrefab, pos);
-            clone.GetComponent<Gold>().SetGold(gold10);
-            clone.GetComponent<Gold>().Diffusion(1);
+            Gold g = clone.GetComponent<Gold>();
+            g.SetGold(gold10);
+            g.Diffusion(1);
         }
     }
 
-    private void Filtering(int rarityMin, int rarityMax, Dictionary<string, Item> itemDB)
+    public void DropOre(int amount, Vector3 pos)
     {
-        itemList.Clear();
-        foreach(string key in itemDB.Keys)
+        GameObject clone = ObjectPooler.instance.ObjectPool(itemHolder, orePrefab, pos);
+        Ore ore = clone.GetComponent<Ore>();
+        ore.SetAmount(amount);
+        ore.Diffusion(3);
+    }
+
+    public void DropLeaf(int amount, Vector3 pos)
+    {
+        GameObject clone = ObjectPooler.instance.ObjectPool(itemHolder, leafPrefab, pos);
+        Leaf leaf = clone.GetComponent<Leaf>();
+        leaf.SetAmount(amount);
+        leaf.Diffusion(3);
+    }
+
+    private Dictionary<string, Item> FindItemDB(string type)
+    {
+        Dictionary<string, Item> itemDB = new Dictionary<string, Item>();
+
+        if (type == "allEquipment")
         {
-            if (rarityMin <= itemDB[key].rarity && rarityMax >= itemDB[key].rarity)
+            foreach (string key in DataManager.itemWeaponDB.Keys)
             {
-                Item item = new Item();
-                item.DeepCopy(itemDB[key]);
-                itemList.Add(item);
+                itemDB.Add(key, DataManager.itemWeaponDB[key]);
+            }
+            foreach (string key in DataManager.itemArmorDB.Keys)
+            {
+                itemDB.Add(key, DataManager.itemArmorDB[key]);
+            }
+            foreach (string key in DataManager.itemAccessoriesDB.Keys)
+            {
+                itemDB.Add(key, DataManager.itemAccessoriesDB[key]);
             }
         }
+        else if (type == "weapon")
+        {
+            itemDB = DataManager.itemWeaponDB;
+        }
+        else if (type == "armor")
+        {
+            itemDB = DataManager.itemArmorDB;
+        }
+        else if (type == "accessories")
+        {
+            itemDB = DataManager.itemAccessoriesDB;
+        }
+        else if (type == "consume")
+        {
+            itemDB = DataManager.itemConsumeDB;
+        }
+
+        return itemDB;
+    }
+
+    private void Filtering(int rarityMin, int rarityMax, string type)
+    {
+        itemList.Clear();
+
+        Dictionary<string, Item> itemDB = FindItemDB(type);
+
+        do
+        {
+            foreach (string key in itemDB.Keys)
+            {
+                if (rarityMin <= itemDB[key].rarity && rarityMax >= itemDB[key].rarity)
+                {
+                    Item item = new Item();
+                    item.DeepCopy(itemDB[key]);
+                    itemList.Add(item);
+                }
+            }
+
+            if (itemList.Count == 0 && rarityMin == 1)
+            {
+                Debug.LogError("레어리티에 해당하는 아이템 없음");
+                break;
+            }
+            else if (itemList.Count == 0)
+            {
+                rarityMin = Mathf.Max(1, rarityMin - 1);
+            }
+
+        } while (itemList.Count == 0);
     }
 
     private void RandomRarity(string classType)
@@ -180,5 +259,16 @@ public class ItemGenerator : MonoBehaviour
         {
             ItemAdditional.Additional(item, rarityAll);
         }
+    }
+
+    public Item GenerateItem(string type, string rarityType)
+    {
+        rarityAddDic = DataManager.rarity.FindDic("Function", "rarityAdd");
+        int rarity = (int)rarityAddDic[rarityType];
+        this.rarityType = rarityType;
+        Filtering(Mathf.Max(1, rarity), Mathf.Max(1, rarity), type);
+        ItemInit();
+        Additional();
+        return item;
     }
 }

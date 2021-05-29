@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortingMethod: 1
+  offset: -1
 --- !u!1 &4108896518160684832
 GameObject:
   m_ObjectHideFlags: 0

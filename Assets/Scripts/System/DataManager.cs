@@ -24,7 +24,10 @@ public class DataManager : MonoBehaviour
     public static List<Dictionary<string, object>> dialogue = new List<Dictionary<string, object>>();
     public static List<Dictionary<string, object>> quest = new List<Dictionary<string, object>>();
 
-    public static Dictionary<string, Item> itemEquipmentDB = new Dictionary<string, Item>();
+    //public static Dictionary<string, Item> itemEquipmentDB = new Dictionary<string, Item>();
+    public static Dictionary<string, Item> itemWeaponDB = new Dictionary<string, Item>();
+    public static Dictionary<string, Item> itemArmorDB = new Dictionary<string, Item>();
+    public static Dictionary<string, Item> itemAccessoriesDB = new Dictionary<string, Item>();
     public static Dictionary<string, Item> itemConsumeDB = new Dictionary<string, Item>();
     public static Dictionary<string, Skill> skillDB = new Dictionary<string, Skill>();
 
@@ -65,7 +68,7 @@ public class DataManager : MonoBehaviour
             if (list == weapon || list == armor || list == accessories)
             {
                 string name = list[i]["name"].ToString();
-                itemEquipmentDB[name] = new Item
+                Item item = new Item
                 {
                     name = name,
                     spawnable = (int)list[i]["spawnable"],
@@ -79,6 +82,10 @@ public class DataManager : MonoBehaviour
                     itemImage = list[i]["itemImage"].ToString(),
                     inventoryImage = list[i]["inventoryImage"].ToString()
                 };
+
+                if (list == weapon) itemWeaponDB[name] = item;
+                else if (list == armor) itemArmorDB[name] = item;
+                else if (list == accessories) itemAccessoriesDB[name] = item;
             }
             else if (list == item)
             {

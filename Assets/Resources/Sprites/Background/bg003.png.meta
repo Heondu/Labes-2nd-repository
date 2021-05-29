@@ -44,6 +44,7 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -75,9 +76,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -126,7 +130,7 @@ TextureImporter:
         x: 205
         y: 720
         width: 125
-        height: 55
+        height: 50
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,7 +192,7 @@ TextureImporter:
         serializedVersion: 2
         x: 205
         y: 525
-        width: 120
+        width: 90
         height: 70
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -208,9 +212,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 190
-        y: 419
+        y: 420
         width: 120
-        height: 70
+        height: 55
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,7 +234,7 @@ TextureImporter:
         serializedVersion: 2
         x: 195
         y: 315
-        width: 120
+        width: 90
         height: 70
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

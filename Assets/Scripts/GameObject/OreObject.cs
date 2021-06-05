@@ -11,25 +11,13 @@ public class OreObject : MonoBehaviour, ILivingEntity
         status.HP = status.maxHP;
     }
 
-    public void TakeDamage(float _value, DamageType damageType, Vector3 hitDir)
+    public void TakeDamage(DamageData damageData)
     {
-        int value = Mathf.RoundToInt(_value);
+        int value = 1;
 
-        if (damageType == DamageType.miss) FloatingDamageManager.instance.FloatingDamage(gameObject, "Miss", transform.position, damageType);
-        else FloatingDamageManager.instance.FloatingDamage(gameObject, value.ToString(), transform.position, damageType);
+        FloatingDamageManager.instance.FloatingDamage(gameObject, value.ToString(), transform.position, DamageType.normal);
 
-        if (damageType == DamageType.normal)
-        {
-            status.HP = Mathf.Max(0, status.HP - value);
-        }
-        else if (damageType == DamageType.critical)
-        {
-            status.HP = Mathf.Max(0, status.HP - value);
-        }
-        else if (damageType == DamageType.heal)
-        {
-            status.HP = Mathf.Min(status.HP + value, status.maxHP);
-        }
+        status.HP = Mathf.Max(0, status.HP - value);
 
         if (status.HP == 0)
         {

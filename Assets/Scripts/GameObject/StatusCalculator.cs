@@ -1,36 +1,80 @@
 ﻿using UnityEngine;
 
+public struct DamageData
+{
+    public GameObject executor;
+    public float value;
+    public DamageType damageType;
+    public Vector3 skillDir;
+
+    public DamageData(GameObject executor, float value, DamageType damageType, Vector3 skillDir)
+    {
+        this.executor = executor;
+        this.value = value;
+        this.damageType = damageType;
+        this.skillDir = skillDir;
+    }
+}
+
+public struct HitData
+{
+    public GameObject executorObj;
+    public IStatus executor;
+    public ILivingEntity target;
+    public Skill skill;
+    public StatusList status;
+    public StatusList relatedStatus;
+    public Vector3 skillDir;
+
+    public HitData(GameObject executorObj, IStatus executor, ILivingEntity target, Skill skill, StatusList status, StatusList relatedStatus, Vector3 skillDir)
+    {
+        this.executorObj = executorObj;
+        this.executor = executor;
+        this.target = target;
+        this.skill = skill;
+        this.status = status;
+        this.relatedStatus = relatedStatus;
+        this.skillDir = skillDir;
+    }
+}
+
 public class StatusCalculator : MonoBehaviour
 {
-    public static void CalcSkillStatus(IStatus executor, ILivingEntity target, Skill skill, StatusList _status, StatusList _relatedStatus, Vector3 skillDir)
+    public static void CalcSkillStatus(HitData hitData)
     {
         float value;
-        Status relatedStatus = executor.GetStatus(_relatedStatus);
-        Status status = target.GetStatus(_status);
-        if (_relatedStatus == StatusList.none) value = skill.amount;
-        else value = Mathf.RoundToInt(relatedStatus.Value * ((float)skill.amount / 100));
+        Status relatedStatus = hitData.executor.GetStatus(hitData.relatedStatus);
+        Status status = hitData.target.GetStatus(hitData.status);
+        if (hitData.relatedStatus == StatusList.none) value = hitData.skill.amount;
+        else value = Mathf.RoundToInt(relatedStatus.Value * ((float)hitData.skill.amount / 100));
         
-        if (skill.isPositive == 1)
+        if (hitData.skill.isPositive == 1)
         {
-            if (_status == StatusList.HP) target.TakeDamage(value, DamageType.heal, skillDir);
-            else status.AddModifier(new StatusModifier(value, StatusModType.Flat, skill));
+            if (hitData.status == StatusList.HP) hitData.target.TakeDamage(new DamageData(hitData.executorObj, value, DamageType.heal, hitData.skillDir));
+            else status.AddModifier(new StatusModifier(value, StatusModType.Flat, hitData.skill));
         }
-        else if (skill.isPositive == 0)
+        else if (hitData.skill.isPositive == 0)
         {
-            if (_status == StatusList.HP)
+            if (hitData.status == StatusList.HP)
             {
-                bool isAvoid = IsAvoid(executor, target);
-                if (isAvoid) target.TakeDamage(value, DamageType.miss, skillDir);
+                bool isAvoid = IsAvoid(hitData.executor, hitData.target);
+                if (isAvoid) hitData.target.TakeDamage(new DamageData(hitData.executorObj, value, DamageType.miss, hitData.skillDir));
                 else
                 {
-                    value = relatedStatus.Value * skill.amount / (100 + target.GetStatus(StatusList.defence).Value);
+                    value = relatedStatus.Value * hitData.skill.amount / (100 + hitData.target.GetStatus(StatusList.defence).Value);
                     value = Random.Range(value - (float)value % 2, value + (float)value % 2);
                     value = Mathf.Max(1, value);
-                    if (Random.Range(0, 100) < executor.GetStatus(StatusList.critChance).Value) target.TakeDamage(value * 2, DamageType.critical, skillDir);
-                    else target.TakeDamage(value, DamageType.normal, skillDir);
+                    if (Random.Range(0, 100) < hitData.executor.GetStatus(StatusList.critChance).Value)
+                    {
+                        hitData.target.TakeDamage(new DamageData(hitData.executorObj, value * 2, DamageType.critical, hitData.skillDir));
+                    }
+                    else
+                    {
+                        hitData.target.TakeDamage(new DamageData(hitData.executorObj, value, DamageType.normal, hitData.skillDir));
+                    }
                 }
             }
-            else status.AddModifier(new StatusModifier(-value, StatusModType.Flat, skill));
+            else status.AddModifier(new StatusModifier(-value, StatusModType.Flat, hitData.skill));
         }
     }
 

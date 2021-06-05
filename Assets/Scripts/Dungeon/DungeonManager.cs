@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum DungeonType { Forest, Snow, castle }
 
@@ -20,15 +19,29 @@ public class DungeonManager : MonoBehaviour
 
     private Player player;
 
+    [SerializeField]
+    private bool respawnToMainSceneAtDeath = true;
+
     private void Start()
     {
         player = FindObjectOfType<Player>();
-
+        player.onDeath.AddListener(OnPlayerDeath);
         player.transform.position = startingPos;
     }
 
     public DungeonType GetDungeonType()
     {
         return dungeonType;
+    }
+
+    private void OnPlayerDeath()
+    {
+        if (respawnToMainSceneAtDeath == false) return;
+        if (SceneManager.GetActiveScene().name != SceneData.instance.dungeon01) return;
+
+
+        player.status.HP = player.status.maxHP;
+        player.transform.position = Vector3.zero;
+        LoadingSceneManager.LoadScene(SceneData.instance.mainScene);
     }
 }

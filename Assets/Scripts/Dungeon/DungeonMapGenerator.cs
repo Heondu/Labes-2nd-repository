@@ -15,11 +15,11 @@ public class DungeonMapGenerator : MonoBehaviour
     [SerializeField]
     private SpriteRenderer obstacleRight;
 
+    [SerializeField]
     private DungeonManager dungeonManager;
 
     private void Awake()
     {
-        dungeonManager = FindObjectOfType<DungeonManager>();
         int index = (int)dungeonManager.GetDungeonType();
 
         background.sprite = dungeonManager.background[index];

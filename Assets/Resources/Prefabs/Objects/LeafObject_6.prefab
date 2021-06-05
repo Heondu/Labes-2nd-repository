@@ -139,7 +139,7 @@ MonoBehaviour:
   status:
     level: 0
     HP: 0
-    maxHP: 600
+    maxHP: 60
     strength:
       BaseValue: 0
     agility:

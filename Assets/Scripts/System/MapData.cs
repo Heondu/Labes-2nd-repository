@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MapData : MonoBehaviour
@@ -17,6 +15,9 @@ public class MapData : MonoBehaviour
     [SerializeField]
     private bool autoAssignMapData = true;
 
+    private float width;
+    private float height;
+
     private void Start()
     {
         if (autoSize)
@@ -26,6 +27,33 @@ public class MapData : MonoBehaviour
             position = transform.position;
 
         if (autoAssignMapData)
-            LazyCamera.instance.SetupMapData(this);
+            LazyCamera.instance.SetMapData(this);
+
+        height = 2 * Camera.main.orthographicSize;
+        width = height * Camera.main.aspect;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            LazyCamera.instance.SetMapData(this);
+            collision.GetComponent<Player>().SetMapData(this);
+        }
+        else if (collision.CompareTag("Enemy"))
+        {
+            collision.GetComponent<Enemy>().SetMapData(this);
+        }
+    }
+
+    public void ClampPos(Transform target)
+    {
+        float limitX = size.x / 2;
+        float limitY = size.y / 2;
+
+        float x = Mathf.Clamp(target.position.x, -limitX + position.x, limitX + position.x);
+        float y = Mathf.Clamp(target.position.y, -limitY + position.y, limitY + position.y);
+
+        target.position = new Vector3(x, y, target.position.z);
     }
 }

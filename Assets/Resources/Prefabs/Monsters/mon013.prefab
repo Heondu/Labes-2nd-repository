@@ -2224,6 +2224,9 @@ GameObject:
   - component: {fileID: 9197519893861554747}
   - component: {fileID: -1214520640591500544}
   - component: {fileID: -1250690988781137185}
+  - component: {fileID: 6191025487030932324}
+  - component: {fileID: 1323756636124944217}
+  - component: {fileID: 243547687700323322}
   m_Layer: 8
   m_Name: mon013
   m_TagString: Enemy
@@ -2257,7 +2260,7 @@ Animator:
   m_GameObject: {fileID: 9049296843968947978}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 44e72b41fca3ed24cbc82597ee562a2a, type: 2}
+  m_Controller: {fileID: 22100000, guid: e8c15d178a177ac47a7d49581fb12ff7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2308,7 +2311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cac72a2aa7b8c43a4729f0246fb770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
+  id: mon013
   status:
     level: 0
     HP: 0
@@ -2360,6 +2363,10 @@ MonoBehaviour:
     reduceCool:
       BaseValue: 0
   moveSpeed: 3
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  hitDir: {x: 0, y: 0, z: 0}
 --- !u!114 &-6914313964836223426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2372,6 +2379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418f8af70be4f5c4995b0267994e38a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySwarmController: {fileID: 0}
   isSwarmAttack: 0
 --- !u!114 &-7004457458432372127
 MonoBehaviour:
@@ -2436,6 +2444,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whiteMat: {fileID: 2100000, guid: 870e4222ddfe8f64fa4b25823d4219d7, type: 2}
+--- !u!114 &6191025487030932324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9049296843968947978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5444c803ab6a82c46b6295da3bc08209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingMethod: 2
+  offset: 0
+--- !u!114 &1323756636124944217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9049296843968947978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b69e1bf31e74d40b137a9c5538ae36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diffusivity: 10
+  minForce: 10
+  maxForce: 15
+  floatTime: 2
+  waitTime: 5
+  minimapIcon: {fileID: 0}
+  Shadow: {fileID: 0}
+--- !u!114 &243547687700323322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9049296843968947978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dfdd2703741207428db837594953889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimapIconPrefab: {fileID: 4217496461655209223, guid: 43b53cd4383f5d241a83d9061c2bf957,
+    type: 3}
+  size: {x: 0, y: 0}
+  offset: {x: 0, y: 0}
+  autoSize: 0
+  usePrefabSize: 1
+  sortZ: 0
 --- !u!1 &9057358672436722163
 GameObject:
   m_ObjectHideFlags: 0

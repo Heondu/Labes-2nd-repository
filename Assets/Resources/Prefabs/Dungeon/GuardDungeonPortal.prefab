@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: GuardDungeon
+  destroyPortalAtCollision: 1
 --- !u!114 &863225100340579258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,6 +79,7 @@ MonoBehaviour:
   minimapIconPrefab: {fileID: 6179316766600379647, guid: c77319ea31af3db4baf57c92f883dd45,
     type: 3}
   size: {x: 0, y: 0}
+  offset: {x: 0, y: 0}
   autoSize: 0
   usePrefabSize: 1
   sortZ: 0

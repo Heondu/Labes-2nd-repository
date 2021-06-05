@@ -1,8 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(EnemyController))]
+[RequireComponent(typeof(EnemyAttack))]
+[RequireComponent(typeof(PathFinder))]
+[RequireComponent(typeof(Movement))]
+[RequireComponent(typeof(AnimationController))]
+[RequireComponent(typeof(LimbSeparator))]
+[RequireComponent(typeof(Flash))]
+[RequireComponent(typeof(Sorter))]
+[RequireComponent(typeof(Minimap))]
 public class Enemy : MonoBehaviour, ILivingEntity
 {
     [SerializeField]
@@ -20,6 +28,7 @@ public class Enemy : MonoBehaviour, ILivingEntity
     private float hitTime = 0.5f;
     [SerializeField]
     private float moveSpeed;
+    private MapData mapData;
 
     public UnityEvent onDeath = new UnityEvent();
     private UnityAction killCount = null;
@@ -58,18 +67,18 @@ public class Enemy : MonoBehaviour, ILivingEntity
         switch (enemyController.GetState())
         {
             case EnemyState.STATE_PATROL:
-                movement.Execute(enemyController.GetAxis(), moveSpeed);
+                movement.Execute(enemyController.GetAxis(), moveSpeed, mapData);
                 animationController.Movement(enemyController.GetAxis());
                 break;
             case EnemyState.STATE_CHASE:
-                movement.Execute(enemyController.GetAxis(), moveSpeed);
+                movement.Execute(enemyController.GetAxis(), moveSpeed, mapData);
                 animationController.Movement(enemyController.GetAxis());
                 break;
             case EnemyState.STATE_ATTACK:
                 Attack();
                 break;
             case EnemyState.STATE_COMEBACK:
-                movement.Execute(enemyController.GetAxis(), moveSpeed);
+                movement.Execute(enemyController.GetAxis(), moveSpeed, mapData);
                 animationController.Movement(enemyController.GetAxis());
                 break;
         }
@@ -85,7 +94,7 @@ public class Enemy : MonoBehaviour, ILivingEntity
         }
         else
         {
-            movement.Execute(enemyController.GetAxis(), moveSpeed);
+            movement.Execute(enemyController.GetAxis(), moveSpeed, mapData);
             animationController.Movement(enemyController.GetAxis());
         }
     }
@@ -128,39 +137,39 @@ public class Enemy : MonoBehaviour, ILivingEntity
         transform.localScale *= 1.5f;
     }
 
-    public void TakeDamage(float _value, DamageType damageType, Vector3 hitDir)
+    public void TakeDamage(DamageData damageData)
     {
         enemyController.enemySwarmController.onSwarmAttackActive.Invoke();
 
-        int value = Mathf.RoundToInt(_value);
+        int value = Mathf.RoundToInt(damageData.value);
 
-        if (damageType == DamageType.miss)
+        if (damageData.damageType == DamageType.miss)
         {
-            FloatingDamageManager.instance.FloatingDamage(gameObject, "Miss", transform.position, damageType);
+            FloatingDamageManager.instance.FloatingDamage(gameObject, "Miss", transform.position, damageData.damageType);
             StartCoroutine(flash.Execute());
         }
         else
         {
-            FloatingDamageManager.instance.FloatingDamage(gameObject, value.ToString(), transform.position, damageType);
+            FloatingDamageManager.instance.FloatingDamage(gameObject, value.ToString(), transform.position, damageData.damageType);
         }
 
-        if (damageType == DamageType.normal || damageType == DamageType.critical)
+        if (damageData.damageType == DamageType.normal || damageData.damageType == DamageType.critical)
         {
             status.HP = Mathf.Max(0, status.HP - value);
             StartCoroutine(flash.Execute());
             StartCoroutine(enemyController.Stop(hitTime));
-            if (damageType == DamageType.critical)
+            if (damageData.damageType == DamageType.critical)
             {
                 StartCoroutine(ShakeCamera.instance.Shake(0.05f, 0.3f));
             }
         }
-        else if (damageType == DamageType.heal) status.HP = Mathf.Min(status.HP + value, status.maxHP);
+        else if (damageData.damageType == DamageType.heal) status.HP = Mathf.Min(status.HP + value, status.maxHP);
 
         if (status.HP == 0)
         {
             FindObjectOfType<Player>().status.exp += (int)monlvl["monexp"];
             ItemGenerator.instance.DropItem(monlvl, classType, transform.position);
-            this.hitDir = hitDir;
+            hitDir = damageData.skillDir;
             collider2D.enabled = false;
             animationController.Enable(false);
             player.onKillMonster.Invoke(id);
@@ -186,5 +195,10 @@ public class Enemy : MonoBehaviour, ILivingEntity
     public Transform GetTarget()
     {
         return enemyController.GetTarget();
+    }
+
+    public void SetMapData(MapData mapData)
+    {
+        this.mapData = mapData;
     }
 }

@@ -3,6 +3,7 @@
 public class RegenArea : MonoBehaviour
 {
     public int maxRegenNum;
+    public int maxEnemySwarmNum;
 
     public Vector2 area = Vector2.zero;
 
@@ -12,6 +13,17 @@ public class RegenArea : MonoBehaviour
     public int[] prob;
     [Range(0, 100)]
     public int eliteProb;
+
+    [SerializeField]
+    private RegenManager regenManager;
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            regenManager.regens[0] = this;
+        }
+    }
 
     private void OnDrawGizmosSelected()
     {

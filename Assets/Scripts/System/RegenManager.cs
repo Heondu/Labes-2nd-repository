@@ -7,7 +7,7 @@ public class RegenManager : MonoBehaviour
     [SerializeField]
     private float regenTime = 10;
 
-    private RegenArea[] regens;
+    public RegenArea[] regens = new RegenArea[1];
 
     [SerializeField]
     private Transform target;
@@ -21,8 +21,6 @@ public class RegenManager : MonoBehaviour
 
     private void Start()
     {
-        regens = FindObjectsOfType<RegenArea>();
-
         StartCoroutine("Regen");
     }
 

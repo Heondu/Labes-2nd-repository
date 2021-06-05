@@ -6,7 +6,7 @@ public class NPC : MonoBehaviour
     [SerializeField]
     private string nameID;
     [SerializeField]
-    private string code;
+    private string[] codes;
 
     [SerializeField]
     private List<Quest> questList = new List<Quest>();
@@ -51,6 +51,7 @@ public class NPC : MonoBehaviour
         }
         else
         {
+            string code = codes[Random.Range(0, codes.Length)];
             DialogueManager.instance.StartDialogue(transform, code);
         }
     }

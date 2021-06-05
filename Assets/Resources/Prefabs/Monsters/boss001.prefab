@@ -1524,7 +1524,7 @@ Animator:
   m_GameObject: {fileID: 5040624318194217020}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 452a99c61d67b984ca98b6a435db7c60, type: 2}
+  m_Controller: {fileID: 22100000, guid: d4d6ac036dc77b94e9eba2e9a97f23cd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1762,6 +1762,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimapIconPrefab: {fileID: 5040624318194217020}
   size: {x: 0, y: 0}
+  offset: {x: 0, y: 0}
   autoSize: 0
   usePrefabSize: 1
   sortZ: 0

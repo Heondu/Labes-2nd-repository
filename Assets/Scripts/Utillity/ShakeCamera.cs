@@ -30,7 +30,6 @@ public class ShakeCamera : MonoBehaviour
 
         if (isShake == false)
         {
-            Debug.Log("A");
             isShake = true;
             float time = 0;
             while (time < duration)

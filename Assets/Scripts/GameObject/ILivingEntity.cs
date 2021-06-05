@@ -2,7 +2,7 @@
 
 public interface ILivingEntity
 {
-    void TakeDamage(float _value, DamageType damageType, Vector3 hitDir);
+    void TakeDamage(DamageData damageData);
 
     Status GetStatus(StatusList name);
 }

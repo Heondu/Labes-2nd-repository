@@ -8,8 +8,6 @@ public class Portal : MonoBehaviour
 
     [SerializeField]
     private Portal connectedPortal;
-    [SerializeField]
-    private MapData mapData;
 
     [SerializeField]
     private Vector3 spawnPos = Vector3.zero;
@@ -20,6 +18,7 @@ public class Portal : MonoBehaviour
     {
         if (collision.CompareTag("PortalCollider"))
         {
+            collision.GetComponentInParent<Player>().SetMapData(null);
             connectedPortal.Execute(collision.transform.parent);
         }
     }
@@ -35,6 +34,5 @@ public class Portal : MonoBehaviour
         }
 
         target.position = newPos;
-        LazyCamera.instance.SetupMapData(mapData);
     }
 }

@@ -8,6 +8,12 @@ public class SceneData : MonoBehaviour
 
     public string prevScene;
     public Vector3 prevScenePos { get; set; } = Vector3.zero;
+    public MapData mapdata;
+
+    public string mainScene = "MainScene";
+    public string guardDungeon = "GuardDungeon";
+    public string attackDungeon = "AttackDungeon";
+    public string dungeon01 = "Dungeon01";
 
     private void Awake()
     {

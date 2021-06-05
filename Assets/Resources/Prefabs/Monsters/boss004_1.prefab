@@ -353,6 +353,9 @@ GameObject:
   - component: {fileID: 2607873658046521311}
   - component: {fileID: -9038761238452400201}
   - component: {fileID: -2049059731110036800}
+  - component: {fileID: 9183284901096087820}
+  - component: {fileID: 1080253072808154754}
+  - component: {fileID: 8438470112242608597}
   m_Layer: 8
   m_Name: boss004_1
   m_TagString: Enemy
@@ -386,7 +389,7 @@ Animator:
   m_GameObject: {fileID: 827263721367170014}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 43996c97c41242a49890619ba515ce72, type: 2}
+  m_Controller: {fileID: 22100000, guid: 0eb63a76e9598d8429202f9fcbd8163b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -437,7 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cac72a2aa7b8c43a4729f0246fb770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
+  id: boss004_1
   status:
     level: 0
     HP: 0
@@ -489,6 +492,10 @@ MonoBehaviour:
     reduceCool:
       BaseValue: 0
   moveSpeed: 3
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  hitDir: {x: 0, y: 0, z: 0}
 --- !u!114 &1536646602696424713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,6 +508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418f8af70be4f5c4995b0267994e38a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySwarmController: {fileID: 0}
   isSwarmAttack: 0
 --- !u!114 &7122614038876082296
 MonoBehaviour:
@@ -565,6 +573,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whiteMat: {fileID: 2100000, guid: 870e4222ddfe8f64fa4b25823d4219d7, type: 2}
+--- !u!114 &9183284901096087820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827263721367170014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5444c803ab6a82c46b6295da3bc08209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingMethod: 2
+  offset: 0
+--- !u!114 &1080253072808154754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827263721367170014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b69e1bf31e74d40b137a9c5538ae36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diffusivity: 10
+  minForce: 10
+  maxForce: 15
+  floatTime: 2
+  waitTime: 5
+  minimapIcon: {fileID: 0}
+  Shadow: {fileID: 0}
+--- !u!114 &8438470112242608597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827263721367170014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dfdd2703741207428db837594953889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimapIconPrefab: {fileID: 6996884971781931056, guid: d7fa92e964d2bc64a9314d6e10e2e3fa,
+    type: 3}
+  size: {x: 0, y: 0}
+  offset: {x: 0, y: 0}
+  autoSize: 0
+  usePrefabSize: 1
+  sortZ: 0
 --- !u!1 &924167348052359690
 GameObject:
   m_ObjectHideFlags: 0

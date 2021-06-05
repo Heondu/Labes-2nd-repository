@@ -15,22 +15,24 @@ public class Tower : MonoBehaviour, ILivingEntity
         hpBar.Init(transform, status, "Å¸¿ö");
     }
 
-    public void TakeDamage(float _value, DamageType damageType, Vector3 hitDir)
+    public void TakeDamage(DamageData damageData)
     {
-        int value = Mathf.RoundToInt(_value);
+        if (damageData.executor.CompareTag("Player")) return;
 
-        if (damageType == DamageType.miss) FloatingDamageManager.instance.FloatingDamage(gameObject, "Miss", transform.position, damageType);
-        else FloatingDamageManager.instance.FloatingDamage(gameObject, value.ToString(), transform.position, damageType);
+        int value = Mathf.RoundToInt(damageData.value);
 
-        if (damageType == DamageType.normal)
+        if (damageData.damageType == DamageType.miss) FloatingDamageManager.instance.FloatingDamage(gameObject, "Miss", transform.position, damageData.damageType);
+        else FloatingDamageManager.instance.FloatingDamage(gameObject, value.ToString(), transform.position, damageData.damageType);
+
+        if (damageData.damageType == DamageType.normal)
         {
             status.HP = Mathf.Max(0, status.HP - value);
         }
-        else if (damageType == DamageType.critical)
+        else if (damageData.damageType == DamageType.critical)
         {
             status.HP = Mathf.Max(0, status.HP - value);
         }
-        else if (damageType == DamageType.heal)
+        else if (damageData.damageType == DamageType.heal)
         {
             status.HP = Mathf.Min(status.HP + value, status.maxHP);
         }

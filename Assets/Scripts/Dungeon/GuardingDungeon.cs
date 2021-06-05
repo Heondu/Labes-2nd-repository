@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GuardingDungeon : MonoBehaviour
 {
+    [SerializeField]
     private RegenManager regenManager;
+    [SerializeField]
     private Tower tower;
     private Player player;
 
@@ -22,16 +25,22 @@ public class GuardingDungeon : MonoBehaviour
 
     private int wave = 1;
 
+    private int originHP;
+
     private void Awake()
     {
-        regenManager = FindObjectOfType<RegenManager>();
-        tower = FindObjectOfType<Tower>();
         player = FindObjectOfType<Player>();
     }
 
     private void Start()
     {
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneData.instance.guardDungeon));
+
         regenManager.onRegen.AddListener(IncreaseWave);
+        player.onDeath.AddListener(OnPlayerDeath);
+
+        originHP = player.status.HP;
+        player.status.HP = player.status.maxHP;
     }
 
     private void Update()
@@ -48,13 +57,30 @@ public class GuardingDungeon : MonoBehaviour
 
         waveText.text = wave.ToString();
 
-        if (tower.status.HP == 0)// || player.status.HP == 0)
+        if (tower.status.HP == 0)
+        {
+            LoadScene();
+        }
+    }
+
+    private void OnPlayerDeath()
+    {
+        if (player.status.HP == 0)
         {
             if (loadSceneOnDeath == false) return;
 
-            player.transform.position = SceneData.instance.prevScenePos;
-            LoadingSceneManager.LoadScene(SceneData.instance.prevScene);
+            LoadScene();
         }
+    }
+
+    private void LoadScene()
+    {
+        player.status.HP = originHP;
+        player.transform.position = SceneData.instance.prevScenePos;
+        player.SetMapData(SceneData.instance.mapdata);
+        LazyCamera.instance.SetMapData(SceneData.instance.mapdata);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneData.instance.prevScene));
+        SceneManager.UnloadSceneAsync(SceneData.instance.guardDungeon);
     }
 
     private void IncreaseWave()

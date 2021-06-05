@@ -53,9 +53,14 @@ public class Minimap : MonoBehaviour
 
         if (autoSize)
         {
+            Minimap minimap = null;
             if (transform.parent != null)
             {
-                size = new Vector3(transform.localScale.x * transform.root.localScale.x, transform.localScale.y * transform.root.localScale.y);
+                minimap = transform.parent.GetComponentInParent<Minimap>();
+            }
+            if (minimap != null && minimap != this)
+            {
+                size = new Vector3(transform.localScale.x * minimap.transform.localScale.x, transform.localScale.y * minimap.transform.localScale.y);
             }
             else
             {

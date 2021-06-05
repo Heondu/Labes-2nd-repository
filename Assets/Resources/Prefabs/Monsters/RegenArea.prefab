@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1230910440618906166}
   - component: {fileID: 1230910440618906167}
   - component: {fileID: 1230910440618906165}
-  - component: {fileID: 1230910440618906164}
+  - component: {fileID: -950040502457999858}
   m_Layer: 0
   m_Name: RegenArea
   m_TagString: RegenArea
@@ -45,14 +45,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7569fa3746b2bb4285b93df1c9ac22e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {fileID: 1230910440618906166}
   maxRegenNum: 16
+  maxEnemySwarmNum: 0
+  area: {x: 0, y: 0}
+  autoArea: 1
   monsters:
   - {fileID: 8516751979043516140, guid: 57325cc810919964d921ab73d0ddef8b, type: 3}
   - {fileID: 3501001263473017367, guid: 1281815afa11c114282098976c33b31a, type: 3}
   - {fileID: 2374486982251094785, guid: e09a9509f0c9d4149838104f0035515c, type: 3}
   - {fileID: 5664032998845798469, guid: 4a24c9401b9f54d4ca0277b7db8a04e4, type: 3}
   prob: 01000000010000000100000001000000
+  eliteProb: 0
+  regenManager: {fileID: 0}
 --- !u!114 &1230910440618906165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,15 +69,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d17b814002840514aa998736fe081e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1230910440618906164
-MonoBehaviour:
+--- !u!61 &-950040502457999858
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230910440618906152}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ea6cd3c9c1e5c6439aad72611a2b5ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 40, y: 40}
+  m_EdgeRadius: 0

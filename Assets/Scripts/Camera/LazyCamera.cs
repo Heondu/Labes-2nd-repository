@@ -54,9 +54,14 @@ public class LazyCamera : MonoBehaviour
         }
     }
 
-    public void SetupMapData(MapData mapData)
+    public void SetMapData(MapData mapData)
     {
         this.mapData = mapData;
+    }
+
+    public MapData GetMapData()
+    {
+        return mapData;
     }
 
     private Vector3 GetClampedSizeOnScreen()

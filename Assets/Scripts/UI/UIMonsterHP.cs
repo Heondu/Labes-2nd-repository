@@ -21,8 +21,8 @@ public class UIMonsterHP : MonoBehaviour
         clone.GetComponent<UIMonsterHPViewer>().Init(enemy.transform, enemy.status);
     }
 
-    public void InitBossHPBar(Enemy enemy)
+    public void InitBossHPBar(Transform transform, EnemyStatus status, string id)
     {
-        bossHPBar.Init(enemy.transform, enemy.status, DataManager.Localization(enemy.GetID()));
+        bossHPBar.Init(transform, status, DataManager.Localization(id));
     }
 }

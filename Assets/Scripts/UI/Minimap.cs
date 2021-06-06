@@ -13,6 +13,8 @@ public class Minimap : MonoBehaviour
     [SerializeField]
     private bool usePrefabSize = false;
     [SerializeField]
+    private bool useColliderSize = false;
+    [SerializeField]
     private float sortZ;
     private GameObject minimapIcon;
 
@@ -70,6 +72,12 @@ public class Minimap : MonoBehaviour
         else if (usePrefabSize)
         {
             size = minimapIcon.transform.localScale;
+        }
+        else if (useColliderSize)
+        {
+            Bounds bounds = GetComponent<Collider2D>().bounds;
+            size = bounds.size;
+            offset = bounds.center - transform.position;
         }
 
         minimapIcon.transform.localScale = size;

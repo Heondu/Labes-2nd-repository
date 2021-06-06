@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: 13180df94a4846544b470089be49f666
+  - enabled: 1
+    path: Assets/Scenes/BossDungeon.unity
+    guid: e1728581f52beca42bd88491550ce048
   m_configObjects: {}

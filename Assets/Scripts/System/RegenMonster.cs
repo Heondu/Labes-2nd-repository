@@ -126,7 +126,7 @@ public class RegenMonster : MonoBehaviour
         if (enemy.monster["class"].ToString() == "pawn" && eliteRand >= regenArea.eliteProb)
             UIMonsterHP.instance.InitMonsterHPBar(enemy);
         else
-            UIMonsterHP.instance.InitBossHPBar(enemy);
+            UIMonsterHP.instance.InitBossHPBar(enemy.transform, enemy.status, enemy.GetID());
     }
 
     private bool IsExist(int index)

@@ -14,6 +14,7 @@ public class SceneData : MonoBehaviour
     public string guardDungeon = "GuardDungeon";
     public string attackDungeon = "AttackDungeon";
     public string dungeon01 = "Dungeon01";
+    public string bossDungeon = "BossDungeon";
 
     private void Awake()
     {

@@ -9,21 +9,28 @@ public class MapData : MonoBehaviour
     private Vector2 position = Vector2.zero;
     public Vector2 Position => position;
     [SerializeField]
-    private bool autoSize = true;
+    private bool useTransformSize;
     [SerializeField]
-    private bool autoPosition = true;
+    private bool useTransformPosition;
     [SerializeField]
-    private bool autoAssignMapData = true;
+    private bool useColliderSize;
+    [SerializeField]
+    private bool autoAssignMapData;
 
     private float width;
     private float height;
 
     private void Start()
     {
-        if (autoSize)
+        if (useTransformSize)
             size = transform.localScale;
-
-        if (autoPosition)
+        else if (useColliderSize)
+        {
+            Bounds bounds = GetComponent<Collider2D>().bounds;
+            size = bounds.size;
+            position = bounds.center;
+        }
+        else if (useTransformPosition)
             position = transform.position;
 
         if (autoAssignMapData)
@@ -42,7 +49,9 @@ public class MapData : MonoBehaviour
         }
         else if (collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<Enemy>().SetMapData(this);
+            Enemy enemy = collision.GetComponent<Enemy>();
+            if (enemy != null)
+                 enemy.SetMapData(this);
         }
     }
 

@@ -444,8 +444,9 @@ MonoBehaviour:
     type: 3}
   size: {x: 0, y: 0}
   offset: {x: 0, y: 0}
-  autoSize: 1
+  autoSize: 0
   usePrefabSize: 0
+  useColliderSize: 1
   sortZ: 0
 --- !u!61 &82888453
 BoxCollider2D:
@@ -573,8 +574,9 @@ MonoBehaviour:
     type: 3}
   size: {x: 0, y: 0}
   offset: {x: 0, y: 0}
-  autoSize: 1
+  autoSize: 0
   usePrefabSize: 0
+  useColliderSize: 1
   sortZ: 0
 --- !u!61 &182217774
 BoxCollider2D:
@@ -1137,8 +1139,9 @@ MonoBehaviour:
     type: 3}
   size: {x: 0, y: 0}
   offset: {x: 0, y: 0}
-  autoSize: 1
+  autoSize: 0
   usePrefabSize: 0
+  useColliderSize: 1
   sortZ: 0
 --- !u!61 &570801700
 BoxCollider2D:
@@ -1266,8 +1269,9 @@ MonoBehaviour:
     type: 3}
   size: {x: 0, y: 0}
   offset: {x: 0, y: 0}
-  autoSize: 1
+  autoSize: 0
   usePrefabSize: 0
+  useColliderSize: 1
   sortZ: 0
 --- !u!61 &598740148
 BoxCollider2D:
@@ -1381,8 +1385,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: {x: 0, y: 0}
   position: {x: 0, y: 0}
-  autoSize: 1
-  autoPosition: 1
+  useTransformSize: 0
+  useTransformPosition: 0
+  useColliderSize: 1
   autoAssignMapData: 1
 --- !u!212 &702668240
 SpriteRenderer:
@@ -1466,8 +1471,9 @@ MonoBehaviour:
     type: 3}
   size: {x: 0, y: 0}
   offset: {x: 0, y: 0}
-  autoSize: 1
+  autoSize: 0
   usePrefabSize: 0
+  useColliderSize: 1
   sortZ: 1
 --- !u!114 &702668243
 MonoBehaviour:
@@ -1737,8 +1743,9 @@ MonoBehaviour:
     type: 3}
   size: {x: 0, y: 0}
   offset: {x: 0, y: 0}
-  autoSize: 1
+  autoSize: 0
   usePrefabSize: 0
+  useColliderSize: 1
   sortZ: 0
 --- !u!61 &990046219
 BoxCollider2D:
@@ -2425,8 +2432,9 @@ MonoBehaviour:
     type: 3}
   size: {x: 0, y: 0}
   offset: {x: 0, y: 0}
-  autoSize: 1
+  autoSize: 0
   usePrefabSize: 0
+  useColliderSize: 1
   sortZ: 0
 --- !u!61 &1650533409
 BoxCollider2D:
@@ -2554,8 +2562,9 @@ MonoBehaviour:
     type: 3}
   size: {x: 0, y: 0}
   offset: {x: 0, y: 0}
-  autoSize: 1
+  autoSize: 0
   usePrefabSize: 0
+  useColliderSize: 1
   sortZ: 0
 --- !u!61 &1898094461
 BoxCollider2D:
@@ -2816,8 +2825,9 @@ MonoBehaviour:
     type: 3}
   size: {x: 0, y: 0}
   offset: {x: 0, y: 0}
-  autoSize: 1
+  autoSize: 0
   usePrefabSize: 0
+  useColliderSize: 1
   sortZ: 0
 --- !u!61 &1983794308
 BoxCollider2D:

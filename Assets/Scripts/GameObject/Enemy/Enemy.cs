@@ -88,7 +88,7 @@ public class Enemy : MonoBehaviour, ILivingEntity
     {
         if (enemyAttack.IsCool == false)
         {
-            enemyAttack.Execute(delay);
+            enemyAttack.Execute(delay, GetTarget(), status);
             animationController.Attack(enemyController.GetAttackDir());
             StartCoroutine(enemyController.Stop(1f));
         }

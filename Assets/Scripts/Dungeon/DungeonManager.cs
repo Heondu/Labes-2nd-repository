@@ -37,7 +37,8 @@ public class DungeonManager : MonoBehaviour
     private void OnPlayerDeath()
     {
         if (respawnToMainSceneAtDeath == false) return;
-        if (SceneManager.GetActiveScene().name != SceneData.instance.dungeon01) return;
+        if (SceneManager.GetActiveScene().name == SceneData.instance.attackDungeon) return;
+        if (SceneManager.GetActiveScene().name == SceneData.instance.guardDungeon) return;
 
 
         player.status.HP = player.status.maxHP;

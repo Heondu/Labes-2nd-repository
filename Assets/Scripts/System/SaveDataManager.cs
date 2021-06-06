@@ -20,9 +20,21 @@ public enum SaveFile
 
 public class SaveDataManager : MonoBehaviour
 {
-    private static SaveDataManager instance;
+    public static SaveDataManager instance;
 
-    public static Dictionary<SaveFile, string> saveFile = new Dictionary<SaveFile, string>(); 
+    public static Dictionary<SaveFile, string> saveFile = new Dictionary<SaveFile, string>();
+
+    [field: Header("Save")]
+    [field: SerializeField] public bool saveStatus { get; private set; }
+    [field: SerializeField] public bool saveItem { get; private set; }
+    [field: SerializeField] public bool saveSkill { get; private set; }
+    [field: SerializeField] public bool saveResource { get; private set; }
+
+    [field: Header("Load")]
+    [field: SerializeField] public bool loadStatus { get; private set; }
+    [field: SerializeField] public bool loadItem { get; private set; }
+    [field: SerializeField] public bool loadSkill { get; private set; }
+    [field: SerializeField] public bool loadResource { get; private set; }
 
     private void Awake()
     {

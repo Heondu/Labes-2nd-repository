@@ -9,10 +9,6 @@ public class Player : MonoBehaviour, ILivingEntity
     public UnityEvent onLevelUp = new UnityEvent();
     [SerializeField]
     private float moveSpeed;
-    [SerializeField]
-    private bool load = true;
-    [SerializeField]
-    private bool save = true;
     private MapData mapData;
 
     public UnityEvent<string> onKillMonster = new UnityEvent<string>();
@@ -98,17 +94,15 @@ public class Player : MonoBehaviour, ILivingEntity
         this.mapData = mapData;
     }
 
-    [ContextMenu("Save Status")]
     public void SaveStatus()
     {
-        if (save == false) return;
+        if (SaveDataManager.instance.saveStatus == false) return;
         JsonIO.SaveToJson(status, SaveDataManager.saveFile[SaveFile.PlayerStatus]);
     }
 
-    [ContextMenu("Load Status")]
     public void LoadStatus()
     {
-        if (load == false) return;
+        if (SaveDataManager.instance.loadStatus == false) return;
         status = JsonIO.LoadFromJson<PlayerStatus>(SaveDataManager.saveFile[SaveFile.PlayerStatus]);
     }
 }

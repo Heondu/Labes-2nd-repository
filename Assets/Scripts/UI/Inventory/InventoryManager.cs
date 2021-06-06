@@ -39,13 +39,6 @@ public class InventoryManager : MonoBehaviour
 
     public Notification notification;
 
-    public bool itemSave = false;
-    public bool itemLoad = false;
-    public bool skillSave = false;
-    public bool skillLoad = false;
-    public bool resourceSave = false;
-    public bool resourceLoad = false;
-
     private Resource resource = new Resource();
 
     private void Awake()
@@ -64,7 +57,7 @@ public class InventoryManager : MonoBehaviour
 
     private void SaveInventory()
     {
-        if (itemSave)
+        if (SaveDataManager.instance.saveItem)
         {
             inventoryWeapon.SaveInventory();
             inventoryEquipment.SaveInventory();
@@ -73,7 +66,7 @@ public class InventoryManager : MonoBehaviour
             equipSlotR.SaveInventory();
             consumeSlot.SaveInventory();
         }
-        if (skillSave)
+        if (SaveDataManager.instance.saveSkill)
         {
             inventorySkill.SaveInventory();
             skillSlot.SaveInventory();
@@ -82,7 +75,7 @@ public class InventoryManager : MonoBehaviour
 
     private void LoadInventory()
     {
-        if (itemLoad)
+        if (SaveDataManager.instance.loadItem)
         {
             inventoryWeapon.LoadInventory();
             inventoryEquipment.LoadInventory();
@@ -91,7 +84,7 @@ public class InventoryManager : MonoBehaviour
             equipSlotR.LoadInventory();
             consumeSlot.LoadInventory();
         }
-        if (skillLoad)
+        if (SaveDataManager.instance.loadSkill)
         {
             inventorySkill.LoadInventory();
             skillSlot.LoadInventory();
@@ -100,7 +93,7 @@ public class InventoryManager : MonoBehaviour
 
     private void SaveResource()
     {
-        if (resourceSave)
+        if (SaveDataManager.instance.saveResource)
         {
             JsonIO.SaveToJson(resource, SaveDataManager.saveFile[SaveFile.PlayerResources]);
         }
@@ -108,7 +101,7 @@ public class InventoryManager : MonoBehaviour
 
     private void LoadResource()
     {
-        if (resourceLoad)
+        if (SaveDataManager.instance.loadResource)
         {
             resource = JsonIO.LoadFromJson<Resource>(SaveDataManager.saveFile[SaveFile.PlayerResources]);
         }
@@ -125,7 +118,7 @@ public class InventoryManager : MonoBehaviour
     
     public void AddSkill(Skill newSkill)
     {
-        if (skillLoad == false)
+        if (SaveDataManager.instance.loadSkill == false)
         {
             inventorySkill.AddSkill(newSkill);
             notification.Notify(true);

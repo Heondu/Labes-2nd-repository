@@ -82,9 +82,9 @@ public class InventoryItem : Inventory
             slots[i].item = items[i];
         }
 
-        if (InventoryManager.instance.onSlotChangedCallback != null)
+        if (InventoryManager.instance.onSlotChanged != null)
         {
-            InventoryManager.instance.onSlotChangedCallback.Invoke();
+            InventoryManager.instance.onSlotChanged.Invoke();
         }
     }
 }

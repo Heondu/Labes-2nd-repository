@@ -10,14 +10,14 @@ public class EquipmentSlot : MonoBehaviour, IBeginDragHandler
 
     private void Start()
     {
-        InventoryManager.instance.onSlotChangedCallback += EquipCheck;
-        InventoryManager.instance.onSlotChangedCallback += DisableIconImage;
+        InventoryManager.instance.onSlotChanged.AddListener(EquipCheck);
         slot = GetComponent<Slot>();
     }
 
     private void EquipCheck()
     {
         if (slot.item != null || slot.skill != null) slot.isEquip = true;
+        DisableIconImage();
 
         if (slot.useType != UseType.weapon && slot.useType != UseType.equipment) return;
 
@@ -27,18 +27,18 @@ public class EquipmentSlot : MonoBehaviour, IBeginDragHandler
             {
                 if (item != null)
                 {
-                    InventoryManager.instance.onItemUnequipCallback.Invoke(item);
+                    InventoryManager.instance.onItemUnequip.Invoke(item);
                 }
-                if (InventoryManager.instance.onItemEquipCallback != null)
+                if (InventoryManager.instance.onItemEquip != null)
                 {
-                    InventoryManager.instance.onItemEquipCallback.Invoke(slot.item);
+                    InventoryManager.instance.onItemEquip.Invoke(slot.item);
                 }
             }
             else if (slot.item == null)
             {
                 if (item != null)
                 {
-                    InventoryManager.instance.onItemUnequipCallback.Invoke(item);
+                    InventoryManager.instance.onItemUnequip.Invoke(item);
                 }
             }
 

@@ -28,7 +28,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     [SerializeField]
     private Notification notification;
 
-    protected virtual void Awake()
+    private void Awake()
     {
         if (useType == UseType.weapon || useType == UseType.equipment || useType == UseType.consume)
             inventory = GetComponentInParent<InventoryItem>();
@@ -39,17 +39,17 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         if (transform.Find("gradeBG") != null) gradeBG = transform.Find("gradeBG").GetComponent<Image>();
         if (transform.Find("GradeFrame") != null) gradeFrame = transform.Find("GradeFrame").GetComponent<Image>();
         if (gradeBG != null) quality = gradeBG.transform.Find("Quantity").GetComponent<TextMeshProUGUI>();
-
-        InventoryManager.instance.onSlotChangedCallback += UpdateSlot;
-
-        for (int i = 0; i < transform.parent.childCount; i++)
-        {
-            if (transform.parent.GetChild(i) == gameObject.transform) index = i;
-        }
     }
 
     private void Start()
     {
+        for (int i = 0; i < transform.parent.childCount; i++)
+        {
+            if (transform.parent.GetChild(i) == gameObject.transform) index = i;
+        }
+
+        InventoryManager.instance.onSlotChanged.AddListener(UpdateSlot);
+
         inventory.onDisable.AddListener(OnNotify);
     }
 

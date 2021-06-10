@@ -7,8 +7,12 @@ public class PlayerItem : MonoBehaviour
     private void Awake()
     {
         player = GetComponent<Player>();
-        InventoryManager.instance.onItemEquipCallback += Equip;
-        InventoryManager.instance.onItemUnequipCallback += Unequip;
+    }
+
+    private void Start()
+    {
+        InventoryManager.instance.onItemEquip.AddListener(Equip);
+        InventoryManager.instance.onItemUnequip.AddListener(Unequip);
     }
 
     private void Update()

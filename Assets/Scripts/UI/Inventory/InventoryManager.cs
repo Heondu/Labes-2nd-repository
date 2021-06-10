@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum UseType { weapon = 0, equipment, skill, consume, rune, equipSlot }
 
@@ -26,12 +27,9 @@ public class InventoryManager : MonoBehaviour
     public InventorySkill skillSlot;
     public InventoryItem consumeSlot;
 
-    public delegate void OnSlotChanged();
-    public OnSlotChanged onSlotChangedCallback;
-    public delegate void OnItemEquipChanged(Item item);
-    public OnItemEquipChanged onItemEquipCallback;
-    public delegate void OnItemUnequipChanged(Item item);
-    public OnItemUnequipChanged onItemUnequipCallback;
+    public UnityEvent onSlotChanged;
+    public UnityEvent<Item> onItemEquip;
+    public UnityEvent<Item> onItemUnequip;
 
     private SlotDrag draggingSlot;
     [SerializeField]
@@ -43,14 +41,14 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null) Destroy(this);
-        else instance = this;
-
-        draggingSlot = draggingObject.GetComponent<SlotDrag>();
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
     }
 
     private void Start()
     {
+        draggingSlot = draggingObject.GetComponent<SlotDrag>();
+
         LoadInventory();
         LoadResource();
     }

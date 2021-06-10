@@ -75,9 +75,9 @@ public class InventorySkill : Inventory
             slots[i].skill = skills[i];
         }
 
-        if (InventoryManager.instance.onSlotChangedCallback != null)
+        if (InventoryManager.instance.onSlotChanged != null)
         {
-            InventoryManager.instance.onSlotChangedCallback.Invoke();
+            InventoryManager.instance.onSlotChanged.Invoke();
         }
     }
 }

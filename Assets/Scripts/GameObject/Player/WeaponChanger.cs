@@ -16,7 +16,7 @@ public class WeaponChanger : MonoBehaviour
 
     private void Start()
     {
-        InventoryManager.instance.onItemEquipCallback += GetItem;
+        InventoryManager.instance.onItemEquip.AddListener(GetItem);
 
         ChangeWeapon((int)defaultWeapon);
     }

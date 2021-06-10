@@ -153,7 +153,7 @@ public class DataManager : MonoBehaviour
         {
             for (int i = 0; i < localization_KOR.Count; i++)
             {
-                if (localization_KOR[i]["name"].ToString() == str) return localization_KOR[i]["localization"].ToString() + percent;
+                if (localization_KOR[i]["name"].ToString().Equals(str)) return localization_KOR[i]["localization"].ToString() + percent;
             }
         }
         else

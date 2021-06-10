@@ -9,6 +9,8 @@ public class MapData : MonoBehaviour
     private Vector2 position = Vector2.zero;
     public Vector2 Position => position;
     [SerializeField]
+    private Vector2 startingPos;
+    [SerializeField]
     private bool useTransformSize;
     [SerializeField]
     private bool useTransformPosition;
@@ -16,9 +18,6 @@ public class MapData : MonoBehaviour
     private bool useColliderSize;
     [SerializeField]
     private bool autoAssignMapData;
-
-    private float width;
-    private float height;
 
     private void Start()
     {
@@ -34,10 +33,11 @@ public class MapData : MonoBehaviour
             position = transform.position;
 
         if (autoAssignMapData)
+        {
             LazyCamera.instance.SetMapData(this);
-
-        height = 2 * Camera.main.orthographicSize;
-        width = height * Camera.main.aspect;
+            FindObjectOfType<Player>().transform.position = startingPos;
+            LazyCamera.instance.transform.position = startingPos;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

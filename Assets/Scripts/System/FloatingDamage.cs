@@ -61,4 +61,9 @@ public class FloatingDamage : MonoBehaviour
     {
         FloatingDamageManager.instance.RemoveDamage(executor, this);
     }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        Destroy(gameObject);
+    }
 }

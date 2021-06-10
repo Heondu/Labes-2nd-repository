@@ -648,10 +648,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: {x: 39.65, y: 77.25}
   position: {x: 0, y: -11.375}
+  startingPos: {x: 0, y: 0}
   useTransformSize: 0
   useTransformPosition: 0
   useColliderSize: 1
-  autoAssignMapData: 0
+  autoAssignMapData: 1
 --- !u!212 &540607670
 SpriteRenderer:
   m_ObjectHideFlags: 0

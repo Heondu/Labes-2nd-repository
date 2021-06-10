@@ -59,8 +59,19 @@ public class EnemyAttack : MonoBehaviour
         isCool = false;
     }
 
-    public void SkillInit(Dictionary<string, object> monster)
+    public void SkillInit(Dictionary<string, object> monster, string classType)
     {
+        if (classType == "elite")
+        {
+            Skill skill = SkillManager.instance.GetEliteSkill();
+            skillList.Add(skill);
+            probList.Add(100);
+            sumOfProb += 100;
+            isSkillCool[skill] = false;
+            skillCool[skill] = new Timer();
+            return;
+        }
+
         for (int i = 1; i <= 6; i++)
         {
             if (monster["skill" + i].ToString() != "")
@@ -76,25 +87,6 @@ public class EnemyAttack : MonoBehaviour
         for (int i = 0; i < probList.Count; i++)
         {
             sumOfProb += probList[i];
-        }
-    }
-
-    private void SkillSort()
-    {
-        for (int i = skillList.Count - 1; i > 0; i--)
-        {
-            for (int j = 0; j < i; j++)
-            {
-                if (probList[j] < probList[j + 1])
-                {
-                    int tempProb = probList[j + 1];
-                    probList[j + 1] = probList[j];
-                    probList[j] = tempProb;
-                    Skill tempSkill = skillList[j + 1];
-                    skillList[j + 1] = skillList[j];
-                    skillList[j] = tempSkill;
-                }
-            }
         }
     }
 

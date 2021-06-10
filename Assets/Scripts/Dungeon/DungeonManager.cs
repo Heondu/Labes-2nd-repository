@@ -42,7 +42,6 @@ public class DungeonManager : MonoBehaviour
 
 
         player.status.HP = player.status.maxHP;
-        player.transform.position = Vector3.zero;
         LoadingSceneManager.LoadScene(SceneData.instance.mainScene);
     }
 }

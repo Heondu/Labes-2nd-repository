@@ -6,6 +6,7 @@ public class RegenManager : MonoBehaviour
 {
     [SerializeField]
     private float regenTime = 10;
+    private float currentTime = 0;
 
     public RegenArea[] regens = new RegenArea[1];
 
@@ -18,6 +19,7 @@ public class RegenManager : MonoBehaviour
 
     public UnityEvent onRegen = new UnityEvent();
     public UnityEvent onEnemyDeath = new UnityEvent();
+
 
     private void Start()
     {
@@ -37,6 +39,8 @@ public class RegenManager : MonoBehaviour
 
     private void Spawn(RegenArea regenArea)
     {
+        currentTime = 0;
+
         if (regenArea == null) return;
 
         FindTarget();
@@ -46,7 +50,7 @@ public class RegenManager : MonoBehaviour
     private IEnumerator Regen()
     {
         yield return new WaitForSeconds(1f);
-
+        
         foreach (RegenArea regen in regens)
         {
             Spawn(regen);
@@ -60,7 +64,7 @@ public class RegenManager : MonoBehaviour
                 {
                     if (regen.GetComponentsInChildren<Enemy>(false).Length == 0)
                     {
-                        yield return new WaitForSeconds(regenTime);
+                        yield return WaitForSeconds(regenTime);
 
                         Spawn(regen);
 
@@ -81,7 +85,7 @@ public class RegenManager : MonoBehaviour
 
                 if (flag == true)
                 {
-                    yield return new WaitForSeconds(regenTime);
+                    yield return WaitForSeconds(regenTime);
 
                     foreach (RegenArea regen in regens)
                     {
@@ -94,6 +98,29 @@ public class RegenManager : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    private IEnumerator WaitForSeconds(float seconds)
+    {
+        while (currentTime < seconds)
+        {
+            currentTime += Time.deltaTime;
+
+            yield return null;
+        }
+    }
+
+    public void SetActiveRegenArea(RegenArea regen)
+    {
+        if (regens == null && regens.Length < 1)
+        {
+            regens = new RegenArea[1];
+        }
+        
+        regens[0] = regen;
+        
+        StopCoroutine("Regen");
+        StartCoroutine("Regen");
     }
 
     public void OnEnemyDeath()

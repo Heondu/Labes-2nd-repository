@@ -112,10 +112,9 @@ public class Enemy : MonoBehaviour, ILivingEntity
         status.intelligence.BaseValue = (int)monlvl["intelligence"];
         status.endurance.BaseValue = (int)monlvl["endurance"];
         status.CalculateDerivedStatus();
-        enemyAttack.SkillInit(monster);
         delay = float.Parse(monster["delay"].ToString());
-
         if (isElite) EliteMode();
+        enemyAttack.SkillInit(monster, classType);
 
         if (action != null)
         {

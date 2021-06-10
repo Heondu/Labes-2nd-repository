@@ -58,8 +58,8 @@ public class Boss002 : MonoBehaviour, ILivingEntity
         status.intelligence.BaseValue = (int)monlvl["intelligence"];
         status.endurance.BaseValue = (int)monlvl["endurance"];
         status.CalculateDerivedStatus();
-        enemyAttack.SkillInit(monster);
         delay = float.Parse(monster["delay"].ToString());
+        enemyAttack.SkillInit(monster, monster["class"].ToString());
     }
 
     public void TakeDamage(DamageData damageData)

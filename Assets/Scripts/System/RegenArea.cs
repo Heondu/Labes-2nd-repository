@@ -21,7 +21,7 @@ public class RegenArea : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            regenManager.regens[0] = this;
+            regenManager.SetActiveRegenArea(this);
         }
     }
 

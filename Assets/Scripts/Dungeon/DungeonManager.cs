@@ -40,8 +40,6 @@ public class DungeonManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == SceneData.instance.attackDungeon) return;
         if (SceneManager.GetActiveScene().name == SceneData.instance.guardDungeon) return;
 
-
-        player.status.HP = player.status.maxHP;
         LoadingSceneManager.LoadScene(SceneData.instance.mainScene);
     }
 }

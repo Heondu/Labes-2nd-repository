@@ -1,8 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 using TMPro;
 
 public class UIKeyChanger : MonoBehaviour, IPointerClickHandler
@@ -19,6 +19,8 @@ public class UIKeyChanger : MonoBehaviour, IPointerClickHandler
     private KeyCode keyCode;
     private KeyAction alreadyKey;
 
+    public UnityEvent onKeyChanged = new UnityEvent();
+
     private void Awake()
     {
         keyCodeText = GetComponent<TextMeshProUGUI>();
@@ -29,8 +31,6 @@ public class UIKeyChanger : MonoBehaviour, IPointerClickHandler
 
         accept.onClick.AddListener(Accept);
         cancel.onClick.AddListener(Cancel);
-
-        LoadKeyPreset();
     }
 
     private void OnEnable()
@@ -117,7 +117,9 @@ public class UIKeyChanger : MonoBehaviour, IPointerClickHandler
                 {
                     KeySetting.keys[keyAction] = keyCode;
 
-                    SaveKeyPreset();
+                    onKeyChanged.Invoke();
+
+                    KeyManager.instance.SaveKeyPreset();
 
                     UpdateKey();
                 }
@@ -138,7 +140,7 @@ public class UIKeyChanger : MonoBehaviour, IPointerClickHandler
             KeySetting.keys[alreadyKey] = KeyCode.None;
             confirmUI.SetActive(false);
         }
-        SaveKeyPreset();
+        KeyManager.instance.SaveKeyPreset();
         UpdateKey();
     }
 
@@ -158,48 +160,5 @@ public class UIKeyChanger : MonoBehaviour, IPointerClickHandler
         yield return new WaitForSeconds(duration);
 
         keyCodeText.text = "";
-    }
-
-    [System.Serializable]
-    private class KeyData
-    {
-        public List<Key> keys = new List<Key>();
-    }
-
-    private void SaveKeyPreset()
-    {
-        KeyData keyData = new KeyData();
-
-        foreach (KeyAction key in KeySetting.keys.Keys)
-        {
-            keyData.keys.Add(new Key(key, KeySetting.keys[key]));
-        }
-
-        JsonIO.SaveToJson(keyData, SaveDataManager.saveFile[SaveFile.KeyPreset]);
-    }
-
-    private void LoadKeyPreset()
-    {
-        KeyData keyData = JsonIO.LoadFromJson<KeyData>(SaveDataManager.saveFile[SaveFile.KeyPreset]);
-
-        if (keyData == null) return;
-
-        for (int i = 0; i < keyData.keys.Count; i++)
-        {
-            KeySetting.keys[keyData.keys[i].keyAction] = keyData.keys[i].keyCode;
-        }
-    }
-}
-
-[System.Serializable]
-public class Key
-{
-    public KeyAction keyAction;
-    public KeyCode keyCode;
-
-    public Key(KeyAction keyAction, KeyCode keyCode)
-    {
-        this.keyAction = keyAction;
-        this.keyCode = keyCode;
     }
 }

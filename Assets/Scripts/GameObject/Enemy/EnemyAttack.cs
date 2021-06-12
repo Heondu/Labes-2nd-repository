@@ -14,7 +14,8 @@ public class EnemyAttack : MonoBehaviour
 
     private void OnEnable()
     {
-        isCool = false;
+        isCool = true;
+        StartCoroutine("Delay", Random.Range(1f, 3f));
         isSkillCool.Clear();
         skillCool.Clear();
     }
@@ -49,7 +50,7 @@ public class EnemyAttack : MonoBehaviour
         isSkillCool[skill] = false;
     }
 
-    private IEnumerator Delay(int delay)
+    private IEnumerator Delay(float delay)
     {
         Timer timer = new Timer();
         while (timer.IsTimeOut(delay) == false)

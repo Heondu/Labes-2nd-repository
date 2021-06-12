@@ -8,14 +8,14 @@ public enum KeyAction
     skill1, skill2, skill3, skill4, skill5,
     item1, item2, item3, item4,
     portal, evade,
-    status, inventory, awaken, quest, pause, setting 
+    status, inventory, awaken, quest, pause, setting, minimap
 }
 
 public static class KeySetting { public static Dictionary<KeyAction, KeyCode> keys = new Dictionary<KeyAction, KeyCode>(); }
 
 public class KeyManager : MonoBehaviour
 {
-    private static KeyManager instance;
+    public static KeyManager instance;
 
     private void Awake()
     {
@@ -26,8 +26,14 @@ public class KeyManager : MonoBehaviour
             return;
         }
 
-        KeysetDefault();
-        //DontDestroyOnLoad(gameObject);
+        if (SaveDataManager.instance.loadKeyPreset)
+        {
+            LoadKeyPreset();
+        }
+        else
+        {
+            KeysetDefault();
+        }
     }
 
     public void KeysetDefault()
@@ -49,7 +55,54 @@ public class KeyManager : MonoBehaviour
         KeySetting.keys.Add(KeyAction.inventory, KeyCode.I);
         KeySetting.keys.Add(KeyAction.awaken, KeyCode.O);
         KeySetting.keys.Add(KeyAction.quest, KeyCode.P);
-        KeySetting.keys.Add(KeyAction.pause, KeyCode.Escape);
+        //KeySetting.keys.Add(KeyAction.pause, KeyCode.Escape);
         KeySetting.keys.Add(KeyAction.setting, KeyCode.Escape);
+        KeySetting.keys.Add(KeyAction.portal, KeyCode.G);
+        KeySetting.keys.Add(KeyAction.minimap, KeyCode.M);
+    }
+
+    [System.Serializable]
+    private class KeyData
+    {
+        public List<Key> keys = new List<Key>();
+    }
+
+    public void SaveKeyPreset()
+    {
+        if (!SaveDataManager.instance.saveKeyPreset) return;
+
+        KeyData keyData = new KeyData();
+
+        foreach (KeyAction key in KeySetting.keys.Keys)
+        {
+            keyData.keys.Add(new Key(key, KeySetting.keys[key]));
+        }
+
+        JsonIO.SaveToJson(keyData, SaveDataManager.saveFile[SaveFile.KeyPreset]);
+    }
+
+    private void LoadKeyPreset()
+    {
+        KeyData keyData = JsonIO.LoadFromJson<KeyData>(SaveDataManager.saveFile[SaveFile.KeyPreset]);
+
+        if (keyData == null) return;
+
+        for (int i = 0; i < keyData.keys.Count; i++)
+        {
+            KeySetting.keys[keyData.keys[i].keyAction] = keyData.keys[i].keyCode;
+        }
+    }
+}
+
+[System.Serializable]
+public class Key
+{
+    public KeyAction keyAction;
+    public KeyCode keyCode;
+
+    public Key(KeyAction keyAction, KeyCode keyCode)
+    {
+        this.keyAction = keyAction;
+        this.keyCode = keyCode;
     }
 }

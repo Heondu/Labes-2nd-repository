@@ -29,12 +29,14 @@ public class SaveDataManager : MonoBehaviour
     [field: SerializeField] public bool saveItem { get; private set; }
     [field: SerializeField] public bool saveSkill { get; private set; }
     [field: SerializeField] public bool saveResource { get; private set; }
+    [field: SerializeField] public bool saveKeyPreset { get; private set; }
 
     [field: Header("Load")]
     [field: SerializeField] public bool loadStatus { get; private set; }
     [field: SerializeField] public bool loadItem { get; private set; }
     [field: SerializeField] public bool loadSkill { get; private set; }
     [field: SerializeField] public bool loadResource { get; private set; }
+    [field: SerializeField] public bool loadKeyPreset { get; private set; }
 
     private void Awake()
     {

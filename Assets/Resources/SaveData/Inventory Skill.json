@@ -1,26 +1,27 @@
 {
     "skills": [
         {
-            "skill": "",
-            "name": "",
-            "rarity": 0,
-            "exp": 0,
-            "material": "",
-            "weaponClass": "",
+            "skill": "Guided Arrow",
+            "name": "skill001",
+            "rarity": 1,
+            "exp": 1,
+            "material": "ore",
+            "weaponClass": "staff",
             "classBonus": "",
             "bonusAmount": 0,
-            "position": "",
-            "element": "",
-            "cooltime": 0.0,
+            "position": "hero",
+            "element": "light",
+            "cooltime": 0.5,
             "amount": 0,
             "perlvl": 0,
             "isPositive": 0,
-            "repeat": 0,
-            "speed": 0,
-            "size": 0,
-            "lifetime": 0,
-            "guide": 0.0,
-            "penetration": 0,
+            "repeat": 1,
+            "speed": 6,
+            "size": 1,
+            "lifetime": 3,
+            "guide": 0.30000001192092898,
+            "penetration": 5,
+            "consume": 10,
             "quality": 0,
             "isNew": true
         },
@@ -44,9 +45,10 @@
             "size": 1,
             "lifetime": 10,
             "guide": 0.0,
-            "penetration": 3,
+            "penetration": 100,
+            "consume": -100,
             "quality": 0,
-            "isNew": false
+            "isNew": true
         },
         {
             "skill": "DontDestroyBuff",
@@ -68,9 +70,10 @@
             "size": 1,
             "lifetime": 20,
             "guide": 0.0,
-            "penetration": 1,
+            "penetration": 0,
+            "consume": 10,
             "quality": 0,
-            "isNew": false
+            "isNew": true
         },
         {
             "skill": "Triple Arrow",
@@ -92,9 +95,10 @@
             "size": 1,
             "lifetime": 10,
             "guide": 0.30000001192092898,
-            "penetration": 0,
+            "penetration": 3,
+            "consume": 10,
             "quality": 0,
-            "isNew": false
+            "isNew": true
         },
         {
             "skill": "LightningStrike",
@@ -116,9 +120,10 @@
             "size": 1,
             "lifetime": 2,
             "guide": 0.0,
-            "penetration": 0,
+            "penetration": 10,
+            "consume": 10,
             "quality": 0,
-            "isNew": false
+            "isNew": true
         },
         {
             "skill": "Wheel Sphere",
@@ -140,31 +145,8 @@
             "size": 1,
             "lifetime": 10,
             "guide": 0.30000001192092898,
-            "penetration": 0,
-            "quality": 0,
-            "isNew": false
-        },
-        {
-            "skill": "",
-            "name": "",
-            "rarity": 0,
-            "exp": 0,
-            "material": "",
-            "weaponClass": "",
-            "classBonus": "",
-            "bonusAmount": 0,
-            "position": "",
-            "element": "",
-            "cooltime": 0.0,
-            "amount": 0,
-            "perlvl": 0,
-            "isPositive": 0,
-            "repeat": 0,
-            "speed": 0,
-            "size": 0,
-            "lifetime": 0,
-            "guide": 0.0,
-            "penetration": 0,
+            "penetration": 5,
+            "consume": 10,
             "quality": 0,
             "isNew": true
         },
@@ -189,6 +171,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -213,6 +196,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -237,6 +221,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -261,6 +246,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -285,6 +271,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -309,6 +296,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -333,6 +321,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -357,6 +346,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -381,6 +371,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -405,6 +396,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -429,6 +421,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -453,6 +446,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -477,6 +471,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -501,6 +496,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -525,6 +521,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -549,6 +546,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -573,6 +571,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -597,6 +596,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -621,6 +621,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -645,6 +646,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -669,6 +671,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -693,6 +696,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -717,6 +721,32 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
+            "quality": 0,
+            "isNew": true
+        },
+        {
+            "skill": "",
+            "name": "",
+            "rarity": 0,
+            "exp": 0,
+            "material": "",
+            "weaponClass": "",
+            "classBonus": "",
+            "bonusAmount": 0,
+            "position": "",
+            "element": "",
+            "cooltime": 0.0,
+            "amount": 0,
+            "perlvl": 0,
+            "isPositive": 0,
+            "repeat": 0,
+            "speed": 0,
+            "size": 0,
+            "lifetime": 0,
+            "guide": 0.0,
+            "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         }

@@ -17,7 +17,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     public Sprite[] gradeBGSprite;
     public Sprite[] gradeFrameSprite;
     public TextMeshProUGUI quality;
-    private Image lockIcon;
+    public GameObject lockIcon;
     public bool isLock;
     public UseType useType;
     public string equipType;
@@ -39,6 +39,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         if (transform.Find("gradeBG") != null) gradeBG = transform.Find("gradeBG").GetComponent<Image>();
         if (transform.Find("GradeFrame") != null) gradeFrame = transform.Find("GradeFrame").GetComponent<Image>();
         if (gradeBG != null) quality = gradeBG.transform.Find("Quantity").GetComponent<TextMeshProUGUI>();
+        if (transform.Find("Lock") != null) lockIcon = transform.Find("Lock").gameObject;
     }
 
     private void Start()
@@ -78,6 +79,15 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
     private void UpdateSlot()
     {
+        if (isLock && lockIcon != null)
+        {
+            lockIcon.SetActive(true);
+        }
+        else if (!isLock && lockIcon != null)
+        {
+            lockIcon.SetActive(false);
+        }
+
         if (item != null)
         {
             icon.sprite = Resources.Load<Sprite>(item.inventoryImage);
@@ -140,17 +150,27 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (isLock) return;
         if (eventData.pointerEnter != null)
         {
-            if (eventData.pointerEnter.transform.parent.name == "Bin") InventoryManager.instance.RemoveItem(item, GetComponentInParent<InventoryItem>());
+            if (eventData.pointerEnter.transform.parent.name == "Bin")
+            {
+                InventoryManager.instance.RemoveItem(item, GetComponentInParent<InventoryItem>());
+                return;
+            }
         }
         Slot slot = eventData.pointerEnter.GetComponent<Slot>();
         if (slot == null) InventoryManager.instance.OnEndDrag(this, null);
         else if (slot != null)
         {
-            InventoryManager.instance.OnEndDrag(this, slot);
-            slot.OnNotify(false);
+            if (slot.isLock)
+            {
+                InventoryManager.instance.OnEndDrag(this, null);
+            }
+            else
+            {
+                InventoryManager.instance.OnEndDrag(this, slot);
+                slot.OnNotify(false);
+            }
         }
     }
 }

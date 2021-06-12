@@ -23,6 +23,8 @@ public class Player : MonoBehaviour, ILivingEntity
         status.mana = status.maxMana;
         status.exp = 0;
         status.level = 1;
+
+        LoadingSceneManager.onLevelWasLoaded.AddListener(RestoreHPOnLevelLoad);
 }
 
     private void Update()
@@ -67,6 +69,14 @@ public class Player : MonoBehaviour, ILivingEntity
         if (status.HP == 0)
         {
             onDeath.Invoke();
+        }
+    }
+
+    private void RestoreHPOnLevelLoad(string sceneName)
+    {
+        if (sceneName == SceneData.instance.mainScene)
+        {
+            status.HP = status.maxHP;
         }
     }
 

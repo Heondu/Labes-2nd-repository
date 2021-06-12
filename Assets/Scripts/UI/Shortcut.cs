@@ -10,21 +10,31 @@ public class Shortcut : MonoBehaviour
     private TextMeshProUGUI keycodeText;
     private Skill skill;
     [SerializeField]
-    private KeyAction keycode;
+    private KeyAction keyAction;
 
-    private void Awake()
+    [SerializeField]
+    private UIKeyChanger keyChanger;
+
+    private void Start()
     {
         icon = transform.Find("Image").GetComponent<Image>();
         keycodeText = transform.Find("TextKeycode").GetComponent<TextMeshProUGUI>();
-        keycodeText.text = KeySetting.keys[keycode].ToString();
+        UpdateKeyCode();
+
+        keyChanger.onKeyChanged.AddListener(UpdateKeyCode);
+    }
+
+    private void UpdateKeyCode()
+    {
+        keycodeText.text = KeySetting.keys[keyAction].ToString();
     }
     
     private void Update()
     {
-        ShortcutAssign();
+        AssignShortcut();
     }
 
-    private void ShortcutAssign()
+    private void AssignShortcut()
     {
         if (slot == null) return;
         icon.sprite = slot.icon.sprite;

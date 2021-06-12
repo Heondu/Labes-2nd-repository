@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LazyCamera : MonoBehaviour
 {
@@ -15,8 +16,11 @@ public class LazyCamera : MonoBehaviour
     private float range = 4;
 
     private MapData mapData = null;
+    public UnityEvent onMapDataChanged = new UnityEvent();
+
     private float height;
     private float width;
+
     [SerializeField]
     private bool isScreenLock = true;
 
@@ -57,6 +61,7 @@ public class LazyCamera : MonoBehaviour
     public void SetMapData(MapData mapData)
     {
         this.mapData = mapData;
+        onMapDataChanged.Invoke();
     }
 
     public MapData GetMapData()

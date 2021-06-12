@@ -5,19 +5,19 @@ public class MapData : MonoBehaviour
     [SerializeField]
     private Vector2 size = Vector2.zero;
     public Vector2 Size => size;
+
     [SerializeField]
     private Vector2 position = Vector2.zero;
     public Vector2 Position => position;
-    [SerializeField]
-    private Vector2 startingPos;
-    [SerializeField]
-    private bool useTransformSize;
-    [SerializeField]
-    private bool useTransformPosition;
-    [SerializeField]
-    private bool useColliderSize;
-    [SerializeField]
-    private bool autoAssignMapData;
+
+    [SerializeField] private Vector2 startingPos;
+
+    [SerializeField] private bool useTransformSize;
+    [SerializeField] private bool useTransformPosition;
+    [SerializeField] private bool useColliderSize;
+    [SerializeField] private bool autoAssignMapData;
+
+    [SerializeField] private string mapId;
 
     private void Start()
     {
@@ -64,5 +64,10 @@ public class MapData : MonoBehaviour
         float y = Mathf.Clamp(target.position.y, -limitY + position.y, limitY + position.y);
 
         target.position = new Vector3(x, y, target.position.z);
+    }
+
+    public string GetMapId()
+    {
+        return mapId;
     }
 }

@@ -4,13 +4,29 @@ using UnityEngine;
 public class InventorySkill : Inventory
 {
     public List<Skill> skills = new List<Skill>();
-    public Slot[] slots;
+    public List<Slot> slots = new List<Slot>();
+
+    private GameObject slot;
 
     private void Awake()
     {
-        slots = GetComponentsInChildren<Slot>();
+        Slot[] slots = GetComponentsInChildren<Slot>();
         for (int i = 0; i < slots.Length; i++)
+        {
+            this.slots.Add(slots[i]);
             skills.Add(null);
+        }
+
+        slot = slots[0].gameObject;
+    }
+
+    private void ExpandSlot()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            slots.Add(Instantiate(slot, transform).GetComponent<Slot>());
+            skills.Add(null);
+        }
     }
 
     public void SaveInventory()
@@ -49,6 +65,11 @@ public class InventorySkill : Inventory
     public void AddSkill(Skill newSkill)
     {
         int index = FindSlot(null);
+        if (index == -1)
+        {
+            ExpandSlot();
+            index = FindSlot(null);
+        }
         if (index != -1) skills[index] = newSkill;
         OnNotify();
         UpdateInventory();
@@ -61,10 +82,11 @@ public class InventorySkill : Inventory
 
     public int FindSlot(Skill targetSkill)
     {
-        for (int i = 0; i < slots.Length; i++)
+        for (int i = 0; i < slots.Count; i++)
         {
             if (slots[i].skill == targetSkill) return i;
         }
+
         return -1;
     }
 
@@ -74,6 +96,8 @@ public class InventorySkill : Inventory
         {
             slots[i].skill = skills[i];
         }
+
+        SaveInventory();
 
         if (InventoryManager.instance.onSlotChanged != null)
         {

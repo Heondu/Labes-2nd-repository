@@ -14,14 +14,12 @@ public class FloatingDamage : MonoBehaviour
     private Vector3 offset = Vector3.up;
     private GameObject executor;
 
-    private void Awake()
-    {
-        damageText = GetComponent<TextMeshProUGUI>();
-        Destroy(gameObject, destroyTime);
-    }
-
     public void Init(GameObject executor, string damage, Vector3 originPos)
     {
+        damageText = GetComponent<TextMeshProUGUI>();
+        LoadingSceneManager.onLevelWasLoaded.AddListener(DestroyOnLevelLoad);
+        Destroy(gameObject, destroyTime);
+
         this.executor = executor;
         this.originPos = originPos;
         damageText.text = damage;
@@ -62,7 +60,7 @@ public class FloatingDamage : MonoBehaviour
         FloatingDamageManager.instance.RemoveDamage(executor, this);
     }
 
-    private void OnLevelWasLoaded(int level)
+    private void DestroyOnLevelLoad(string sceneName)
     {
         Destroy(gameObject);
     }

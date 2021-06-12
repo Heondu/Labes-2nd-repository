@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
     {
         if (PlayerInput.instance.GetInputMode() == InputMode.normal || PlayerInput.instance.GetInputMode() == InputMode.pause)
         {
-            if (Input.GetKeyDown(KeySetting.keys[KeyAction.pause]))
+            if (Input.GetKeyDown(KeySetting.keys[KeyAction.setting]))
             {
                 if (pause.activeSelf == false)
                 {

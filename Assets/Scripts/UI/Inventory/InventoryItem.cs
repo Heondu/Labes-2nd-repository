@@ -4,13 +4,28 @@ using UnityEngine;
 public class InventoryItem : Inventory
 {
     public List<Item> items = new List<Item>();
-    public Slot[] slots;
+    public List<Slot> slots = new List<Slot>();
+
+    private GameObject slot;
 
     private void Awake()
     {
-        slots = GetComponentsInChildren<Slot>();
+        Slot[] slots = GetComponentsInChildren<Slot>();
         for (int i = 0; i < slots.Length; i++)
+        {
+            this.slots.Add(slots[i]);
             items.Add(null);
+        }
+        slot = slots[0].gameObject;
+    }
+
+    private void ExpandSlot()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            slots.Add(Instantiate(slot, transform).GetComponent<Slot>());
+            items.Add(null);
+        }
     }
 
     public void SaveInventory()
@@ -49,6 +64,11 @@ public class InventoryItem : Inventory
     public void AddItem(Item newItem)
     {
         int index = FindSlot(null);
+        if (index == -1)
+        {
+            ExpandSlot();
+            index = FindSlot(null);
+        }
         if (index != -1) items[index] = newItem;
         OnNotify();
         UpdateInventory();
@@ -68,10 +88,11 @@ public class InventoryItem : Inventory
 
     public int FindSlot(Item targetItem)
     {
-        for (int i = 0; i < slots.Length; i++)
+        for (int i = 0; i < slots.Count; i++)
         {
             if (slots[i].item == targetItem) return i;
         }
+
         return -1;
     }
 
@@ -81,6 +102,8 @@ public class InventoryItem : Inventory
         {
             slots[i].item = items[i];
         }
+
+        SaveInventory();
 
         if (InventoryManager.instance.onSlotChanged != null)
         {

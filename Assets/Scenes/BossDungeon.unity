@@ -653,6 +653,7 @@ MonoBehaviour:
   useTransformPosition: 0
   useColliderSize: 1
   autoAssignMapData: 1
+  mapId: map_boss
 --- !u!212 &540607670
 SpriteRenderer:
   m_ObjectHideFlags: 0

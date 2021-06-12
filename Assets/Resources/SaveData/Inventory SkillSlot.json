@@ -20,7 +20,8 @@
             "size": 1,
             "lifetime": 3,
             "guide": 0.30000001192092898,
-            "penetration": 0,
+            "penetration": 5,
+            "consume": 10,
             "quality": 0,
             "isNew": false
         },
@@ -45,6 +46,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -69,6 +71,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         },
@@ -93,6 +96,7 @@
             "lifetime": 0,
             "guide": 0.0,
             "penetration": 0,
+            "consume": 0,
             "quality": 0,
             "isNew": true
         }

@@ -193,6 +193,8 @@ public class InventoryManager : MonoBehaviour
 
     private void Equip(Slot selectedSlot, Slot targetSlot)
     {
+        if (selectedSlot.isLock || targetSlot.isLock) return;
+
         targetSlot.inventory.ChangeSlot(selectedSlot, targetSlot);
         selectedSlot.inventory.ChangeSlot(targetSlot, selectedSlot);
         UpdateInventory(selectedSlot);
@@ -205,7 +207,7 @@ public class InventoryManager : MonoBehaviour
         {
             if (selectedSlot.isEquipSlot)
             {
-                for (int i = 0; i < inventoryWeapon.slots.Length; i++)
+                for (int i = 0; i < inventoryWeapon.slots.Count; i++)
                 {
                     if (inventoryWeapon.slots[i].item == null)
                     {
@@ -220,7 +222,7 @@ public class InventoryManager : MonoBehaviour
         {
             if (selectedSlot.isEquipSlot)
             {
-                for (int i = 0; i < inventoryEquipment.slots.Length; i++)
+                for (int i = 0; i < inventoryEquipment.slots.Count; i++)
                 {
                     if (inventoryEquipment.slots[i].item == null)
                     {
@@ -231,7 +233,7 @@ public class InventoryManager : MonoBehaviour
             }
             else
             {
-                for (int i = 0; i < equipSlotL.slots.Length; i++)
+                for (int i = 0; i < equipSlotL.slots.Count; i++)
                 {
                     if (selectedSlot.item.type == equipSlotL.slots[i].equipType)
                     {
@@ -239,7 +241,7 @@ public class InventoryManager : MonoBehaviour
                         return;
                     }
                 }
-                for (int i = 0; i < equipSlotR.slots.Length; i++)
+                for (int i = 0; i < equipSlotR.slots.Count; i++)
                 {
                     if (selectedSlot.item.type == equipSlotR.slots[i].equipType)
                     {
@@ -253,7 +255,7 @@ public class InventoryManager : MonoBehaviour
         {
             if (selectedSlot.isEquipSlot)
             {
-                for (int i = 0; i < inventorySkill.slots.Length; i++)
+                for (int i = 0; i < inventorySkill.slots.Count; i++)
                 {
                     if (inventorySkill.slots[i].skill == null)
                     {
@@ -264,7 +266,7 @@ public class InventoryManager : MonoBehaviour
             }
             else
             {
-                for (int i = 0; i < skillSlot.slots.Length; i++)
+                for (int i = 0; i < skillSlot.slots.Count; i++)
                 {
                     if (skillSlot.slots[i].skill == null)
                     {
@@ -278,7 +280,7 @@ public class InventoryManager : MonoBehaviour
         {
             if (selectedSlot.isEquipSlot)
             {
-                for (int i = 0; i < inventoryConsume.slots.Length; i++)
+                for (int i = 0; i < inventoryConsume.slots.Count; i++)
                 {
                     if (inventoryConsume.slots[i].item == null)
                     {
@@ -289,7 +291,7 @@ public class InventoryManager : MonoBehaviour
             }
             else
             {
-                for (int i = 0; i < consumeSlot.slots.Length; i++)
+                for (int i = 0; i < consumeSlot.slots.Count; i++)
                 {
                     if (consumeSlot.slots[i].item == null)
                     {

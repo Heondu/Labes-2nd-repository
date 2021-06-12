@@ -2,11 +2,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Events;
 
 public class LoadingSceneManager : MonoBehaviour
 {
     public static string nextScene = "";
     [SerializeField] TextMeshProUGUI progressText;
+
+    public static UnityEvent<string> onLevelWasLoaded = new UnityEvent<string>();
 
     private void Start()
     {
@@ -36,6 +39,7 @@ public class LoadingSceneManager : MonoBehaviour
             } 
             else
             {
+                onLevelWasLoaded.Invoke(nextScene);
                 progressText.text = "100%";
                 op.allowSceneActivation = true;
                 PlayerInput.instance.SetInputMode(InputMode.normal);

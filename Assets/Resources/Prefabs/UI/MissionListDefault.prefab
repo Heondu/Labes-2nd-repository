@@ -363,6 +363,8 @@ MonoBehaviour:
   background: {fileID: 850207670675841871}
   completeBackground: {fileID: -5699529836864567839, guid: fcae8ba17e5824b34a4b2ab4f904b681,
     type: 3}
+  title: {fileID: 850207670908868405}
+  content: {fileID: 850207671062837923}
   slider: {fileID: 850207671841098988}
   sliderText: {fileID: 850207671253383798}
   completeButton: {fileID: 6198525459003282982}

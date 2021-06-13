@@ -27,9 +27,10 @@ public class InventoryManager : MonoBehaviour
     public InventorySkill skillSlot;
     public InventoryItem consumeSlot;
 
-    public UnityEvent onSlotChanged;
-    public UnityEvent<Item> onItemEquip;
-    public UnityEvent<Item> onItemUnequip;
+    public UnityEvent onSlotChanged = new UnityEvent();
+    public UnityEvent<Item> onItemEquip = new UnityEvent<Item>();
+    public UnityEvent<Item> onItemUnequip = new UnityEvent<Item>();
+    public UnityEvent<string, int> onResourcesChanged = new UnityEvent<string, int>();
 
     private SlotDrag draggingSlot;
     [SerializeField]
@@ -322,6 +323,7 @@ public class InventoryManager : MonoBehaviour
     public void AddOre(int value)
     {
         resource.ore += value;
+        onResourcesChanged.Invoke("ore", value);
         SaveResource();
     }
     public void SubOre(int value)
@@ -337,6 +339,7 @@ public class InventoryManager : MonoBehaviour
     public void AddLeaf(int value)
     {
         resource.leaf += value;
+        onResourcesChanged.Invoke("herb", value);
         SaveResource();
     }
     public void SubLeaf(int value)

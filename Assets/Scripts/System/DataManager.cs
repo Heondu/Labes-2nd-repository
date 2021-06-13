@@ -234,6 +234,8 @@ public class DataManager : MonoBehaviour
                 q.minlvl = (int)quest[i]["minlvl"];
                 q.maxlvl = (int)quest[i]["maxlvl"];
                 q.chance = (int)quest[i]["chance"];
+                q.title = quest[i]["title"].ToString();
+                q.content = quest[i]["content"].ToString();
 
                 questList.Add(q);
             }

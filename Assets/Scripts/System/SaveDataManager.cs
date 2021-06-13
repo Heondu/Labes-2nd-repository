@@ -15,7 +15,9 @@ public enum SaveFile
     InventoryConsumeSlot,
     InventoryRune,
     PlayerResources,
-    AwakenData
+    AwakenData,
+    PlayerQuest,
+    QuestData
 }
 
 public class SaveDataManager : MonoBehaviour
@@ -30,6 +32,8 @@ public class SaveDataManager : MonoBehaviour
     [field: SerializeField] public bool saveSkill { get; private set; }
     [field: SerializeField] public bool saveResource { get; private set; }
     [field: SerializeField] public bool saveKeyPreset { get; private set; }
+    [field: SerializeField] public bool saveQuest { get; private set; }
+    [field: SerializeField] public bool saveAwaken { get; private set; }
 
     [field: Header("Load")]
     [field: SerializeField] public bool loadStatus { get; private set; }
@@ -37,6 +41,8 @@ public class SaveDataManager : MonoBehaviour
     [field: SerializeField] public bool loadSkill { get; private set; }
     [field: SerializeField] public bool loadResource { get; private set; }
     [field: SerializeField] public bool loadKeyPreset { get; private set; }
+    [field: SerializeField] public bool loadQuest { get; private set; }
+    [field: SerializeField] public bool loadAwaken { get; private set; }
 
     private void Awake()
     {
@@ -62,5 +68,7 @@ public class SaveDataManager : MonoBehaviour
         saveFile.Add(SaveFile.InventoryRune, path + "Inventory Rune");
         saveFile.Add(SaveFile.PlayerResources, path + "Player Resources");
         saveFile.Add(SaveFile.AwakenData, path + "Awaken Data");
+        saveFile.Add(SaveFile.PlayerQuest, path + "Player Quest");
+        saveFile.Add(SaveFile.QuestData, path + "Quest Data");
     }
 }

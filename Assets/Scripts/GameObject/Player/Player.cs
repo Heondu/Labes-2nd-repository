@@ -11,7 +11,7 @@ public class Player : MonoBehaviour, ILivingEntity
     private float moveSpeed;
     private MapData mapData;
 
-    public UnityEvent<string> onKillMonster = new UnityEvent<string>();
+    public UnityEvent<string, int> onKillMonster = new UnityEvent<string, int>();
     public UnityEvent onDeath = new UnityEvent();
 
     private void Awake()

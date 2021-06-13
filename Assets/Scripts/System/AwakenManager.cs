@@ -23,11 +23,6 @@ public class AwakenManager : MonoBehaviour
     private int[] minActiveNum = { 12, 6, 3, 3, 2, 1 };
     private int[] neededPoint = { 5, 10, 20, 40, 50, 100 };
 
-    [SerializeField]
-    private bool save = true;
-    [SerializeField]
-    private bool load = true;
-
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -180,7 +175,7 @@ public class AwakenManager : MonoBehaviour
 
     private void Save()
     {
-        if (save == false) return;
+        if (SaveDataManager.instance.saveAwaken == false) return;
 
         AwakenData awakenData = new AwakenData();
         awakenData.awakenList = awakenList;
@@ -191,7 +186,7 @@ public class AwakenManager : MonoBehaviour
 
     private bool Load()
     {
-        if (load == false) return false;
+        if (SaveDataManager.instance.loadAwaken == false) return false;
 
         AwakenData awakenData = JsonIO.LoadFromJson<AwakenData>(SaveDataManager.saveFile[SaveFile.AwakenData]);
         if (awakenData != null)

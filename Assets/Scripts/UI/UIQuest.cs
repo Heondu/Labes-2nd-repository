@@ -12,6 +12,10 @@ public class UIQuest : MonoBehaviour
     [SerializeField]
     private Sprite completeBackground;
     [SerializeField]
+    private TextMeshProUGUI title;
+    [SerializeField]
+    private TextMeshProUGUI content;
+    [SerializeField]
     private Slider slider;
     [SerializeField]
     private TextMeshProUGUI sliderText;
@@ -24,12 +28,11 @@ public class UIQuest : MonoBehaviour
 
     public void Setup(QuestContent qc)
     {
-        QuestManager.instance.onValueChanged.AddListener(OnValueChanged);
-        QuestManager.instance.onQuestCompleted.AddListener(OnQuestCompleted);
+        title.text = qc.quest.title;
+        string newContent = qc.quest.content.Replace("type", DataManager.Localization(qc.quest.type));
+        newContent = newContent.Replace("amount", qc.quest.amount.ToString());
+        content.text = newContent;
 
-        questContent = qc;
-        slider.minValue = 0;
-        slider.maxValue = questContent.quest.amount;
         for (int i = 0; i < qc.item.Length; i++)
         {
             Image image = Instantiate(reward, rewardHolder).GetComponent<Image>();
@@ -37,33 +40,53 @@ public class UIQuest : MonoBehaviour
             TextMeshProUGUI textAmount = image.GetComponentInChildren<TextMeshProUGUI>();
             textAmount.text = 1.ToString();
         }
-        completeButton.GetComponent<Button>().onClick.AddListener(OnCompleteButtonClick);
-        OnValueChanged();
+
+        if (qc.quest.state == QuestState.Progress)
+        {
+            QuestManager.instance.onValueChanged.AddListener(OnValueChanged);
+
+            questContent = qc;
+            slider.minValue = 0;
+            slider.maxValue = questContent.quest.amount;
+
+            completeButton.GetComponent<Button>().onClick.AddListener(OnCompleteButtonClick);
+            OnValueChanged();
+        }
+        else if (qc.quest.state == QuestState.Complete)
+        {
+            background.sprite = completeBackground;
+            slider.gameObject.SetActive(false);
+            sliderText.gameObject.SetActive(false);
+            transform.SetSiblingIndex(QuestManager.instance.playerQuestList.Count);
+        }
     }
 
     public void OnValueChanged()
     {
-        if (questContent.quest.state != QuestState.Progress) return;
-
         slider.value = questContent.currentAmount;
         sliderText.text = $"{questContent.currentAmount} / {questContent.quest.amount}";
+
+        if (questContent.quest.amount <= questContent.currentAmount)
+        {
+            Debug.Log($"{questContent.quest.name} -COMPLETE-");
+            OnQuestCompleted();
+        }
     }
 
     public void OnQuestCompleted()
     {
-        if (questContent.quest.state != QuestState.Complete) return;
+        QuestManager.instance.onValueChanged.RemoveListener(OnValueChanged);
 
         background.sprite = completeBackground;
         completeButton.SetActive(true);
         slider.gameObject.SetActive(false);
         sliderText.gameObject.SetActive(false);
         rewardHolder.anchoredPosition = new Vector2(-270, 0);
+
     }
 
     public void OnCompleteButtonClick()
     {
-        if (questContent.quest.state != QuestState.Complete) return;
-
         QuestManager.instance.RecieveRewards(questContent);
         completeButton.SetActive(false);
         rewardHolder.anchoredPosition = new Vector2(0, 0);

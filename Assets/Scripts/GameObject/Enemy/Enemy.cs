@@ -171,7 +171,7 @@ public class Enemy : MonoBehaviour, ILivingEntity
             hitDir = damageData.skillDir;
             collider2D.enabled = false;
             animationController.Enable(false);
-            player.onKillMonster.Invoke(id);
+            player.onKillMonster.Invoke(id, 1);
             onDeath.Invoke();
         }
     }

@@ -45,6 +45,7 @@ public class NPC : MonoBehaviour
             Debug.Log($"{newQuests[0].name}");
             newQuests[0].state = QuestState.Progress;
             QuestManager.instance.AddPlayerQuest(newQuests[0]);
+            QuestManager.instance.SaveQuestData();
             newQuests.RemoveAt(0);
 
             PlayerInput.instance.SetInputMode(InputMode.normal);

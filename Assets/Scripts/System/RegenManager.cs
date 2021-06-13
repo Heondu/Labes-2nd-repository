@@ -112,7 +112,7 @@ public class RegenManager : MonoBehaviour
 
     public void SetActiveRegenArea(RegenArea regen)
     {
-        if (regens == null && regens.Length < 1)
+        if (regens == null || regens.Length < 1)
         {
             regens = new RegenArea[1];
         }

@@ -556,6 +556,10 @@ pot01,힐링 포션
 ,
 ######,몬스터######
 boss002,멸망의 신 라베스
+mon000_1,좀비
+mon000_2,좀비
+mon000_3,좀비
+mon000_4,좀비
 ,
 ######,맵######
 map_main,마을
@@ -563,3 +567,8 @@ map_dungeon01,황폐한 들판
 map_dungeon_attack,미니 던전
 map_dungeon_guard,미니 던전
 map_boss,성
+,
+######,자원######
+gold,골드
+ore,광물
+herb,나뭇잎

@@ -15,7 +15,7 @@ public static class KeySetting { public static Dictionary<KeyAction, KeyCode> ke
 
 public class KeyManager : MonoBehaviour
 {
-    public static KeyManager instance;
+    private static KeyManager instance;
 
     private void Awake()
     {
@@ -26,7 +26,7 @@ public class KeyManager : MonoBehaviour
             return;
         }
 
-        if (SaveDataManager.instance.loadKeyPreset)
+        if (SaveDataManager.instance == null || SaveDataManager.instance.loadKeyPreset)
         {
             LoadKeyPreset();
         }
@@ -38,27 +38,27 @@ public class KeyManager : MonoBehaviour
 
     public void KeysetDefault()
     {
-        KeySetting.keys.Add(KeyAction.up, KeyCode.W);
-        KeySetting.keys.Add(KeyAction.down, KeyCode.S);
-        KeySetting.keys.Add(KeyAction.left, KeyCode.A);
-        KeySetting.keys.Add(KeyAction.right, KeyCode.D);
-        KeySetting.keys.Add(KeyAction.skill1, KeyCode.Mouse0);
-        KeySetting.keys.Add(KeyAction.skill2, KeyCode.Mouse1);
-        KeySetting.keys.Add(KeyAction.skill3, KeyCode.Q);
-        KeySetting.keys.Add(KeyAction.skill4, KeyCode.E);
-        KeySetting.keys.Add(KeyAction.skill5, KeyCode.T);
-        KeySetting.keys.Add(KeyAction.item1, KeyCode.Alpha1);
-        KeySetting.keys.Add(KeyAction.item2, KeyCode.Alpha2);
-        KeySetting.keys.Add(KeyAction.item3, KeyCode.Alpha3);
-        KeySetting.keys.Add(KeyAction.item4, KeyCode.Alpha4);
-        KeySetting.keys.Add(KeyAction.status, KeyCode.U);
-        KeySetting.keys.Add(KeyAction.inventory, KeyCode.I);
-        KeySetting.keys.Add(KeyAction.awaken, KeyCode.O);
-        KeySetting.keys.Add(KeyAction.quest, KeyCode.P);
-        //KeySetting.keys.Add(KeyAction.pause, KeyCode.Escape);
-        KeySetting.keys.Add(KeyAction.setting, KeyCode.Escape);
-        KeySetting.keys.Add(KeyAction.portal, KeyCode.G);
-        KeySetting.keys.Add(KeyAction.minimap, KeyCode.M);
+        KeySetting.keys[KeyAction.up] = KeyCode.W;
+        KeySetting.keys[KeyAction.down] = KeyCode.S;
+        KeySetting.keys[KeyAction.left] = KeyCode.A;
+        KeySetting.keys[KeyAction.right] = KeyCode.D;
+        KeySetting.keys[KeyAction.skill1] = KeyCode.Mouse0;
+        KeySetting.keys[KeyAction.skill2] = KeyCode.Mouse1;
+        KeySetting.keys[KeyAction.skill3] = KeyCode.Q;
+        KeySetting.keys[KeyAction.skill4] = KeyCode.E;
+        KeySetting.keys[KeyAction.skill5] = KeyCode.T;
+        KeySetting.keys[KeyAction.item1] = KeyCode.Alpha1;
+        KeySetting.keys[KeyAction.item2] = KeyCode.Alpha2;
+        KeySetting.keys[KeyAction.item3] = KeyCode.Alpha3;
+        KeySetting.keys[KeyAction.item4] = KeyCode.Alpha4;
+        KeySetting.keys[KeyAction.status] = KeyCode.U;
+        KeySetting.keys[KeyAction.inventory] = KeyCode.I;
+        KeySetting.keys[KeyAction.awaken] = KeyCode.O;
+        KeySetting.keys[KeyAction.quest] = KeyCode.P;
+        KeySetting.keys[KeyAction.pause] = KeyCode.Escape;
+        KeySetting.keys[KeyAction.setting] = KeyCode.Escape;
+        KeySetting.keys[KeyAction.portal] = KeyCode.G;
+        KeySetting.keys[KeyAction.minimap] = KeyCode.M;
     }
 
     [System.Serializable]
@@ -67,7 +67,7 @@ public class KeyManager : MonoBehaviour
         public List<Key> keys = new List<Key>();
     }
 
-    public void SaveKeyPreset()
+    public static void SaveKeyPreset()
     {
         if (!SaveDataManager.instance.saveKeyPreset) return;
 
@@ -81,13 +81,13 @@ public class KeyManager : MonoBehaviour
         JsonIO.SaveToJson(keyData, SaveDataManager.saveFile[SaveFile.KeyPreset]);
     }
 
-    private void LoadKeyPreset()
+    private static void LoadKeyPreset()
     {
         KeyData keyData = JsonIO.LoadFromJson<KeyData>(SaveDataManager.saveFile[SaveFile.KeyPreset]);
 
         if (keyData == null)
         {
-            KeysetDefault();
+            instance.KeysetDefault();
             return;
         }
 

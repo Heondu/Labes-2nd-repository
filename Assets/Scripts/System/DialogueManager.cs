@@ -132,7 +132,7 @@ public class DialogueManager : MonoBehaviour
             {
                 playerDialogue.Die();
             }
-            PlayerInput.instance.SetInputMode(InputMode.normal);
+            PlayerInput.SetInputMode(InputMode.normal);
             return;
         }
 

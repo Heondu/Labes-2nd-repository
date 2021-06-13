@@ -1,0 +1,88 @@
+{
+    "keys": [
+        {
+            "keyAction": 0,
+            "keyCode": 119
+        },
+        {
+            "keyAction": 1,
+            "keyCode": 115
+        },
+        {
+            "keyAction": 2,
+            "keyCode": 97
+        },
+        {
+            "keyAction": 3,
+            "keyCode": 100
+        },
+        {
+            "keyAction": 4,
+            "keyCode": 323
+        },
+        {
+            "keyAction": 5,
+            "keyCode": 324
+        },
+        {
+            "keyAction": 6,
+            "keyCode": 113
+        },
+        {
+            "keyAction": 7,
+            "keyCode": 101
+        },
+        {
+            "keyAction": 8,
+            "keyCode": 116
+        },
+        {
+            "keyAction": 9,
+            "keyCode": 49
+        },
+        {
+            "keyAction": 10,
+            "keyCode": 50
+        },
+        {
+            "keyAction": 11,
+            "keyCode": 51
+        },
+        {
+            "keyAction": 12,
+            "keyCode": 52
+        },
+        {
+            "keyAction": 15,
+            "keyCode": 117
+        },
+        {
+            "keyAction": 16,
+            "keyCode": 105
+        },
+        {
+            "keyAction": 17,
+            "keyCode": 111
+        },
+        {
+            "keyAction": 18,
+            "keyCode": 112
+        },
+        {
+            "keyAction": 20,
+            "keyCode": 27
+        },
+        {
+            "keyAction": 13,
+            "keyCode": 103
+        },
+        {
+            "keyAction": 21,
+            "keyCode": 109
+        },
+        {
+            "keyAction": 19,
+            "keyCode": 27
+        }
+    ]
+}

@@ -39,7 +39,7 @@ public class MinimapController : MonoBehaviour
 
     private bool IsMinimapKeyInput()
     {
-        if (PlayerInput.instance.GetInputMode() != InputMode.normal) return false;
+        if (PlayerInput.GetInputMode() != InputMode.normal) return false;
         if (Input.GetKeyDown(KeySetting.keys[KeyAction.minimap])) return true;
         return false;
     }

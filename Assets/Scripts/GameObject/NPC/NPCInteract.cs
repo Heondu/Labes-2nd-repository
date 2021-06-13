@@ -70,7 +70,7 @@ public class NPCInteract : MonoBehaviour
         {
             speachBubble.SetActive(false);
             isActiveInteractiveIcon = true;
-            PlayerInput.instance.SetInputMode(InputMode.interact);
+            PlayerInput.SetInputMode(InputMode.interact);
         }
     }
 
@@ -107,7 +107,7 @@ public class NPCInteract : MonoBehaviour
                 }
                 else
                 {
-                    PlayerInput.instance.SetInputMode(InputMode.normal);
+                    PlayerInput.SetInputMode(InputMode.normal);
                 }
                 isKeyInput = true;
                 DisableInteractive();
@@ -117,7 +117,7 @@ public class NPCInteract : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             isKeyInput = true;
-            PlayerInput.instance.SetInputMode(InputMode.normal);
+            PlayerInput.SetInputMode(InputMode.normal);
             DisableInteractive();
         }
     }

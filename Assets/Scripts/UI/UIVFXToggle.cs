@@ -3,8 +3,6 @@ using UnityEngine;
 public class UIVFXToggle : MonoBehaviour
 {
     private OnOffToggle toggle;
-    [SerializeField]
-    private GameObject[] vfxs;
 
     private void Awake()
     {
@@ -18,10 +16,5 @@ public class UIVFXToggle : MonoBehaviour
     private void SetVFX(bool value)
     {
         SettingsManager.SetVFX(value);
-
-        for (int i = 0; i < vfxs.Length; i++)
-        {
-            vfxs[i].SetActive(value);
-        }
     }
 }

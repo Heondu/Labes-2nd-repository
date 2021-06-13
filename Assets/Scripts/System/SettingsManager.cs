@@ -132,6 +132,7 @@ public class SettingsManager : MonoBehaviour
     {
         return settingsManager.VFX_toggle;
     }
+
     public static void SetVFX(bool value)
     {
         settingsManager.VFX_toggle = value;

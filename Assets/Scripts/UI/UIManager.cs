@@ -33,19 +33,19 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerInput.instance.GetInputMode() == InputMode.normal || PlayerInput.instance.GetInputMode() == InputMode.pause)
+        if (PlayerInput.GetInputMode() == InputMode.normal || PlayerInput.GetInputMode() == InputMode.pause)
         {
             if (Input.GetKeyDown(KeySetting.keys[KeyAction.setting]))
             {
                 if (pause.activeSelf == false)
                 {
-                    PlayerInput.instance.SetInputMode(InputMode.pause);
+                    PlayerInput.SetInputMode(InputMode.pause);
                     pause.SetActive(true);
                     Time.timeScale = 0;
                 }
                 else
                 {
-                    PlayerInput.instance.SetInputMode(InputMode.normal);
+                    PlayerInput.SetInputMode(InputMode.normal);
                     pause.SetActive(false);
                     Time.timeScale = 1;
                 }
@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
             }
         }
         
-        if (PlayerInput.instance.GetInputMode() == InputMode.normal || PlayerInput.instance.GetInputMode() == InputMode.UI)
+        if (PlayerInput.GetInputMode() == InputMode.normal || PlayerInput.GetInputMode() == InputMode.UI)
         {
             if (Input.GetKeyDown(KeySetting.keys[KeyAction.status])) menuToggle[0].isOn = !menuToggle[0].isOn;
             if (Input.GetKeyDown(KeySetting.keys[KeyAction.inventory])) menuToggle[1].isOn = !menuToggle[1].isOn;
@@ -88,12 +88,12 @@ public class UIManager : MonoBehaviour
         if (isUIActive == false && flag == true)
         {
             isUIActive = true;
-            PlayerInput.instance.SetInputMode(InputMode.UI);
+            PlayerInput.SetInputMode(InputMode.UI);
         }
         else if (isUIActive == true && flag == false)
         {
             isUIActive = false;
-            PlayerInput.instance.SetInputMode(InputMode.normal);
+            PlayerInput.SetInputMode(InputMode.normal);
         }
     }
     
@@ -105,7 +105,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenSettingUI()
     {
-        PlayerInput.instance.SetInputMode(InputMode.UI);
+        PlayerInput.SetInputMode(InputMode.UI);
         pause.SetActive(false);
         menuToggle[4].isOn = true;
     }

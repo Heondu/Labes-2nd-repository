@@ -55,21 +55,21 @@ public class SaveDataManager : MonoBehaviour
 
         string path = "SaveData/";
 
-        saveFile.Add(SaveFile.PlayerStatus, path + "Player Status");
-        saveFile.Add(SaveFile.KeyPreset, path + "Key Preset");
-        saveFile.Add(SaveFile.InventoryWeapon, path + "Inventory Weapon");
-        saveFile.Add(SaveFile.InventoryEquipment, path + "Inventory Equipment");
-        saveFile.Add(SaveFile.InventoryEquipSlotL, path + "Inventory Left EquipSlot");
-        saveFile.Add(SaveFile.InventoryEquipSlotR, path + "Inventory Right EquipSlot");
-        saveFile.Add(SaveFile.InventorySkill, path + "Inventory Skill");
-        saveFile.Add(SaveFile.InventorySkillSlot, path + "Inventory SkillSlot");
-        saveFile.Add(SaveFile.InventoryConsume, path + "Inventory Consume");
-        saveFile.Add(SaveFile.InventoryConsumeSlot, path + "Inventory ConsumeSlot");
-        saveFile.Add(SaveFile.InventoryRune, path + "Inventory Rune");
-        saveFile.Add(SaveFile.PlayerResources, path + "Player Resources");
-        saveFile.Add(SaveFile.AwakenData, path + "Awaken Data");
-        saveFile.Add(SaveFile.PlayerQuest, path + "Player Quest");
-        saveFile.Add(SaveFile.QuestData, path + "Quest Data");
+        saveFile[SaveFile.PlayerStatus] = path + "Player Status";
+        saveFile[SaveFile.KeyPreset] = path + "Key Preset";
+        saveFile[SaveFile.InventoryWeapon] = path + "Inventory Weapon";
+        saveFile[SaveFile.InventoryEquipment] = path + "Inventory Equipment";
+        saveFile[SaveFile.InventoryEquipSlotL] = path + "Inventory Left EquipSlot";
+        saveFile[SaveFile.InventoryEquipSlotR] = path + "Inventory Right EquipSlot";
+        saveFile[SaveFile.InventorySkill] = path + "Inventory Skill";
+        saveFile[SaveFile.InventorySkillSlot] = path + "Inventory SkillSlot";
+        saveFile[SaveFile.InventoryConsume] = path + "Inventory Consume";
+        saveFile[SaveFile.InventoryConsumeSlot] = path + "Inventory ConsumeSlot";
+        saveFile[SaveFile.InventoryRune] = path + "Inventory Rune";
+        saveFile[SaveFile.PlayerResources] = path + "Player Resources";
+        saveFile[SaveFile.AwakenData] = path + "Awaken Data";
+        saveFile[SaveFile.PlayerQuest] = path + "Player Quest";
+        saveFile[SaveFile.QuestData] = path + "Quest Data";
 
         if (TitleSceneManager.isNewGame)
         {

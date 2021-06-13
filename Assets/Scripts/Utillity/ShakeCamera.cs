@@ -5,10 +5,6 @@ public class ShakeCamera : MonoBehaviour
 {
     public static ShakeCamera instance;
 
-    [SerializeField]
-    private OnOffToggle toggle;
-
-    private bool isOn = true;
     private bool isShake = false;
 
     private void Awake()
@@ -17,15 +13,9 @@ public class ShakeCamera : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    private void Start()
-    {
-        toggle.onValueChanged.AddListener(OnValueChnaged);
-        isOn = toggle.IsOn;
-    }
-
     public IEnumerator Shake(float amount, float duration)
     {
-        if (isOn == false) yield break;
+        if (SettingsManager.GetVFX() == false) yield break;
         if (isShake) yield break;
 
         if (isShake == false)
@@ -40,10 +30,5 @@ public class ShakeCamera : MonoBehaviour
             }
         }
         isShake = false;
-    }
-
-    private void OnValueChnaged(bool value)
-    {
-        isOn = value;
     }
 }

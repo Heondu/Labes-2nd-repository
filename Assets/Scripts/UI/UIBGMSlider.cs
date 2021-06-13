@@ -22,5 +22,6 @@ public class UIBGMSlider : MonoBehaviour
     {
         volumeText.text = Mathf.RoundToInt(value * 10).ToString();
         SettingsManager.setBGM(value);
+        MusicManager.SetVolume();
     }
 }

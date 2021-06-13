@@ -48,7 +48,7 @@ public class NPC : MonoBehaviour
             QuestManager.instance.SaveQuestData();
             newQuests.RemoveAt(0);
 
-            PlayerInput.instance.SetInputMode(InputMode.normal);
+            PlayerInput.SetInputMode(InputMode.normal);
         }
         else
         {

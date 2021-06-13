@@ -6,7 +6,7 @@ public class PlayerInput : MonoBehaviour
 {
     public static PlayerInput instance;
 
-    private InputMode inputMode = InputMode.normal;
+    private static InputMode inputMode = InputMode.normal;
     private bool attackFlag = true;
 
     private void Awake()
@@ -59,12 +59,12 @@ public class PlayerInput : MonoBehaviour
         return new Vector3(horizontal, vertical, 0).normalized;
     }
 
-    public void SetInputMode(InputMode mode)
+    public static void SetInputMode(InputMode mode)
     {
         inputMode = mode;
     }
 
-    public InputMode GetInputMode()
+    public static InputMode GetInputMode()
     {
         return inputMode;
     }

@@ -36,7 +36,7 @@ public class Return : MonoBehaviour
 
     private bool IsReturnKeyInput()
     {
-        if (PlayerInput.instance.GetInputMode() != InputMode.normal) return false;
+        if (PlayerInput.GetInputMode() != InputMode.normal) return false;
         if (Input.GetKeyDown(KeySetting.keys[KeyAction.portal])) return true;
         return false;
     }

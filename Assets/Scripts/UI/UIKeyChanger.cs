@@ -49,7 +49,7 @@ public class UIKeyChanger : MonoBehaviour, IPointerClickHandler
 
         isEditMode = false;
 
-        PlayerInput.instance.SetInputMode(InputMode.UI);
+        PlayerInput.SetInputMode(InputMode.UI);
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -60,7 +60,7 @@ public class UIKeyChanger : MonoBehaviour, IPointerClickHandler
 
         isEditMode = true;
 
-        PlayerInput.instance.SetInputMode(InputMode.keySetting);
+        PlayerInput.SetInputMode(InputMode.keySetting);
     }
 
     private void Update()
@@ -119,7 +119,7 @@ public class UIKeyChanger : MonoBehaviour, IPointerClickHandler
 
                     onKeyChanged.Invoke();
 
-                    KeyManager.instance.SaveKeyPreset();
+                    KeyManager.SaveKeyPreset();
 
                     UpdateKey();
                 }
@@ -140,7 +140,7 @@ public class UIKeyChanger : MonoBehaviour, IPointerClickHandler
             KeySetting.keys[alreadyKey] = KeyCode.None;
             confirmUI.SetActive(false);
         }
-        KeyManager.instance.SaveKeyPreset();
+        KeyManager.SaveKeyPreset();
         UpdateKey();
     }
 

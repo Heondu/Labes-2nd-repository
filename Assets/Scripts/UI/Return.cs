@@ -26,10 +26,10 @@ public class Return : MonoBehaviour
     {
         if (IsReturnKeyInput())
         {
-            if (SceneManager.GetActiveScene().name == SceneData.instance.mainScene) return;
-            if (SceneManager.GetActiveScene().name == SceneData.instance.loadingScene) return;
+            if (SceneManager.GetActiveScene().name == SceneData.mainScene) return;
+            if (SceneManager.GetActiveScene().name == SceneData.loadingScene) return;
             {
-                LoadingSceneManager.LoadScene(SceneData.instance.mainScene);
+                LoadingSceneManager.LoadScene(SceneData.mainScene);
             }
         }
     }

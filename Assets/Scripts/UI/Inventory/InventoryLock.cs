@@ -12,7 +12,7 @@ public class InventoryLock : MonoBehaviour
 
     private void CheckForScene(string sceneName)
     {
-        if (sceneName != SceneData.instance.mainScene)
+        if (sceneName != SceneData.mainScene)
         {
             Lock(true);
         }

@@ -5,7 +5,7 @@ public class Player : MonoBehaviour, ILivingEntity
 {
     private Movement movement;
     private AnimationController animationController;
-    public PlayerStatus status;
+    public PlayerStatus status = new PlayerStatus();
     public UnityEvent onLevelUp = new UnityEvent();
     [SerializeField]
     private float moveSpeed;
@@ -19,10 +19,6 @@ public class Player : MonoBehaviour, ILivingEntity
         movement = GetComponent<Movement>();
         animationController = GetComponent<AnimationController>();
         LoadStatus();
-        status.HP = status.maxHP;
-        status.mana = status.maxMana;
-        status.exp = 0;
-        status.level = 1;
 
         LoadingSceneManager.onLevelWasLoaded.AddListener(RestoreHPOnLevelLoad);
 }
@@ -74,7 +70,7 @@ public class Player : MonoBehaviour, ILivingEntity
 
     private void RestoreHPOnLevelLoad(string sceneName)
     {
-        if (sceneName == SceneData.instance.mainScene)
+        if (sceneName == SceneData.mainScene)
         {
             status.HP = status.maxHP;
         }
@@ -112,7 +108,23 @@ public class Player : MonoBehaviour, ILivingEntity
 
     public void LoadStatus()
     {
-        if (SaveDataManager.instance.loadStatus == false) return;
-        status = JsonIO.LoadFromJson<PlayerStatus>(SaveDataManager.saveFile[SaveFile.PlayerStatus]);
+        if (SaveDataManager.instance.loadStatus)
+        {
+            status = JsonIO.LoadFromJson<PlayerStatus>(SaveDataManager.saveFile[SaveFile.PlayerStatus]);
+            if (status == null)
+            {
+                status = new PlayerStatus();
+                status.Init();
+            }
+        }
+        else
+        {
+            status.Init();
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveStatus();
     }
 }

@@ -3,38 +3,38 @@
 [System.Serializable]
 public class PlayerStatus : IStatus
 {
-    public int HP;
-    public int maxHP;
+    public int HP = 0;
+    public int maxHP = 100;
     public int mana = 0;
     public int maxMana = 100;
     public float exp = 0;
     public int level = 1;
 
-    public Status strength;
-    public Status agility;
-    public Status intelligence;
-    public Status endurance;
-    public Status damage;
-    public Status defence;
-    public Status allResist;
-    public Status fireResist;
-    public Status coldResist;
-    public Status darkResist;
-    public Status lightResist;
-    public Status fireDamage;
-    public Status coldDamage;
-    public Status darkDamage;
-    public Status lightDamage;
-    public Status fixDamage;
-    public Status critChance;
-    public Status critResist;
-    public Status critDamage;
-    public Status avoidance;
-    public Status accuracy;
-    public Status reduceMana;
-    public Status reduceCool;
-    public Status experience;
-    public Status itemRange;
+    public Status strength = new Status();
+    public Status agility = new Status();
+    public Status intelligence = new Status();
+    public Status endurance = new Status();
+    public Status damage = new Status();
+    public Status defence = new Status();
+    public Status allResist = new Status();
+    public Status fireResist = new Status();
+    public Status coldResist = new Status();
+    public Status darkResist = new Status();
+    public Status lightResist = new Status();
+    public Status fireDamage = new Status();
+    public Status coldDamage = new Status();
+    public Status darkDamage = new Status();
+    public Status lightDamage = new Status();
+    public Status fixDamage = new Status();
+    public Status critChance = new Status();
+    public Status critResist = new Status();
+    public Status critDamage = new Status();
+    public Status avoidance = new Status();
+    public Status accuracy = new Status();
+    public Status reduceMana = new Status();
+    public Status reduceCool = new Status();
+    public Status experience = new Status();
+    public Status itemRange = new Status();
 
     private const float multValue = 0.05f;
 
@@ -128,5 +128,41 @@ public class PlayerStatus : IStatus
     public object GetValue(string name)
     {
         return GetValue((StatusList)Enum.Parse(typeof(StatusList), name));
+    }
+
+    public void Init()
+    {
+        maxHP = 100;
+        HP = maxHP;
+        maxMana = 100;
+        mana = maxMana;
+        exp = 0;
+        level = 1;
+
+        strength.BaseValue = 10;
+        agility.BaseValue = 10;
+        intelligence.BaseValue = 10;
+        endurance.BaseValue = 10;
+        damage.BaseValue = 0;
+        defence.BaseValue = 0;
+        allResist.BaseValue = 0;
+        fireResist.BaseValue = 0;
+        coldResist.BaseValue = 0;
+        darkResist.BaseValue = 0;
+        lightResist.BaseValue = 0;
+        fireDamage.BaseValue = 0;
+        coldDamage.BaseValue = 0;
+        darkDamage.BaseValue = 0;
+        lightDamage.BaseValue = 0;
+        fixDamage.BaseValue = 0;
+        critChance.BaseValue = 0;
+        critResist.BaseValue = 0;
+        critDamage.BaseValue = 0;
+        avoidance.BaseValue = 0;
+        accuracy.BaseValue = 0;
+        reduceMana.BaseValue = 0;
+        reduceCool.BaseValue = 0;
+        experience.BaseValue = 0;
+        itemRange.BaseValue = 2;
     }
 }

@@ -34,7 +34,7 @@ public class GuardingDungeon : MonoBehaviour
 
     private void Start()
     {
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneData.instance.guardDungeon));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneData.guardDungeon));
 
         regenManager.onRegen.AddListener(IncreaseWave);
         player.onDeath.AddListener(OnPlayerDeath);
@@ -80,7 +80,7 @@ public class GuardingDungeon : MonoBehaviour
         player.SetMapData(SceneData.instance.mapdata);
         LazyCamera.instance.SetMapData(SceneData.instance.mapdata);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneData.instance.prevScene));
-        SceneManager.UnloadSceneAsync(SceneData.instance.guardDungeon);
+        SceneManager.UnloadSceneAsync(SceneData.guardDungeon);
     }
 
     private void IncreaseWave()

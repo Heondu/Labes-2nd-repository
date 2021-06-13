@@ -85,7 +85,11 @@ public class KeyManager : MonoBehaviour
     {
         KeyData keyData = JsonIO.LoadFromJson<KeyData>(SaveDataManager.saveFile[SaveFile.KeyPreset]);
 
-        if (keyData == null) return;
+        if (keyData == null)
+        {
+            KeysetDefault();
+            return;
+        }
 
         for (int i = 0; i < keyData.keys.Count; i++)
         {

@@ -70,5 +70,52 @@ public class SaveDataManager : MonoBehaviour
         saveFile.Add(SaveFile.AwakenData, path + "Awaken Data");
         saveFile.Add(SaveFile.PlayerQuest, path + "Player Quest");
         saveFile.Add(SaveFile.QuestData, path + "Quest Data");
+
+        if (TitleSceneManager.isNewGame)
+        {
+            NewGame();
+        }
+        else
+        {
+            LoadGame();
+        }
     }
+
+    public void NewGame()
+    {
+        loadStatus = false;
+        loadItem = false;
+        loadSkill = false;
+        loadResource = false;
+        loadKeyPreset = false;
+        loadQuest = false;
+        loadAwaken = false;
+
+        saveStatus = true;
+        saveItem = true;
+        saveSkill = true;
+        saveResource = true;
+        saveKeyPreset = true;
+        saveQuest = true;
+        saveAwaken = true;
+    }
+
+    public void LoadGame()
+    {
+        loadStatus = true;
+        loadItem = true;
+        loadSkill = true;
+        loadResource = true;
+        loadKeyPreset = true;
+        loadQuest = true;
+        loadAwaken = true;
+
+        saveStatus = true;
+        saveItem = true;
+        saveSkill = true;
+        saveResource = true;
+        saveKeyPreset = true;
+        saveQuest = true;
+        saveAwaken = true;
+    }    
 }

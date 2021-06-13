@@ -103,6 +103,10 @@ public class InventoryManager : MonoBehaviour
         if (SaveDataManager.instance.loadResource)
         {
             resource = JsonIO.LoadFromJson<Resource>(SaveDataManager.saveFile[SaveFile.PlayerResources]);
+            if (resource == null)
+            {
+                resource = new Resource();
+            }
         }
     }
 

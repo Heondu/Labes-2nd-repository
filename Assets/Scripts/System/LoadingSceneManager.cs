@@ -24,7 +24,10 @@ public class LoadingSceneManager : MonoBehaviour
 
     IEnumerator LoadScene()
     {
-        PlayerInput.instance.SetInputMode(InputMode.pause);
+        if (PlayerInput.instance != null)
+        {
+            PlayerInput.instance.SetInputMode(InputMode.pause);
+        }
         yield return null;
         AsyncOperation op = SceneManager.LoadSceneAsync(nextScene); 
         op.allowSceneActivation = false;
@@ -42,7 +45,10 @@ public class LoadingSceneManager : MonoBehaviour
                 onLevelWasLoaded.Invoke(nextScene);
                 progressText.text = "100%";
                 op.allowSceneActivation = true;
-                PlayerInput.instance.SetInputMode(InputMode.normal);
+                if (PlayerInput.instance != null)
+                {
+                    PlayerInput.instance.SetInputMode(InputMode.normal);
+                }
                 yield break;
             }
         } 

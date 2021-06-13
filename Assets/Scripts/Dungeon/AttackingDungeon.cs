@@ -28,7 +28,7 @@ public class AttackingDungeon : MonoBehaviour
 
     private void Start()
     {
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneData.instance.attackDungeon));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneData.attackDungeon));
 
         regenManager.onRegen.AddListener(IncreaseWave);
         regenManager.onEnemyDeath.AddListener(IncreaseKillNum);
@@ -53,7 +53,7 @@ public class AttackingDungeon : MonoBehaviour
         player.SetMapData(SceneData.instance.mapdata);
         LazyCamera.instance.SetMapData(SceneData.instance.mapdata);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneData.instance.prevScene));
-        SceneManager.UnloadSceneAsync(SceneData.instance.attackDungeon);
+        SceneManager.UnloadSceneAsync(SceneData.attackDungeon);
     }
 
     private void IncreaseWave()

@@ -37,9 +37,9 @@ public class DungeonManager : MonoBehaviour
     private void OnPlayerDeath()
     {
         if (respawnToMainSceneAtDeath == false) return;
-        if (SceneManager.GetActiveScene().name == SceneData.instance.attackDungeon) return;
-        if (SceneManager.GetActiveScene().name == SceneData.instance.guardDungeon) return;
+        if (SceneManager.GetActiveScene().name == SceneData.attackDungeon) return;
+        if (SceneManager.GetActiveScene().name == SceneData.guardDungeon) return;
 
-        LoadingSceneManager.LoadScene(SceneData.instance.mainScene);
+        LoadingSceneManager.LoadScene(SceneData.mainScene);
     }
 }

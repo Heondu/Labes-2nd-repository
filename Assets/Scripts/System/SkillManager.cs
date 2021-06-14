@@ -7,6 +7,9 @@ public class SkillManager : MonoBehaviour
     [SerializeField]
     private GameObject[] eliteSkills;
 
+    [SerializeField]
+    private string[] playerBaseSkills;
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -18,5 +21,10 @@ public class SkillManager : MonoBehaviour
         int rand = Random.Range(0, eliteSkills.Length);
 
         return DataManager.skillDB[eliteSkills[rand].name];
+    }
+
+    public string[] GetPlayerBaseSkills()
+    {
+        return playerBaseSkills;
     }
 }

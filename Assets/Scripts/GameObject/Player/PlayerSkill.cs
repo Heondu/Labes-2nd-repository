@@ -10,20 +10,11 @@ public class PlayerSkill : MonoBehaviour
     private AnimationController animationController;
     public Dictionary<Skill, bool> isSkillCool = new Dictionary<Skill, bool>();
     public Dictionary<Skill, Timer> skillCool = new Dictionary<Skill, Timer>();
-    public string[] skillNames;
 
     private void Awake()
     {
         player = GetComponent<Player>();
         animationController = GetComponent<AnimationController>();
-    }
-
-    private void Start()
-    {
-        for (int i = 0; i < skillNames.Length; i++)
-        {
-            InventoryManager.instance.AddSkill(DataManager.skillDB[skillNames[i]]);
-        }
     }
 
     private void Update()

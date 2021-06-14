@@ -17,9 +17,4 @@ public class TitleSceneManager : MonoBehaviour
 
         LoadingSceneManager.LoadScene(SceneData.mainScene);
     }
-
-    public void Quit()
-    {
-        Application.Quit();
-    }
 }

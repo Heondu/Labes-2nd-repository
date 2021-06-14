@@ -88,6 +88,14 @@ public class InventoryManager : MonoBehaviour
             inventorySkill.LoadInventory();
             skillSlot.LoadInventory();
         }
+        else
+        {
+            string[] skills = SkillManager.instance.GetPlayerBaseSkills();
+            for (int i = 0; i < skills.Length; i++)
+            {
+                AddSkill(DataManager.skillDB[skills[i]]);
+            }
+        }
     }
 
     private void SaveResource()
@@ -121,12 +129,9 @@ public class InventoryManager : MonoBehaviour
     
     public void AddSkill(Skill newSkill)
     {
-        if (SaveDataManager.instance.loadSkill == false)
-        {
-            inventorySkill.AddSkill(newSkill);
-            notification.Notify(true);
-            notification.IncreaseNum();
-        }
+        inventorySkill.AddSkill(newSkill);
+        notification.Notify(true);
+        notification.IncreaseNum();
     }
 
     public void RemoveItem(Item selectedItem, InventoryItem inventory)

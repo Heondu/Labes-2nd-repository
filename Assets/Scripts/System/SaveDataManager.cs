@@ -53,23 +53,21 @@ public class SaveDataManager : MonoBehaviour
             return;
         }
 
-        string path = "SaveData/";
-
-        saveFile[SaveFile.PlayerStatus] = path + "Player Status";
-        saveFile[SaveFile.KeyPreset] = path + "Key Preset";
-        saveFile[SaveFile.InventoryWeapon] = path + "Inventory Weapon";
-        saveFile[SaveFile.InventoryEquipment] = path + "Inventory Equipment";
-        saveFile[SaveFile.InventoryEquipSlotL] = path + "Inventory Left EquipSlot";
-        saveFile[SaveFile.InventoryEquipSlotR] = path + "Inventory Right EquipSlot";
-        saveFile[SaveFile.InventorySkill] = path + "Inventory Skill";
-        saveFile[SaveFile.InventorySkillSlot] = path + "Inventory SkillSlot";
-        saveFile[SaveFile.InventoryConsume] = path + "Inventory Consume";
-        saveFile[SaveFile.InventoryConsumeSlot] = path + "Inventory ConsumeSlot";
-        saveFile[SaveFile.InventoryRune] = path + "Inventory Rune";
-        saveFile[SaveFile.PlayerResources] = path + "Player Resources";
-        saveFile[SaveFile.AwakenData] = path + "Awaken Data";
-        saveFile[SaveFile.PlayerQuest] = path + "Player Quest";
-        saveFile[SaveFile.QuestData] = path + "Quest Data";
+        saveFile[SaveFile.PlayerStatus] = "Player Status";
+        saveFile[SaveFile.KeyPreset] = "Key Preset";
+        saveFile[SaveFile.InventoryWeapon] = "Inventory Weapon";
+        saveFile[SaveFile.InventoryEquipment] = "Inventory Equipment";
+        saveFile[SaveFile.InventoryEquipSlotL] = "Inventory Left EquipSlot";
+        saveFile[SaveFile.InventoryEquipSlotR] = "Inventory Right EquipSlot";
+        saveFile[SaveFile.InventorySkill] = "Inventory Skill";
+        saveFile[SaveFile.InventorySkillSlot] = "Inventory SkillSlot";
+        saveFile[SaveFile.InventoryConsume] = "Inventory Consume";
+        saveFile[SaveFile.InventoryConsumeSlot] = "Inventory ConsumeSlot";
+        saveFile[SaveFile.InventoryRune] = "Inventory Rune";
+        saveFile[SaveFile.PlayerResources] = "Player Resources";
+        saveFile[SaveFile.AwakenData] = "Awaken Data";
+        saveFile[SaveFile.PlayerQuest] = "Player Quest";
+        saveFile[SaveFile.QuestData] = "Quest Data";
 
         if (TitleSceneManager.isNewGame)
         {

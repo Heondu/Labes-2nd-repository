@@ -6,20 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TitleScene.unity
+    guid: c00c9f8ec8eb44b49974f20d4c42319b
+  - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene.unity
+    guid: 13180df94a4846544b470089be49f666
+  - enabled: 1
+    path: Assets/Scenes/Dungeon01.unity
+    guid: 1c698a740663dda42a46f2da0b49dc16
   - enabled: 1
     path: Assets/Scenes/GuardDungeon.unity
     guid: 3df00e418becf674e94b6ea73c43391e
   - enabled: 1
     path: Assets/Scenes/AttackDungeon.unity
     guid: 772821d453c42b148a80087d2ea0c629
-  - enabled: 1
-    path: Assets/Scenes/Dungeon01.unity
-    guid: 1c698a740663dda42a46f2da0b49dc16
-  - enabled: 1
-    path: Assets/Scenes/LoadingScene.unity
-    guid: 13180df94a4846544b470089be49f666
   - enabled: 1
     path: Assets/Scenes/BossDungeon.unity
     guid: e1728581f52beca42bd88491550ce048

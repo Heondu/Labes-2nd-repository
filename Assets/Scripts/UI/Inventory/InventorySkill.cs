@@ -45,7 +45,22 @@ public class InventorySkill : Inventory
     {
         InventorySkillData inventoryData = JsonIO.LoadFromJson<InventorySkillData>(SaveDataManager.saveFile[saveFileName]);
 
-        if (inventoryData == null) return;
+        if (inventoryData == null)
+        {
+            if (saveFileName == SaveFile.InventorySkill)
+            {
+                string[] skills = SkillManager.instance.GetPlayerBaseSkills();
+                for (int i = 0; i < skills.Length; i++)
+                {
+                    InventoryManager.instance.AddSkill(DataManager.skillDB[skills[i]]);
+                }
+                return;
+            }
+            else
+            {
+                return;
+            }
+        }
 
         for (int i = 0; i < inventoryData.skills.Count; i++)
         {

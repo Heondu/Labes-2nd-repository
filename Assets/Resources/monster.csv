@@ -31,7 +31,7 @@ mon022_1,29,pawn,skill011,100,,,,,,,,,,,3
 mon023,30,pawn,skill011,100,,,,,,,,,,,3
 mon024,31,pawn,skill011,100,,,,,,,,,,,3
 boss001,32,boss,skill012,100,,,,,,,,,,,6
-boss002,10,boss,skill013,100,,,,,,,,,,,6
+boss002,10,boss,skill013,100,skill015,100,,,,,,,,,6
 boss003,34,boss,skill012,100,,,,,,,,,,,6
 boss003_1,35,boss,skill012,100,,,,,,,,,,,6
 boss003_2,36,boss,skill012,100,,,,,,,,,,,6

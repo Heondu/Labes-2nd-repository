@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Boss002AttackTrigger : MonoBehaviour
@@ -11,8 +10,15 @@ public class Boss002AttackTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            boss.CanAttack = true;
+            StartCoroutine("WaitTime", 1f);
         }
+    }
+
+    private IEnumerator WaitTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        boss.CanAttack = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)

@@ -7,11 +7,13 @@ Triple Arrow,skill005,1,1,ore,bow,,0,hero,light,0.5,0,0,0,1,10,1,10,0.3,3,10
 Triple Arrow Hit,skill006,1,1,ore,bow,range,10,this,light,0,100,15,0,1,3,1,0,0,0,0
 LightningStrike,skill007,1,1,ore,bow,,0,hero,light,5,0,0,0,1,10,1,2,0,10,10
 Wheel Sphere,skill008,1,1,ore,bow,,0,hero,light,0.5,0,0,0,1,10,1,10,0.3,5,10
-,skill009,,,,,,,,,,,,,,,,,,,
-,skill010,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
 MonBullet,skill011,1,1,ore,bow,,0,hero,light,0.5,0,0,0,1,3,1,10,0.3,5,10
 MonOval,skill012,1,1,ore,bow,,0,hero,light,5,0,0,0,1,10,1,2,0,10,10
-Boss002Fist,skill013,1,1,ore,bow,,0,hero,light,5,0,0,0,1,10,1,3,0,10,10
-Boss002FistHit,skill014,1,1,ore,bow,,0,hero,light,0,100,0,0,1,0,1,0,0,0,0
+Boss002VerticalFist,skill013,1,1,ore,bow,,0,hero,light,5,0,0,0,1,10,1,3,0,10,10
+Boss002VerticalFistHit,skill014,1,1,ore,bow,,0,hero,light,0,100,0,0,1,0,1,0,0,0,0
+Boss002HorizontalFist,skill015,1,1,ore,bow,,0,hero,light,5,0,0,0,1,2,1,3,0,10,10
+Boss002HorizontalFistHit,skill016,1,1,ore,bow,,0,hero,light,0,100,0,0,1,0,1,0,0,0,0
 ,,,,,,,,,,,,,,,,,,,,
 HealingPotion1,skill900,1,1,none,none,,0,hero,none,30,300,0,1,1,0,0,0,0,0,0

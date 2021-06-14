@@ -46,6 +46,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -161,6 +162,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -243,6 +245,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -289,6 +292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 618019843473179712}
   - component: {fileID: 9007426384398165459}
+  - component: {fileID: 5066968438590390816}
   m_Layer: 0
   m_Name: boss002
   m_TagString: Untagged
@@ -330,3 +334,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5066968438590390816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8137995313042509662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dfdd2703741207428db837594953889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimapIconPrefab: {fileID: 6996884971781931056, guid: d7fa92e964d2bc64a9314d6e10e2e3fa,
+    type: 3}
+  size: {x: 0, y: 0}
+  offset: {x: 0, y: 0}
+  autoSize: 0
+  usePrefabSize: 1
+  useColliderSize: 0
+  sortZ: 0

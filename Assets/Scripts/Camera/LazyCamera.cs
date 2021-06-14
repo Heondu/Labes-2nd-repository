@@ -18,8 +18,8 @@ public class LazyCamera : MonoBehaviour
     private MapData mapData = null;
     public UnityEvent onMapDataChanged = new UnityEvent();
 
-    private float height;
     private float width;
+    private float height;
 
     [SerializeField]
     private bool isScreenLock = true;
@@ -140,5 +140,10 @@ public class LazyCamera : MonoBehaviour
     public void ChangeTarget(Transform target)
     {
         this.target = target;
+    }
+
+    public float GetWidth()
+    {
+        return width;
     }
 }

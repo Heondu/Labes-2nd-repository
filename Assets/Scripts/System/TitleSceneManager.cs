@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TitleSceneManager : MonoBehaviour
 {
-    public static bool isNewGame;
+    public static bool isNewGame = true;
 
     public void NewGame()
     {

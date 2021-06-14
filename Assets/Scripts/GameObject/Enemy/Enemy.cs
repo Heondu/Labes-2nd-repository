@@ -105,7 +105,7 @@ public class Enemy : MonoBehaviour, ILivingEntity
         monlvl = DataManager.monlvl.FindDic("Level", monster["monlvl"]);
         classType = monster["class"].ToString();
         status.level = (int)monster["monlvl"];
-        status.maxHP = 50;
+        status.maxHP = (int)monlvl["maxHP"];
         status.HP = status.maxHP;
         status.strength.BaseValue = (int)monlvl["strength"];
         status.agility.BaseValue = (int)monlvl["agility"];

@@ -51,7 +51,7 @@ public class Boss002 : MonoBehaviour, ILivingEntity
         monster = DataManager.monster.FindDic("name", id);
         monlvl = DataManager.monlvl.FindDic("Level", monster["monlvl"]);
         status.level = (int)monster["monlvl"];
-        status.maxHP = 50;
+        status.maxHP = (int)monlvl["maxHP"];
         status.HP = status.maxHP;
         status.strength.BaseValue = (int)monlvl["strength"];
         status.agility.BaseValue = (int)monlvl["agility"];
@@ -90,6 +90,8 @@ public class Boss002 : MonoBehaviour, ILivingEntity
         if (status.HP == 0)
         {
             FindObjectOfType<Player>().status.exp += (int)monlvl["monexp"];
+
+            LoadingSceneManager.LoadScene(SceneData.mainScene);
         }
     }
 

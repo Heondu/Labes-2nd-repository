@@ -572,3 +572,9 @@ map_boss,성
 gold,골드
 ore,광물
 herb,나뭇잎
+,
+######,속성######
+fire,화속성
+cold,수속성
+dark,암속성
+light,명속성

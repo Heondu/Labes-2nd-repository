@@ -93,7 +93,8 @@ public class Popup : MonoBehaviour
         this.slot = slot;
         icon.sprite = Resources.Load<Sprite>("icons/skill/" + slot.skill.name);
         quality.text = slot.skill.quality == 0 ? "" : slot.skill.quality + "+";
-        typeText.text = $"{DataManager.Localization(slot.skill.element)}, {DataManager.Localization(slot.skill.weaponClass)}";
+        typeText.text = DataManager.Localization(slot.skill.element);
+        typeText.text += typeText.text == "" ? $"{DataManager.Localization(slot.skill.weaponClass)}" : $", {DataManager.Localization(slot.skill.weaponClass)}";
         isEquipText.text = slot.isEquip == true ? "ÀåÂøÁß" : "¹ÌÂø¿ë";
         equipButtonText.text = slot.isEquip == true ? "ÀåÂø ÇØÁ¦" : "ÀåÂø";
         name.text = DataManager.Localization(slot.skill.name);

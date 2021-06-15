@@ -1,0 +1,95 @@
+{
+    "quests": [
+        {
+            "content": {
+                "quest": {
+                    "name": "quest001",
+                    "type": "mon000_1",
+                    "amount": 5,
+                    "rewards": [
+                        {
+                            "reward": "weapon",
+                            "rarity": "Magic",
+                            "amount": 1
+                        },
+                        {
+                            "reward": "exp",
+                            "rarity": "",
+                            "amount": 10
+                        }
+                    ],
+                    "npc": "npc001",
+                    "minlvl": 1,
+                    "maxlvl": 10,
+                    "chance": 100,
+                    "title": "사냥의 달인",
+                    "content": "type amount마리 처치",
+                    "state": 2
+                },
+                "currentAmount": 0,
+                "gold": 0,
+                "exp": 10
+            },
+            "items": [
+                {
+                    "name": "gun06",
+                    "spawnable": 1,
+                    "useType": "weapon",
+                    "type": "gun",
+                    "itemImage": "Sprites/DropIcon/dropitem_0",
+                    "inventoryImage": "icons/equip/gun06",
+                    "status": "damage",
+                    "rarity": 5,
+                    "statMin": 60,
+                    "statMax": 70,
+                    "cost": 26000,
+                    "stat": 66,
+                    "rarityType": "Magic",
+                    "nameAdd": [
+                        "cdam05",
+                        "ldam05",
+                        "freg05"
+                    ],
+                    "statusAdd": [
+                        "coldDamage",
+                        "lightDamage",
+                        "fireResist"
+                    ],
+                    "statAdd": [
+                        25,
+                        27,
+                        25
+                    ],
+                    "quality": 0,
+                    "isNew": true,
+                    "skill": {
+                        "skill": "",
+                        "name": "",
+                        "rarity": 0,
+                        "exp": 0,
+                        "material": "",
+                        "weaponClass": "",
+                        "classBonus": "",
+                        "bonusAmount": 0,
+                        "position": "",
+                        "element": "",
+                        "cooltime": 0.0,
+                        "amount": 0,
+                        "perlvl": 0,
+                        "isPositive": 0,
+                        "repeat": 0,
+                        "speed": 0,
+                        "size": 0,
+                        "lifetime": 0,
+                        "guide": 0.0,
+                        "penetration": 0,
+                        "consume": 0,
+                        "quality": 0,
+                        "isNew": true
+                    }
+                }
+            ]
+        }
+    ],
+    "completes": []
+}

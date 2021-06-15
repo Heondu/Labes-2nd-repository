@@ -23,6 +23,7 @@ public class DataManager : MonoBehaviour
     public static List<Dictionary<string, object>> transcendence = new List<Dictionary<string, object>>();
     public static List<Dictionary<string, object>> dialogue = new List<Dictionary<string, object>>();
     public static List<Dictionary<string, object>> quest = new List<Dictionary<string, object>>();
+    public static List<Dictionary<string, object>> description = new List<Dictionary<string, object>>();
 
     //public static Dictionary<string, Item> itemEquipmentDB = new Dictionary<string, Item>();
     public static Dictionary<string, Item> itemWeaponDB = new Dictionary<string, Item>();
@@ -53,6 +54,7 @@ public class DataManager : MonoBehaviour
         transcendence = CSVReader.Read("transcendence");
         dialogue = CSVReader.Read("dialogue");
         quest = CSVReader.Read("quest");
+        description = CSVReader.Read("description");
 
         ListToDict(weapon);
         ListToDict(armor);

@@ -1,12 +1,12 @@
 {
     "skills": [
         {
-            "skill": "Wavy Projectile",
-            "name": "skill009",
+            "skill": "Guided Arrow",
+            "name": "skill001",
             "rarity": 1,
             "exp": 1,
             "material": "ore",
-            "weaponClass": "bow",
+            "weaponClass": "staff",
             "classBonus": "",
             "bonusAmount": 0,
             "position": "hero",
@@ -16,12 +16,12 @@
             "perlvl": 0,
             "isPositive": 0,
             "repeat": 1,
-            "speed": 5,
+            "speed": 6,
             "size": 1,
-            "lifetime": 10,
-            "guide": 0.0,
+            "lifetime": 3,
+            "guide": 0.30000001192092898,
             "penetration": 5,
-            "consume": -10,
+            "consume": 10,
             "quality": 0,
             "isNew": false
         },

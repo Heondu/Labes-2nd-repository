@@ -24171,9 +24171,9 @@ RectTransform:
   m_Father: {fileID: 729941057}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 296.96002, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 64}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &412939376
@@ -48797,7 +48797,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 615.92004, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 64}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &842802791
@@ -56329,6 +56329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 958152551}
+  description: {fileID: 1819675003}
   statusArray:
   - {fileID: 1138805878}
   - {fileID: 1748853654}
@@ -76092,7 +76093,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 934.88007, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 64}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1257368269
@@ -88908,7 +88909,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 62.49991, y: -495.10318}
+  m_AnchoredPosition: {x: 62.49991, y: -495.10315}
   m_SizeDelta: {x: 124.99982, y: 129}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1486171176
@@ -106274,6 +106275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eliteSkills:
   - {fileID: 8792704387457295560, guid: e7ae0baf1b6374a4b814ca4442be1056, type: 3}
+  - {fileID: 5982428376946813640, guid: 796c38b1a36c93d439a31e4da2f165fc, type: 3}
   playerBaseSkills:
   - skill001
   - skill003

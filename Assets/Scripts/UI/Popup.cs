@@ -68,6 +68,8 @@ public class Popup : MonoBehaviour
         isEquipText.text = slot.isEquip == true ? "ÀåÂøÁß" : "¹ÌÂø¿ë";
         equipButtonText.text = slot.isEquip == true ? "ÀåÂø ÇØÁ¦" : "ÀåÂø";
         name.text = $"{DataManager.Localization(slot.item.nameAdd[0])} {DataManager.Localization(slot.item.name)}";
+        object desc = DataManager.description.Find("code", slot.item.name, "description");
+        description.text = desc != null ? desc.ToString() : "";
 
         switch (slot.item.rarityType)
         {
@@ -98,6 +100,8 @@ public class Popup : MonoBehaviour
         isEquipText.text = slot.isEquip == true ? "ÀåÂøÁß" : "¹ÌÂø¿ë";
         equipButtonText.text = slot.isEquip == true ? "ÀåÂø ÇØÁ¦" : "ÀåÂø";
         name.text = DataManager.Localization(slot.skill.name);
+        object desc = DataManager.description.Find("code", slot.skill.name, "description");
+        description.text = desc != null ? desc.ToString() : "";
         StatusList relatedStatus = Resources.Load<GameObject>("Prefabs/Skills/" + slot.skill.name).GetComponent<SkillData>().GetRelatedStatus;
         if (relatedStatus != StatusList.none)
         {
@@ -127,6 +131,8 @@ public class Popup : MonoBehaviour
         isEquipText.text = slot.isEquip == true ? "ÀåÂøÁß" : "¹ÌÂø¿ë";
         equipButtonText.text = slot.isEquip == true ? "ÀåÂø ÇØÁ¦" : "ÀåÂø";
         name.text = DataManager.Localization(slot.item.name);
+        object desc = DataManager.description.Find("code", slot.item.name, "description");
+        description.text = desc != null ? desc.ToString() : "";
         StatusList relatedStatus = Resources.Load<GameObject>("Prefabs/Skills/" + slot.item.skill.name).GetComponent<SkillData>().GetRelatedStatus;
         if (relatedStatus != StatusList.none)
         {

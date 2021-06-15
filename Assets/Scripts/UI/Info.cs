@@ -8,11 +8,13 @@ public class Info : MonoBehaviour
     private GameObject info;
     private Player player;
     [SerializeField]
+    private TextMeshProUGUI description;
+    [SerializeField]
     private Transform[] statusArray;
     private Dictionary<string, TextMeshProUGUI> statName = new Dictionary<string, TextMeshProUGUI>();
     private Dictionary<string, TextMeshProUGUI> statValue = new Dictionary<string, TextMeshProUGUI>();
 
-    private void Awake()
+    private void Start()
     {
         player = FindObjectOfType<Player>();
         for (int i = 0; i < statusArray.Length; i++)
@@ -27,6 +29,9 @@ public class Info : MonoBehaviour
             if (playerStatus != null)
                 statName[key].text = DataManager.Localization(key);
         }
+
+        object desc = DataManager.description.Find("code", "role001", "description");
+        description.text = desc != null ? desc.ToString() : "";
     }
 
     private void OnEnable()

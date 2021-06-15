@@ -21,17 +21,15 @@ public class HorizontalFist : MonoBehaviour
         animator = GetComponent<Animator>();
 
         transform.rotation = Quaternion.Euler(Vector3.zero);
-        transform.position = new Vector3(LazyCamera.instance.GetWidth() / 2 * -1, player.position.y, transform.position.z);
-
-        animator.SetInteger("Dir", (int)Mathf.Sign(player.position.x));
+        transform.position = new Vector3(LazyCamera.instance.transform.position.x + LazyCamera.instance.GetWidth() / 2 * -1, player.position.y, transform.position.z);
 
         StartCoroutine("MoveToX");
     }
 
     private IEnumerator MoveToX()
     {
-        startX = LazyCamera.instance.GetWidth() / 2 * -1;
-        limitX = LazyCamera.instance.GetWidth() / 2;
+        startX = LazyCamera.instance.transform.position.x + LazyCamera.instance.GetWidth() / 2 * -1;
+        limitX = LazyCamera.instance.transform.position.x + LazyCamera.instance.GetWidth() / 2;
 
         yield return new WaitForSeconds(1f);
 

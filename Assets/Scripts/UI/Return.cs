@@ -9,6 +9,9 @@ public class Return : MonoBehaviour
     [SerializeField]
     private UIKeyChanger keyChanger;
 
+    [SerializeField]
+    private GameObject panel;
+
     private void Start()
     {
         keycodeText = transform.Find("TextKeycode").GetComponent<TextMeshProUGUI>();
@@ -29,9 +32,15 @@ public class Return : MonoBehaviour
             if (SceneManager.GetActiveScene().name == SceneData.mainScene) return;
             if (SceneManager.GetActiveScene().name == SceneData.loadingScene) return;
             {
-                LoadingSceneManager.LoadScene(SceneData.mainScene);
+                panel.SetActive(true);
+                Invoke("GoTown",2.4f);
             }
         }
+    }
+
+    private void GoTown()
+    {
+        LoadingSceneManager.LoadScene(SceneData.mainScene);
     }
 
     private bool IsReturnKeyInput()

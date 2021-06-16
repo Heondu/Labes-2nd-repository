@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,16 +16,29 @@ public class NPC : MonoBehaviour
 
     private Player player;
     private PlayerItem playerItem;
+    private Animator anim;
 
     private void Start()
     {
         player = FindObjectOfType<Player>();
         playerItem = player.GetComponent<PlayerItem>();
         player.onLevelUp.AddListener(QuestEventActive);
+        anim = GetComponent<Animator>();
 
         questList = QuestManager.instance.FindQuestList(nameID);
 
+        StartCoroutine(NpcAnimation());
+
         QuestEventActive();
+    }
+
+    IEnumerator NpcAnimation() //아이들 애니메이션 스위칭
+    {
+        if(Random.Range(1,10) < 5)
+        {
+            anim.SetTrigger("Special");
+        }
+        yield return new WaitForSeconds(1);
     }
 
     public void ShowDialogue()

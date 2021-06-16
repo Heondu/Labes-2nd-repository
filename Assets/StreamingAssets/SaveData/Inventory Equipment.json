@@ -1,90 +1,33 @@
 {
     "items": [
         {
-            "name": "top01",
+            "name": "brc01",
             "spawnable": 1,
             "useType": "equipment",
-            "type": "top",
+            "type": "bracelet",
             "itemImage": "Sprites/DropIcon/dropitem_1",
-            "inventoryImage": "icons/equip/top01",
-            "status": "defence",
-            "rarity": 1,
-            "statMin": 8,
-            "statMax": 11,
-            "cost": 450,
-            "stat": 10,
-            "rarityType": "Normal",
-            "nameAdd": [
-                "agi01",
-                "int01",
-                "agi01"
-            ],
-            "statusAdd": [
-                "agility",
-                "intelligence",
-                "agility"
-            ],
-            "statAdd": [
-                4,
-                4,
-                3
-            ],
-            "quality": 0,
-            "isNew": true,
-            "skill": {
-                "skill": "",
-                "name": "",
-                "rarity": 0,
-                "exp": 0,
-                "material": "",
-                "weaponClass": "",
-                "classBonus": "",
-                "bonusAmount": 0,
-                "position": "",
-                "element": "",
-                "cooltime": 0.0,
-                "amount": 0,
-                "perlvl": 0,
-                "isPositive": 0,
-                "repeat": 0,
-                "speed": 0,
-                "size": 0,
-                "lifetime": 0,
-                "guide": 0.0,
-                "penetration": 0,
-                "consume": 0,
-                "quality": 0,
-                "isNew": true
-            }
-        },
-        {
-            "name": "glv02",
-            "spawnable": 1,
-            "useType": "equipment",
-            "type": "gloves",
-            "itemImage": "Sprites/DropIcon/dropitem_1",
-            "inventoryImage": "icons/equip/glv02",
-            "status": "accuracy",
+            "inventoryImage": "icons/equip/brc01",
+            "status": "allResist",
             "rarity": 2,
-            "statMin": 5,
-            "statMax": 6,
-            "cost": 800,
-            "stat": 5,
+            "statMin": 3,
+            "statMax": 5,
+            "cost": 700,
+            "stat": 3,
             "rarityType": "Normal",
             "nameAdd": [
-                "freg01",
                 "cdam01",
-                "dreg01"
+                "ldam01",
+                "freg01"
             ],
             "statusAdd": [
-                "fireResist",
                 "coldDamage",
-                "darkResist"
+                "lightDamage",
+                "fireResist"
             ],
             "statAdd": [
                 6,
                 7,
-                6
+                5
             ],
             "quality": 0,
             "isNew": true,
@@ -115,22 +58,34 @@
             }
         },
         {
-            "name": "",
-            "spawnable": 0,
-            "useType": "",
-            "type": "",
-            "itemImage": "",
-            "inventoryImage": "",
-            "status": "",
-            "rarity": 0,
-            "statMin": 0,
-            "statMax": 0,
-            "cost": 0,
-            "stat": 0,
-            "rarityType": "",
-            "nameAdd": [],
-            "statusAdd": [],
-            "statAdd": [],
+            "name": "bts01",
+            "spawnable": 1,
+            "useType": "equipment",
+            "type": "shoes",
+            "itemImage": "Sprites/DropIcon/dropitem_1",
+            "inventoryImage": "icons/equip/bts01",
+            "status": "avoidance",
+            "rarity": 1,
+            "statMin": 2,
+            "statMax": 3,
+            "cost": 400,
+            "stat": 2,
+            "rarityType": "Normal",
+            "nameAdd": [
+                "str01",
+                "end01",
+                "end01"
+            ],
+            "statusAdd": [
+                "strength",
+                "endurance",
+                "endurance"
+            ],
+            "statAdd": [
+                3,
+                4,
+                4
+            ],
             "quality": 0,
             "isNew": true,
             "skill": {
@@ -156,26 +111,38 @@
                 "penetration": 0,
                 "consume": 0,
                 "quality": 0,
-                "isNew": false
+                "isNew": true
             }
         },
         {
-            "name": "",
-            "spawnable": 0,
-            "useType": "",
-            "type": "",
-            "itemImage": "",
-            "inventoryImage": "",
-            "status": "",
-            "rarity": 0,
-            "statMin": 0,
-            "statMax": 0,
-            "cost": 0,
-            "stat": 0,
-            "rarityType": "",
-            "nameAdd": [],
-            "statusAdd": [],
-            "statAdd": [],
+            "name": "bts01",
+            "spawnable": 1,
+            "useType": "equipment",
+            "type": "shoes",
+            "itemImage": "Sprites/DropIcon/dropitem_1",
+            "inventoryImage": "icons/equip/bts01",
+            "status": "avoidance",
+            "rarity": 1,
+            "statMin": 2,
+            "statMax": 3,
+            "cost": 400,
+            "stat": 2,
+            "rarityType": "Normal",
+            "nameAdd": [
+                "str01",
+                "end01",
+                "end01"
+            ],
+            "statusAdd": [
+                "strength",
+                "endurance",
+                "endurance"
+            ],
+            "statAdd": [
+                3,
+                4,
+                4
+            ],
             "quality": 0,
             "isNew": true,
             "skill": {
@@ -201,7 +168,64 @@
                 "penetration": 0,
                 "consume": 0,
                 "quality": 0,
-                "isNew": false
+                "isNew": true
+            }
+        },
+        {
+            "name": "bts01",
+            "spawnable": 1,
+            "useType": "equipment",
+            "type": "shoes",
+            "itemImage": "Sprites/DropIcon/dropitem_1",
+            "inventoryImage": "icons/equip/bts01",
+            "status": "avoidance",
+            "rarity": 1,
+            "statMin": 2,
+            "statMax": 3,
+            "cost": 4600,
+            "stat": 2,
+            "rarityType": "Magic",
+            "nameAdd": [
+                "lreg03",
+                "dreg03",
+                "lreg03"
+            ],
+            "statusAdd": [
+                "lightResist",
+                "darkResist",
+                "lightResist"
+            ],
+            "statAdd": [
+                13,
+                15,
+                17
+            ],
+            "quality": 0,
+            "isNew": true,
+            "skill": {
+                "skill": "",
+                "name": "",
+                "rarity": 0,
+                "exp": 0,
+                "material": "",
+                "weaponClass": "",
+                "classBonus": "",
+                "bonusAmount": 0,
+                "position": "",
+                "element": "",
+                "cooltime": 0.0,
+                "amount": 0,
+                "perlvl": 0,
+                "isPositive": 0,
+                "repeat": 0,
+                "speed": 0,
+                "size": 0,
+                "lifetime": 0,
+                "guide": 0.0,
+                "penetration": 0,
+                "consume": 0,
+                "quality": 0,
+                "isNew": true
             }
         },
         {

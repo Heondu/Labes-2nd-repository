@@ -16,6 +16,7 @@ public class SceneData : MonoBehaviour
     public static string dungeon01 = "Dungeon01";
     public static string bossDungeon = "BossDungeon";
     public static string loadingScene = "LoadingScene";
+    public static string prologueScene = "_PrologueScene";
 
     private void Awake()
     {

@@ -8,7 +8,7 @@ public class TitleSceneManager : MonoBehaviour
     {
         isNewGame = true;
 
-        LoadingSceneManager.LoadScene(SceneData.mainScene);
+        LoadingSceneManager.LoadScene(SceneData.prologueScene);
     }
 
     public void LoadGame()

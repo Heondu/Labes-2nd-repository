@@ -115,6 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0845df274aefb424eb1b03465769ef16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fistArea: {fileID: 4596276886926072052, guid: a9fbd6a9d0a666649a91142d55550543,
+    type: 3}
+  alphaTime: 0.5
   startX: 0
   limitX: 0
   colliderX: 0

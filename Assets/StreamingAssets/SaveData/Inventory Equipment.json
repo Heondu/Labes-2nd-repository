@@ -1,34 +1,22 @@
 {
     "items": [
         {
-            "name": "top01",
-            "spawnable": 1,
-            "useType": "equipment",
-            "type": "top",
-            "itemImage": "Sprites/DropIcon/dropitem_1",
-            "inventoryImage": "icons/equip/top01",
-            "status": "defence",
-            "rarity": 1,
-            "statMin": 8,
-            "statMax": 11,
-            "cost": 450,
-            "stat": 10,
-            "rarityType": "Normal",
-            "nameAdd": [
-                "agi01",
-                "int01",
-                "agi01"
-            ],
-            "statusAdd": [
-                "agility",
-                "intelligence",
-                "agility"
-            ],
-            "statAdd": [
-                4,
-                4,
-                3
-            ],
+            "name": "",
+            "spawnable": 0,
+            "useType": "",
+            "type": "",
+            "itemImage": "",
+            "inventoryImage": "",
+            "status": "",
+            "rarity": 0,
+            "statMin": 0,
+            "statMax": 0,
+            "cost": 0,
+            "stat": 0,
+            "rarityType": "",
+            "nameAdd": [],
+            "statusAdd": [],
+            "statAdd": [],
             "quality": 0,
             "isNew": true,
             "skill": {
@@ -54,38 +42,26 @@
                 "penetration": 0,
                 "consume": 0,
                 "quality": 0,
-                "isNew": true
+                "isNew": false
             }
         },
         {
-            "name": "glv02",
-            "spawnable": 1,
-            "useType": "equipment",
-            "type": "gloves",
-            "itemImage": "Sprites/DropIcon/dropitem_1",
-            "inventoryImage": "icons/equip/glv02",
-            "status": "accuracy",
-            "rarity": 2,
-            "statMin": 5,
-            "statMax": 6,
-            "cost": 800,
-            "stat": 5,
-            "rarityType": "Normal",
-            "nameAdd": [
-                "freg01",
-                "cdam01",
-                "dreg01"
-            ],
-            "statusAdd": [
-                "fireResist",
-                "coldDamage",
-                "darkResist"
-            ],
-            "statAdd": [
-                6,
-                7,
-                6
-            ],
+            "name": "",
+            "spawnable": 0,
+            "useType": "",
+            "type": "",
+            "itemImage": "",
+            "inventoryImage": "",
+            "status": "",
+            "rarity": 0,
+            "statMin": 0,
+            "statMax": 0,
+            "cost": 0,
+            "stat": 0,
+            "rarityType": "",
+            "nameAdd": [],
+            "statusAdd": [],
+            "statAdd": [],
             "quality": 0,
             "isNew": true,
             "skill": {
@@ -111,7 +87,7 @@
                 "penetration": 0,
                 "consume": 0,
                 "quality": 0,
-                "isNew": true
+                "isNew": false
             }
         },
         {

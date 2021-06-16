@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour, ILivingEntity
 
     public UnityEvent onDeath = new UnityEvent();
     private UnityAction killCount = null;
-    public Vector3 hitDir = Vector3.zero;
+    private Vector3 hitDir = Vector3.zero;
 
     private Player player;
 
@@ -199,5 +199,10 @@ public class Enemy : MonoBehaviour, ILivingEntity
     public void SetMapData(MapData mapData)
     {
         this.mapData = mapData;
+    }
+
+    public Vector3 GetHitDir()
+    {
+        return hitDir;
     }
 }

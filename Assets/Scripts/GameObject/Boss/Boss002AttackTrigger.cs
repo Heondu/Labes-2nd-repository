@@ -10,6 +10,7 @@ public class Boss002AttackTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            LazyCamera.instance.SetCameraSize(10f);
             StartCoroutine("WaitTime", 1f);
         }
     }
@@ -25,6 +26,7 @@ public class Boss002AttackTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            LazyCamera.instance.ResetCameraSize();
             boss.CanAttack = false;
         }
     }

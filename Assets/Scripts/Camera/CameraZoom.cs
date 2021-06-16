@@ -38,7 +38,7 @@ public class CameraZoom : MonoBehaviour
     {
         if(howSize == HowSize.Default)
         {
-            camera.orthographicSize = 8;
+            //camera.orthographicSize = 8;
         }
         else if(howSize == HowSize.ZoomIn)
         {

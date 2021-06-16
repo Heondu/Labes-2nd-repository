@@ -16,28 +16,25 @@ public class LimbSeparator : MonoBehaviour
     [SerializeField]
     private float waitTime = 5;
     [SerializeField]
-    private GameObject minimapIcon;
-    [SerializeField]
-    private GameObject Shadow;
-
-    private void Awake()
-    {
-        enemy = GetComponent<Enemy>();
-    }
+    private GameObject[] excludeObject;
 
     private void Start()
     {
+        enemy = GetComponent<Enemy>();
         enemy.onDeath.AddListener(OnDeath);
     }
 
     private void OnDeath()
     {
-        StartCoroutine("OnDeathCo", enemy.hitDir);
+        StartCoroutine("OnDeathCo", enemy.GetHitDir());
     }
 
     private IEnumerator OnDeathCo(Vector3 hitDir)
     {
-        Shadow.SetActive(false);
+        for (int i = 0; i < excludeObject.Length; i++)
+        {
+            excludeObject[i].SetActive(false);
+        }
 
         Rigidbody2D[] rigidbody2Ds = GetComponentsInChildren<Rigidbody2D>();
         Vector3[] originPos = new Vector3[rigidbody2Ds.Length - 1];
@@ -62,7 +59,11 @@ public class LimbSeparator : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         gameObject.SetActive(false);
-        Shadow.SetActive(true);
+
+        for (int i = 0; i < excludeObject.Length; i++)
+        {
+            excludeObject[i].SetActive(true);
+        }
 
         for (int i = 1; i < rigidbody2Ds.Length; i++)
         {

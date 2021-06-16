@@ -18,8 +18,20 @@ public class LazyCamera : MonoBehaviour
     private MapData mapData = null;
     public UnityEvent onMapDataChanged = new UnityEvent();
 
-    private float width;
-    private float height;
+    private float width
+    {
+        get
+        {
+            return 2 * cam.orthographicSize * cam.aspect;
+        }
+    }
+    private float height
+    {
+        get
+        {
+            return 2 * cam.orthographicSize;
+        }
+    }
 
     [SerializeField]
     private bool isScreenLock = true;
@@ -31,8 +43,6 @@ public class LazyCamera : MonoBehaviour
 
         cam = GetComponent<Camera>();
         originSize = Camera.main.orthographicSize;
-        height = 2 * originSize;
-        width = height * cam.aspect;
     }
 
     void Update()
@@ -137,6 +147,19 @@ public class LazyCamera : MonoBehaviour
         }
     }
 
+    private IEnumerator Zoom(float value)
+    {
+        float size = cam.orthographicSize;
+        float percent = 0;
+        while (percent < 1)
+        {
+            percent += Time.deltaTime;
+            cam.orthographicSize = Mathf.Lerp(size, value, percent);
+            yield return null;
+        }
+        cam.orthographicSize = value;
+    }
+
     public void ChangeTarget(Transform target)
     {
         this.target = target;
@@ -145,5 +168,17 @@ public class LazyCamera : MonoBehaviour
     public float GetWidth()
     {
         return width;
+    }
+
+    public void SetCameraSize(float value)
+    {
+        StopCoroutine("Zoom");
+        StartCoroutine("Zoom", value);
+    }
+
+    public void ResetCameraSize()
+    {
+        StopCoroutine("Zoom");
+        StartCoroutine("Zoom", originSize);
     }
 }

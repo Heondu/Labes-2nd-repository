@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public interface ILivingEntity
+﻿public interface ILivingEntity
 {
     void TakeDamage(DamageData damageData);
 

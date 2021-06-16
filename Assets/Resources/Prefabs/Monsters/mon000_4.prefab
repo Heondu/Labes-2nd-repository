@@ -1469,7 +1469,6 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-  hitDir: {x: 0, y: 0, z: 0}
 --- !u!114 &1478171002487775160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1578,8 +1577,8 @@ MonoBehaviour:
   maxForce: 15
   floatTime: 2
   waitTime: 5
-  minimapIcon: {fileID: 0}
-  Shadow: {fileID: 5045493435799615311}
+  excludeObject:
+  - {fileID: 5045493435799615311}
 --- !u!114 &-4604535133689672081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1595,8 +1594,10 @@ MonoBehaviour:
   minimapIconPrefab: {fileID: 4217496461655209223, guid: 43b53cd4383f5d241a83d9061c2bf957,
     type: 3}
   size: {x: 0, y: 0}
+  offset: {x: 0, y: 0}
   autoSize: 0
   usePrefabSize: 1
+  useColliderSize: 0
   sortZ: 0
 --- !u!1 &6688888570373506719
 GameObject:

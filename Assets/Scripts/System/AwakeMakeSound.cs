@@ -11,7 +11,13 @@ public class AwakeMakeSound : MonoBehaviour
     {
         if (ac)
         {
-            SoundEffectManager.SoundEffect(ac);
+            MakeSoundEffect(ac);
         }
+    }
+
+    public void MakeSoundEffect(AudioClip _ac)
+    {
+        SoundEffectManager.SoundEffect(_ac);
+        Debug.Log("12");
     }
 }

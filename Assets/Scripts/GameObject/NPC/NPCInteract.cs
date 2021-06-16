@@ -105,6 +105,16 @@ public class NPCInteract : MonoBehaviour
                 {
                     npc.ShowDialogue();
                 }
+                else if (interactives[i].CompareTag("Quest"))
+                {
+                    npc.Quest();
+                }
+                else if (interactives[i].CompareTag("Close"))
+                {
+                    isKeyInput = true;
+                    PlayerInput.SetInputMode(InputMode.normal);
+                    DisableInteractive();
+                }
                 else
                 {
                     PlayerInput.SetInputMode(InputMode.normal);

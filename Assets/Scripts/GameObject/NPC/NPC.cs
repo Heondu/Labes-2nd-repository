@@ -43,6 +43,12 @@ public class NPC : MonoBehaviour
 
     public void ShowDialogue()
     {
+        string code = codes[Random.Range(0, codes.Length)];
+        DialogueManager.instance.StartDialogue(transform, code);
+    }
+
+    public void Quest()
+    {
         //for (int i = 0; i < QuestManager.instance.playerQuestList.Count; i++)
         //{
         //    if (QuestManager.instance.playerQuestList[i].quest.state == QuestState.Complete)
@@ -63,11 +69,6 @@ public class NPC : MonoBehaviour
             newQuests.RemoveAt(0);
 
             PlayerInput.SetInputMode(InputMode.normal);
-        }
-        else
-        {
-            string code = codes[Random.Range(0, codes.Length)];
-            DialogueManager.instance.StartDialogue(transform, code);
         }
     }
 

@@ -12,6 +12,8 @@ public class DungeonLoader : MonoBehaviour
     {
         if (collision.CompareTag("PortalCollider"))
         {
+            collision.GetComponentInParent<Player>().SetMapData(null);
+
             Vector3 newPos = collision.transform.position + (collision.transform.position - transform.position).normalized;
             
             SceneData.instance.prevScenePos = newPos;

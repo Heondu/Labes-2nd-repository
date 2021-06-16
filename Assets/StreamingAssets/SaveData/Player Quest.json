@@ -32,33 +32,33 @@
             },
             "items": [
                 {
-                    "name": "gun06",
+                    "name": "axe06",
                     "spawnable": 1,
                     "useType": "weapon",
-                    "type": "gun",
+                    "type": "axe",
                     "itemImage": "Sprites/DropIcon/dropitem_0",
-                    "inventoryImage": "icons/equip/gun06",
+                    "inventoryImage": "icons/equip/axe06",
                     "status": "damage",
                     "rarity": 5,
                     "statMin": 60,
                     "statMax": 70,
                     "cost": 26000,
-                    "stat": 66,
+                    "stat": 65,
                     "rarityType": "Magic",
                     "nameAdd": [
-                        "cdam05",
+                        "ddam05",
                         "ldam05",
                         "freg05"
                     ],
                     "statusAdd": [
-                        "coldDamage",
+                        "darkDamage",
                         "lightDamage",
                         "fireResist"
                     ],
                     "statAdd": [
-                        25,
+                        30,
                         27,
-                        25
+                        23
                     ],
                     "quality": 0,
                     "isNew": true,

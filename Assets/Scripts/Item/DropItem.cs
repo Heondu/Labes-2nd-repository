@@ -9,6 +9,11 @@ public class DropItem : MonoBehaviour
 
     private float acceleration = 30;
 
+    [SerializeField]
+    protected GameObject effect;
+    [SerializeField]
+    protected AudioClip sound;
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();

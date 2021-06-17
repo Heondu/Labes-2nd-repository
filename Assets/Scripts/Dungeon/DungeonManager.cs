@@ -26,7 +26,15 @@ public class DungeonManager : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         player.onDeath.AddListener(OnPlayerDeath);
-        player.transform.position = startingPos;
+
+        if (SceneData.instance.prevScene == SceneData.mainScene)
+        {
+            player.transform.position = Vector3.zero;
+        }
+        else
+        {
+            player.transform.position = startingPos;
+        }
     }
 
     public DungeonType GetDungeonType()
@@ -41,5 +49,10 @@ public class DungeonManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == SceneData.guardDungeon) return;
 
         LoadingSceneManager.LoadScene(SceneData.mainScene);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(startingPos, 0.1f);
     }
 }

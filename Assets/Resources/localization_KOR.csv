@@ -560,13 +560,17 @@ mon000_1,좀비
 mon000_2,좀비
 mon000_3,좀비
 mon000_4,좀비
+mon018,사자탈
+mon019,사자탈
+mon020,사자탈
 ,
 ######,맵######
-map_main,마을
+map_main,생존자 피신처
 map_dungeon01,황폐한 들판
+map_dungeon02,황폐한 들판
 map_dungeon_attack,미니 던전
 map_dungeon_guard,미니 던전
-map_boss,성
+map_boss,라넬리우의 성
 ,
 ######,자원######
 gold,골드

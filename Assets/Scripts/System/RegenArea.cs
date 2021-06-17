@@ -29,4 +29,11 @@ public class RegenArea : MonoBehaviour
     {
         Gizmos.DrawWireCube(transform.position, area);
     }
+
+    public void SetMonsters(GameObject[] monsters, int[] prob, int eliteProb)
+    {
+        this.monsters = monsters;
+        this.prob = prob;
+        this.eliteProb = eliteProb;
+    }
 }

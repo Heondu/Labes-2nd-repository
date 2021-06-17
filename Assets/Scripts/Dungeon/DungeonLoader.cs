@@ -20,13 +20,14 @@ public class DungeonLoader : MonoBehaviour
             SceneData.instance.prevScene = SceneManager.GetActiveScene().name;
             SceneData.instance.mapdata = LazyCamera.instance.GetMapData();
 
-            if (SceneData.instance.prevScene == SceneData.mainScene)
+            if (sceneName == SceneData.attackDungeon || sceneName == SceneData.guardDungeon)
             {
-                LoadingSceneManager.LoadScene(sceneName);
+                SceneData.instance.regenArea = FindObjectOfType<RegenManager>().regens[0];
+                SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
             }
             else
             {
-                SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+                LoadingSceneManager.LoadScene(sceneName);
             }
 
             if (destroyPortalAtCollision)

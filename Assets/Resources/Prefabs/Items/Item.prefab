@@ -238,6 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e07eeb8da243ab4abed7bb14f79d1bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effect: {fileID: 0}
+  sound: {fileID: 8300000, guid: 03c50d50b6a1a264190f7142d366e74f, type: 3}
   skill: 
   spriteRenderer: {fileID: 3490100639602771391}
   outlineRenderer: {fileID: 5966285582694163321}
@@ -282,3 +284,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortingMethod: 2
+  offset: 0

@@ -3,21 +3,16 @@ using UnityEngine;
 public class Gold : DropItem, IItem
 {
     private int gold = 0;
-    [SerializeField]
-    private GameObject GoldEffect;
-    [SerializeField]
-    private AudioClip GoldSound;
-
 
     public void Use()
     {
         InventoryManager.instance.AddGold(gold);
 
-        if (GoldEffect)
-            Instantiate(GoldEffect, transform.position, Quaternion.identity);
+        if (effect)
+            Instantiate(effect, transform.position, Quaternion.identity);
 
-        if(GoldSound)
-            SoundEffectManager.SoundEffect(GoldSound);
+        if (sound)
+            SoundEffectManager.SoundEffect(sound);
 
         //Destroy(gameObject);
         gameObject.SetActive(false);

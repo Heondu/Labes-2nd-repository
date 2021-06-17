@@ -19,6 +19,7 @@ public class DungeonLoader : MonoBehaviour
             SceneData.instance.prevScenePos = newPos;
             SceneData.instance.prevScene = SceneManager.GetActiveScene().name;
             SceneData.instance.mapdata = LazyCamera.instance.GetMapData();
+            LazyCamera.instance.SetMapData(null);
 
             if (sceneName == SceneData.attackDungeon || sceneName == SceneData.guardDungeon)
             {

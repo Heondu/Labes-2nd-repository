@@ -874,7 +874,8 @@ MonoBehaviour:
   - {fileID: 991106548}
   target: {fileID: 1496037958}
   swarmAttackAtStart: 1
-  checkAllRegenAreaWhenRegen: 1
+  checkAllRegenAreaWhenRegen: 0
+  dontCheckForRegenArea: 1
   onRegen:
     m_PersistentCalls:
       m_Calls: []

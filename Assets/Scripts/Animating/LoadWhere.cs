@@ -5,6 +5,8 @@ using TMPro;
 
 public class LoadWhere : MonoBehaviour
 {
+    private static LoadWhere instance;
+
     [SerializeField]
     private GameObject panel;
 
@@ -14,8 +16,15 @@ public class LoadWhere : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI mapName;
 
-    void OnEnable()
+    void Awake()
     {
+        if (instance == null) instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -23,15 +32,21 @@ public class LoadWhere : MonoBehaviour
     {
         if (scene.name == SceneData.loadingScene) return;
 
+        StartCoroutine("OnSceneLoadedCo");
+    }
+
+    private IEnumerator OnSceneLoadedCo()
+    {
+        while (LazyCamera.instance.GetMapData() == null)
+        {
+            yield return null;
+        }
+
         if (panel != null)
         {
             panel.SetActive(true);
         }
         SoundEffectManager.SoundEffect(ac);
-        MapData mapData = FindObjectOfType<MapData>();
-        if (mapData != null)
-        {
-            mapName.text = DataManager.Localization(mapData.GetMapId());
-        }
+        mapName.text = DataManager.Localization(LazyCamera.instance.GetMapData().GetMapId());
     }
 }

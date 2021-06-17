@@ -16,6 +16,8 @@ public class RegenManager : MonoBehaviour
     private bool swarmAttackAtStart = false;
     [SerializeField]
     private bool checkAllRegenAreaWhenRegen = false;
+    [SerializeField]
+    private bool dontCheckForRegenArea;
 
     public UnityEvent onRegen = new UnityEvent();
     public UnityEvent onEnemyDeath = new UnityEvent();
@@ -58,7 +60,18 @@ public class RegenManager : MonoBehaviour
 
         while (true)
         {
-            if (checkAllRegenAreaWhenRegen == false)
+            if (dontCheckForRegenArea)
+            {
+                yield return WaitForSeconds(regenTime);
+
+                foreach (RegenArea regen in regens)
+                {
+                    Spawn(regen);
+                }
+
+                onRegen.Invoke();
+            }
+            else if (checkAllRegenAreaWhenRegen == false)
             {
                 foreach (RegenArea regen in regens)
                 {

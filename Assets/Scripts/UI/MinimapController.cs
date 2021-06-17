@@ -60,6 +60,9 @@ public class MinimapController : MonoBehaviour
 
     private void UpdateMapName()
     {
-        mapName.text = DataManager.Localization(LazyCamera.instance.GetMapData().GetMapId());
+        if (LazyCamera.instance.GetMapData() != null)
+        {
+            mapName.text = DataManager.Localization(LazyCamera.instance.GetMapData().GetMapId());
+        }
     }
 }

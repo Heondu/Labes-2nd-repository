@@ -1,24 +1,36 @@
 {
     "items": [
         {
-            "name": "",
-            "spawnable": 0,
-            "useType": "",
-            "type": "",
-            "itemImage": "",
-            "inventoryImage": "",
-            "status": "",
-            "rarity": 0,
-            "statMin": 0,
-            "statMax": 0,
-            "cost": 0,
-            "stat": 0,
-            "rarityType": "",
-            "nameAdd": [],
-            "statusAdd": [],
-            "statAdd": [],
+            "name": "stf02",
+            "spawnable": 1,
+            "useType": "weapon",
+            "type": "staff",
+            "itemImage": "Sprites/DropIcon/dropitem_0",
+            "inventoryImage": "icons/equip/stf02",
+            "status": "damage",
+            "rarity": 2,
+            "statMin": 28,
+            "statMax": 36,
+            "cost": 850,
+            "stat": 32,
+            "rarityType": "Normal",
+            "nameAdd": [
+                "freg01",
+                "freg01",
+                "dreg01"
+            ],
+            "statusAdd": [
+                "fireResist",
+                "fireResist",
+                "darkResist"
+            ],
+            "statAdd": [
+                6,
+                7,
+                6
+            ],
             "quality": 0,
-            "isNew": true,
+            "isNew": false,
             "skill": {
                 "skill": "",
                 "name": "",
@@ -42,7 +54,7 @@
                 "penetration": 0,
                 "consume": 0,
                 "quality": 0,
-                "isNew": false
+                "isNew": true
             }
         },
         {

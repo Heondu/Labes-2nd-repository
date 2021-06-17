@@ -115,8 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60106a29ddb4f894ca99260b950400e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GoldEffect: {fileID: 0}
-  GoldSound: {fileID: 8300000, guid: 03c50d50b6a1a264190f7142d366e74f, type: 3}
+  effect: {fileID: 0}
+  sound: {fileID: 8300000, guid: 03c50d50b6a1a264190f7142d366e74f, type: 3}
 --- !u!50 &-594038875406320721
 Rigidbody2D:
   serializedVersion: 4
@@ -151,3 +151,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortingMethod: 2
+  offset: 0

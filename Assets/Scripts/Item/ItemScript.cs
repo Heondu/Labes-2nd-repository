@@ -39,6 +39,13 @@ public class ItemScript : DropItem, IItem
     public void Use()
     {
         InventoryManager.instance.AddItem(item);
+
+        if (effect)
+            Instantiate(effect, transform.position, Quaternion.identity);
+
+        if (sound)
+            SoundEffectManager.SoundEffect(sound);
+
         //Destroy(gameObject);
         gameObject.SetActive(false);
     }

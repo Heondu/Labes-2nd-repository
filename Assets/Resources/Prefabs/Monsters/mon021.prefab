@@ -1766,6 +1766,7 @@ GameObject:
   - component: {fileID: 6933940989372768798}
   - component: {fileID: 4365714956778201610}
   - component: {fileID: 8003424831238837058}
+  - component: {fileID: 7233546038366268935}
   m_Layer: 8
   m_Name: mon021
   m_TagString: Enemy
@@ -1905,7 +1906,6 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-  hitDir: {x: 0, y: 0, z: 0}
 --- !u!114 &-1196279445507160765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2014,8 +2014,7 @@ MonoBehaviour:
   maxForce: 15
   floatTime: 2
   waitTime: 5
-  minimapIcon: {fileID: 0}
-  Shadow: {fileID: 0}
+  excludeObject: []
 --- !u!114 &8003424831238837058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2034,7 +2033,29 @@ MonoBehaviour:
   offset: {x: 0, y: 0}
   autoSize: 0
   usePrefabSize: 1
+  useColliderSize: 0
   sortZ: 0
+--- !u!50 &7233546038366268935
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5308995027453136911}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &5308995027545502123
 GameObject:
   m_ObjectHideFlags: 0

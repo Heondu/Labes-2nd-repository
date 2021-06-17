@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -35,6 +36,24 @@ public class GuardingDungeon : MonoBehaviour
     private void Start()
     {
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneData.guardDungeon));
+
+        List<GameObject> monsters = new List<GameObject>();
+        List<int> prob = new List<int>();
+        int eliteProb = SceneData.instance.regenArea.eliteProb;
+
+        for (int i = 0; i < SceneData.instance.regenArea.monsters.Length; i++)
+        {
+            if (SceneData.instance.regenArea.monsters[i].CompareTag("Enemy"))
+            {
+                monsters.Add(SceneData.instance.regenArea.monsters[i]);
+                prob.Add(SceneData.instance.regenArea.prob[i]);
+            }
+        }
+
+        for (int i = 0; i < regenManager.regens.Length; i++)
+        {
+            regenManager.regens[i].SetMonsters(monsters.ToArray(), prob.ToArray(), eliteProb);
+        }
 
         regenManager.onRegen.AddListener(IncreaseWave);
         player.onDeath.AddListener(OnPlayerDeath);
@@ -78,7 +97,10 @@ public class GuardingDungeon : MonoBehaviour
         player.status.HP = originHP;
         player.transform.position = SceneData.instance.prevScenePos;
         player.SetMapData(SceneData.instance.mapdata);
+        player.SetupOnRespawn();
+
         LazyCamera.instance.SetMapData(SceneData.instance.mapdata);
+
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneData.instance.prevScene));
         SceneManager.UnloadSceneAsync(SceneData.guardDungeon);
     }

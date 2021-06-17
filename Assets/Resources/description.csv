@@ -1,13 +1,19 @@
 ﻿name,code,description
 ,,
 장비 아이템,,
-item001_desc,swd01,아주아주 강력한 검이다.
+item001_desc,swd01,가장 간단한 형태의 검이다.
 ,,
 스킬,,
-skill001_desc,skill001,아주아주 강력한 스킬이다.
+skill001_desc,skill001,독을 바른 화살을 발사하여 적에게 지속적인 데미지를 준다.
+skill002_desc,skill002,
+skill003_desc,skill003,특별히 전수되는 뇌관 설치기술로 해당 범위에 지속적인 폭발을 일으킨다.
+skill004_desc,skill004,뇌를 활성화시켜 지능을 일시적으로 증가시킨다.
+skill005_desc,skill005,빠르게 연속으로 세 번의 공격을 한다. 활 착용 시 보너스 데미지
+skill007_desc,skill007,주변으로 번개를 방출하여 사방의 적에게 피해를 준다.
+skill008_desc,skill008,회전하는 진기를 방출하여 전방을 초토화시킨다.
 ,,
 소모 아이템,,
-cons001_desc,pot01,아주아주 강력한 포션이다.
+cons001_desc,pot01,체력을 일부 회복하는 포션이다.
 ,,
 캐릭터,,
-role001_desc,role001,아주아주 강력하다.
+role001_desc,role001,"모든 무기를 다룰 수 있고, 모든 스킬을 사용할 수 있으나 아직 특기를 개발하지 않은 상태"

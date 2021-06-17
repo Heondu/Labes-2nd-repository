@@ -97,14 +97,19 @@ public class Player : MonoBehaviour, ILivingEntity
     {
         if (sceneName == SceneData.mainScene)
         {
-            isDie = false;
-
             status.HP = status.maxHP;
 
-            collider2D.enabled = true;
-
-            PlayerInput.SetInputMode(InputMode.normal);
+            SetupOnRespawn();
         }
+    }
+
+    public void SetupOnRespawn()
+    {
+        isDie = false;
+
+        collider2D.enabled = true;
+
+        PlayerInput.SetInputMode(InputMode.normal);
     }
 
     public Status GetStatus(StatusList name)

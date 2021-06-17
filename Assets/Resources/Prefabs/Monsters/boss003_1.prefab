@@ -1646,6 +1646,7 @@ GameObject:
   - component: {fileID: 8583305106034768832}
   - component: {fileID: 2432302520677459643}
   - component: {fileID: 8153322812655477811}
+  - component: {fileID: -6922063583040799175}
   m_Layer: 8
   m_Name: boss003_1
   m_TagString: Enemy
@@ -1771,7 +1772,6 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-  hitDir: {x: 0, y: 0, z: 0}
 --- !u!114 &3315286701455509013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1904,7 +1904,6 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-  hitDir: {x: 0, y: 0, z: 0}
 --- !u!114 &1716724804502659598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2026,8 +2025,7 @@ MonoBehaviour:
   maxForce: 15
   floatTime: 2
   waitTime: 5
-  minimapIcon: {fileID: 0}
-  Shadow: {fileID: 0}
+  excludeObject: []
 --- !u!114 &8153322812655477811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2046,7 +2044,29 @@ MonoBehaviour:
   offset: {x: 0, y: 0}
   autoSize: 0
   usePrefabSize: 1
+  useColliderSize: 0
   sortZ: 0
+--- !u!50 &-6922063583040799175
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7724236329331297329}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &7837866695909860685
 GameObject:
   m_ObjectHideFlags: 0

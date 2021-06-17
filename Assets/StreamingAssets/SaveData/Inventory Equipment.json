@@ -1,34 +1,22 @@
 {
     "items": [
         {
-            "name": "brc01",
-            "spawnable": 1,
-            "useType": "equipment",
-            "type": "bracelet",
-            "itemImage": "Sprites/DropIcon/dropitem_1",
-            "inventoryImage": "icons/equip/brc01",
-            "status": "allResist",
-            "rarity": 2,
-            "statMin": 3,
-            "statMax": 5,
-            "cost": 700,
-            "stat": 3,
-            "rarityType": "Normal",
-            "nameAdd": [
-                "cdam01",
-                "ldam01",
-                "freg01"
-            ],
-            "statusAdd": [
-                "coldDamage",
-                "lightDamage",
-                "fireResist"
-            ],
-            "statAdd": [
-                6,
-                7,
-                5
-            ],
+            "name": "",
+            "spawnable": 0,
+            "useType": "",
+            "type": "",
+            "itemImage": "",
+            "inventoryImage": "",
+            "status": "",
+            "rarity": 0,
+            "statMin": 0,
+            "statMax": 0,
+            "cost": 0,
+            "stat": 0,
+            "rarityType": "",
+            "nameAdd": [],
+            "statusAdd": [],
+            "statAdd": [],
             "quality": 0,
             "isNew": true,
             "skill": {
@@ -54,38 +42,26 @@
                 "penetration": 0,
                 "consume": 0,
                 "quality": 0,
-                "isNew": true
+                "isNew": false
             }
         },
         {
-            "name": "bts01",
-            "spawnable": 1,
-            "useType": "equipment",
-            "type": "shoes",
-            "itemImage": "Sprites/DropIcon/dropitem_1",
-            "inventoryImage": "icons/equip/bts01",
-            "status": "avoidance",
-            "rarity": 1,
-            "statMin": 2,
-            "statMax": 3,
-            "cost": 400,
-            "stat": 2,
-            "rarityType": "Normal",
-            "nameAdd": [
-                "str01",
-                "end01",
-                "end01"
-            ],
-            "statusAdd": [
-                "strength",
-                "endurance",
-                "endurance"
-            ],
-            "statAdd": [
-                3,
-                4,
-                4
-            ],
+            "name": "",
+            "spawnable": 0,
+            "useType": "",
+            "type": "",
+            "itemImage": "",
+            "inventoryImage": "",
+            "status": "",
+            "rarity": 0,
+            "statMin": 0,
+            "statMax": 0,
+            "cost": 0,
+            "stat": 0,
+            "rarityType": "",
+            "nameAdd": [],
+            "statusAdd": [],
+            "statAdd": [],
             "quality": 0,
             "isNew": true,
             "skill": {
@@ -111,38 +87,26 @@
                 "penetration": 0,
                 "consume": 0,
                 "quality": 0,
-                "isNew": true
+                "isNew": false
             }
         },
         {
-            "name": "bts01",
-            "spawnable": 1,
-            "useType": "equipment",
-            "type": "shoes",
-            "itemImage": "Sprites/DropIcon/dropitem_1",
-            "inventoryImage": "icons/equip/bts01",
-            "status": "avoidance",
-            "rarity": 1,
-            "statMin": 2,
-            "statMax": 3,
-            "cost": 400,
-            "stat": 2,
-            "rarityType": "Normal",
-            "nameAdd": [
-                "str01",
-                "end01",
-                "end01"
-            ],
-            "statusAdd": [
-                "strength",
-                "endurance",
-                "endurance"
-            ],
-            "statAdd": [
-                3,
-                4,
-                4
-            ],
+            "name": "",
+            "spawnable": 0,
+            "useType": "",
+            "type": "",
+            "itemImage": "",
+            "inventoryImage": "",
+            "status": "",
+            "rarity": 0,
+            "statMin": 0,
+            "statMax": 0,
+            "cost": 0,
+            "stat": 0,
+            "rarityType": "",
+            "nameAdd": [],
+            "statusAdd": [],
+            "statAdd": [],
             "quality": 0,
             "isNew": true,
             "skill": {
@@ -168,38 +132,26 @@
                 "penetration": 0,
                 "consume": 0,
                 "quality": 0,
-                "isNew": true
+                "isNew": false
             }
         },
         {
-            "name": "bts01",
-            "spawnable": 1,
-            "useType": "equipment",
-            "type": "shoes",
-            "itemImage": "Sprites/DropIcon/dropitem_1",
-            "inventoryImage": "icons/equip/bts01",
-            "status": "avoidance",
-            "rarity": 1,
-            "statMin": 2,
-            "statMax": 3,
-            "cost": 4600,
-            "stat": 2,
-            "rarityType": "Magic",
-            "nameAdd": [
-                "lreg03",
-                "dreg03",
-                "lreg03"
-            ],
-            "statusAdd": [
-                "lightResist",
-                "darkResist",
-                "lightResist"
-            ],
-            "statAdd": [
-                13,
-                15,
-                17
-            ],
+            "name": "",
+            "spawnable": 0,
+            "useType": "",
+            "type": "",
+            "itemImage": "",
+            "inventoryImage": "",
+            "status": "",
+            "rarity": 0,
+            "statMin": 0,
+            "statMax": 0,
+            "cost": 0,
+            "stat": 0,
+            "rarityType": "",
+            "nameAdd": [],
+            "statusAdd": [],
+            "statAdd": [],
             "quality": 0,
             "isNew": true,
             "skill": {
@@ -225,7 +177,7 @@
                 "penetration": 0,
                 "consume": 0,
                 "quality": 0,
-                "isNew": true
+                "isNew": false
             }
         },
         {

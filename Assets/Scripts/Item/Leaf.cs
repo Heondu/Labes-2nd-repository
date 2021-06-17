@@ -3,11 +3,6 @@ using UnityEngine;
 public class Leaf : DropItem, IItem
 {
     private int amount = 0;
-    [SerializeField]
-    private GameObject effect;
-    [SerializeField]
-    private AudioClip sound;
-
 
     public void Use()
     {

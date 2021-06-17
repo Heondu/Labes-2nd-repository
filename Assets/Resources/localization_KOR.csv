@@ -38,11 +38,21 @@ mana,마나
 ,
 ,
 ######,스킬######
-skill001,가이디드 애로우
+skill001,맹독 화살
 skill002,
-skill003,늪지대
-skill004,버프
-skill005,지능증가
+skill003,지연 폭발
+skill004,각성
+skill005,삼중공격
+skill007,연쇄 번개
+skill008,대차륜
+,
+,
+,
+,
+,
+,
+,
+,
 skill900,힐링포션
 ,
 ######,무기######
@@ -560,13 +570,17 @@ mon000_1,좀비
 mon000_2,좀비
 mon000_3,좀비
 mon000_4,좀비
+mon018,사자탈
+mon019,사자탈
+mon020,사자탈
 ,
 ######,맵######
-map_main,마을
+map_main,생존자 피신처
 map_dungeon01,황폐한 들판
-map_dungeon_attack,미니 던전
-map_dungeon_guard,미니 던전
-map_boss,성
+map_dungeon02,적막한 설원
+map_dungeon_attack,섬멸전
+map_dungeon_guard,방어전
+map_boss,라넬리우의 성채
 ,
 ######,자원######
 gold,골드

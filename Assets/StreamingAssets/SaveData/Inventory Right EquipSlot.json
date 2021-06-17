@@ -46,24 +46,36 @@
             }
         },
         {
-            "name": "",
-            "spawnable": 0,
-            "useType": "",
-            "type": "",
-            "itemImage": "",
-            "inventoryImage": "",
-            "status": "",
-            "rarity": 0,
-            "statMin": 0,
-            "statMax": 0,
-            "cost": 0,
-            "stat": 0,
-            "rarityType": "",
-            "nameAdd": [],
-            "statusAdd": [],
-            "statAdd": [],
+            "name": "rng01",
+            "spawnable": 1,
+            "useType": "equipment",
+            "type": "ring",
+            "itemImage": "Sprites/DropIcon/dropitem_1",
+            "inventoryImage": "icons/equip/rng01",
+            "status": "allResist",
+            "rarity": 2,
+            "statMin": 3,
+            "statMax": 5,
+            "cost": 700,
+            "stat": 4,
+            "rarityType": "Normal",
+            "nameAdd": [
+                "ldam01",
+                "freg01",
+                "fdam01"
+            ],
+            "statusAdd": [
+                "lightDamage",
+                "fireResist",
+                "fireDamage"
+            ],
+            "statAdd": [
+                7,
+                6,
+                5
+            ],
             "quality": 0,
-            "isNew": true,
+            "isNew": false,
             "skill": {
                 "skill": "",
                 "name": "",
@@ -87,7 +99,7 @@
                 "penetration": 0,
                 "consume": 0,
                 "quality": 0,
-                "isNew": false
+                "isNew": true
             }
         },
         {

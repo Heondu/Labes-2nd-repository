@@ -13,6 +13,8 @@ public class OreObject : MonoBehaviour, ILivingEntity
 
     public void TakeDamage(DamageData damageData)
     {
+        if (!damageData.executor.CompareTag("Player")) return;
+
         int value = 1;
 
         FloatingDamageManager.instance.FloatingDamage(gameObject, value.ToString(), transform.position, DamageType.normal);
